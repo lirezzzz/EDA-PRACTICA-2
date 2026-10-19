@@ -49,7 +49,7 @@ int Comarca::cercaDicotomica(const string &codiMunicipi, int &pos) const {
     return -1;
 }
 
-bool Comarca::existeix(const string &codiMunicipi) const {
+bool Comarca::existeixMunicipi(const string &codiMunicipi) const {
     return cercaDicotomica(codiMunicipi) != -1;
 }
 
@@ -57,9 +57,13 @@ void Comarca::afegirEstabliment(const string &codiMunicipi, const string &nomMun
                                 const Establiment &e) {
     int pos;
     if (cercaDicotomica(codiMunicipi, pos) == -1) { // no existeix: pos és on ha d'anar per mantenir l'ordre
-        a_municipis.insert(a_municipis.begin() + pos, Municipi(codiMunicipi, nomMunicipi));
+        a_establiments.insert(a_municipis.begin() + pos, Municipi(codiMunicipi, nomMunicipi));
     }
-    a_municipis[pos].afegirEstabliment(e);
+    size_t index = a_establiments.size();
+    a_establiments.push_back(e)
+    a_municipis[pos].afegirEstabliment(index);
+    
+
 
     // actualitzem el màxim: amb > estricte, en cas d'empat es queda el que hi ha arribat primer
     size_t n = a_municipis[pos].nEstabliments();
@@ -72,4 +76,17 @@ void Comarca::afegirEstabliment(const string &codiMunicipi, const string &nomMun
 const Municipi &Comarca::municipiMaxim() const {
     // guardem el codi i no la posició perquè els insert desplacen els municipis dins el vector
     return a_municipis[cercaDicotomica(a_codiMaxim)];
+}
+
+list<Establiment> Comarca::establimentsDeMunicipi(const string &codiMunicipi) const{
+    list<Establiment> resultat; 
+    if ()
+    int pos = cercaDicotomica(codiMunicipi);
+    if (pos!=-1){
+       const vector<size_t> &indexs = a_municipis[pos].indexs();
+       for (size_t i=0; i<indexs.size(); i++){
+            resultat.push_back(a_establiments[indexs[i]]);
+       }
+    }
+    return resultat;
 }

@@ -17,14 +17,14 @@ string Municipi::nom() const {
 }
 
 size_t Municipi::nEstabliments() const {
-    return a_establiments.size();
+    return a_indexs.size();
 }
 
-const list<Establiment> &Municipi::establiments() const { 
-    return a_establiments; 
+const vector<size_t> &Municipi:: indexs() const{ 
+     return a_indexs;
 }
 
-void Municipi::afegirEstabliment(const Establiment &e) {
-    a_establiments.push_back(e);
+void Municipi::afegirEstabliment(size_t index) {
+    a_indexs.push_back(index);
     
 }

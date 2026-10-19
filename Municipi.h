@@ -6,12 +6,11 @@
 #define MUNICIPI_H
 
 #include <string>
-#include <list>
-#include "Establiment.h"
+#include <vector>
 
 using namespace std;
 
-/// Un municipi amb la llista dels seus establiments, en l'ordre del fitxer CSV.
+/// Un municipi amb els índexs dels seus establiments (dins el vector global d'Establiments), en l'ordre del fitxer CSV.
 class Municipi {
 public:
     Municipi();
@@ -34,18 +33,18 @@ public:
     // pre: cert
     // post: retorna el numero d'establiments del municipi
 
-    const list<Establiment> &establiments() const;
+    const vector<size_t> &indexs() const;
     // pre: cert
-    // post: retorna la llista d'establiments en l'ordre del fitxer (relatiu, ja es podrà ordenar)
+    // post: retorna els índexs dels establiments del municipi en l'ordre del fitxer
 
-    void afegirEstabliment(const Establiment &e);
+    void afegirEstabliment(size_t index);
     // pre: cert
-    // post: e s'ha afegit al final de la llista d'establiments amb un pushback
+    // post: index s'ha afegit al final dels índexs d'establiments del municipi
 
 private:
     string a_codi;                    // Codi Municipi (IDESCAT)
     string a_nom;                     // Municipi
-    list<Establiment> a_establiments; // en ordre del fitxer
+    vector<size_t> a_indexs;      // índexs dels establiments, en ordre del fitxer
 };
 
 #endif // MUNICIPI_H

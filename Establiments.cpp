@@ -90,9 +90,8 @@ vector<MunicipiResult> Establiments::municipisPerComarca(int codiComarca) const 
 list<Establiment> Establiments::establimentsPerMunicipi(const string &codiMunicipi) const {
     // per cada comarca, cerca dicotòmica del municipi dins els seus municipis (ordenats per codi)
     for (size_t c = 1; c < a_comarques.size(); c++) {
-        int pos = a_comarques[c].cercaDicotomica(codiMunicipi);
-        if (pos != -1)
-            return a_comarques[c].municipis()[pos].establiments();
+        if (a_comarques[c].existeixMunicipi(codiMunicipi))
+            return a_comarques.establimentsDeMunicipi;
     }
     return list<Establiment>(); // no existeix cap municipi amb aquest codi
 }
