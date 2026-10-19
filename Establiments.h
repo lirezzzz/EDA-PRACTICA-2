@@ -43,6 +43,7 @@ public:
 
 private:
     vector<Comarca> a_comarques; // cada comarca conté els seus municipis
+    map<string, int> a_indexMunicipis;  //codi del municipi i codi de la seva comarca
 };
 
 #endif // ESTABLIMENTS_H
