@@ -7,10 +7,13 @@
 
 #include <string>
 #include <vector>
+#include <map>
+#include "Comptadors.h"
+#include "CarrerResult.h"
 
 using namespace std;
 
-/// Un municipi amb els índexs dels seus establiments (dins el vector global d'Establiments), en l'ordre del fitxer CSV.
+/// Un municipi amb els índexs dels seus establiments (dins el vector d'establiments de la seva Comarca), en l'ordre del fitxer CSV.
 class Municipi {
 public:
     Municipi();
@@ -41,10 +44,26 @@ public:
     // pre: cert
     // post: index s'ha afegit al final dels índexs d'establiments del municipi
 
+    // ===== ZONA PERSONA A: opcions (d) i (f) =====
+    void afegirCarrer(const string &carrer, int places, int estances);
+    // pre: cert
+    // post: als comptadors del carrer s'ha comptat un establiment més amb aquestes places i estances
+    //       (si el carrer no existia, s'ha creat amb aquest únic establiment)
+
+    CarrerResult comptadorsDeCarrer(const string &carrer) const;
+    // pre: cert
+    // post: retorna els comptadors del carrer d'aquest municipi; tot a 0 si el carrer no hi és
+
+    const map<string, Comptadors> &carrers() const;
+    // pre: cert
+    // post: retorna els comptadors de tots els carrers del municipi, ordenats pel nom del carrer
+    // ===== FI ZONA PERSONA A =====
+
 private:
     string a_codi;                    // Codi Municipi (IDESCAT)
     string a_nom;                     // Municipi
-    vector<size_t> a_indexs;      // índexs dels establiments, en ordre del fitxer
+    vector<size_t> a_indexs;          // índexs dels establiments, en ordre del fitxer
+    map<string, Comptadors> a_carrers; // nom del carrer -> comptadors (zona persona A)
 };
 
 #endif // MUNICIPI_H

@@ -111,3 +111,33 @@ MaximMunicipiResults Establiments::maximMunicipi() const {
     sort(resultat.begin(), resultat.end(), ordreMaxim);
     return resultat;
 }
+
+// ===== ZONA PERSONA A: opció (d) =====
+
+CarrerResult Establiments::comptadorsDeCarrer(const string &codiMunicipi, const string &nomCarrer) const {
+    // TODO (persona A): cercar la comarca del municipi a a_indexMunicipis (find), trobar el municipi
+    //                   a la comarca (cercaDicotomica) i demanar-li comptadorsDeCarrer(nomCarrer)
+    return CarrerResult(nomCarrer, 0, 0, 0);
+}
+
+// ===== FI ZONA PERSONA A =====
+
+// ===== ZONA PERSONA A: opció (f) =====
+
+CarrerMesEstResults Establiments::carrerMesEstablimentsPerComarca() const {
+    // TODO (persona A): per cada comarca, recórrer els carrers() de cada municipi i quedar-se amb el que
+    //                   té més establiments; ordenar el resultat (nombre desc, nom de carrer asc)
+    return CarrerMesEstResults();
+}
+
+// ===== FI ZONA PERSONA A =====
+
+// ===== ZONA PERSONA B: opció (g) =====
+
+top10EstablimentsResults Establiments::top10Establiments(int codiComarca) const {
+    // TODO (persona B): comprovar el rang del codi (com a municipisPerComarca) i demanar a la comarca
+    //                   el seu top10()
+    return top10EstablimentsResults();
+}
+
+// ===== FI ZONA PERSONA B =====
