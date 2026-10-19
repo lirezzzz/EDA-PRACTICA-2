@@ -45,6 +45,7 @@ static bool ordreMaxim(const MaximMunicipiResult &a, const MaximMunicipiResult &
 
 size_t Establiments::llegirDades(const string &path) {
     a_comarques.clear();
+    a_indexMunicipis.clear();
     a_comarques.resize(44);         // una posició per cada codi de comarca (1..43)
 
     ifstream f(path);
@@ -56,18 +57,21 @@ size_t Establiments::llegirDades(const string &path) {
     getline(f, linia);              
     while (!f.eof()) {
         vector<string> camps = tokens(linia, ',', true);
-        if (camps.size() == 33) {   // Oriol aixo es per descartar linees buides o malament formades
-            Establiment e(camps[COL_RETOL], 
-                        camps[COL_NOM_VIA], 
-                        camps[COL_NUMERO],
-                        camps[COL_NUM_INSCRIPCIO],
-                        textANumero(camps[COL_PLACES]), 
-                        textANumero(camps[COL_ESTANCES]));
+        if (camps.size() == 33) {
             int codiComarca = textANumero(camps[COL_CODI_COMARCA]);
-            if (a_comarques[codiComarca].codi() == 0)       // primer cop que surt
-                a_comarques[codiComarca] = Comarca(codiComarca, camps[COL_COMARCA]);
-            a_comarques[codiComarca].afegirEstabliment(camps[COL_CODI_MUNICIPI], camps[COL_MUNICIPI], e);
-            n++;
+            if (codiComarca >= 1 && codiComarca < int(a_comarques.size())) {
+                Establiment e(camps[COL_RETOL],
+                              camps[COL_NOM_VIA],
+                              camps[COL_NUMERO],
+                              camps[COL_NUM_INSCRIPCIO],
+                              textANumero(camps[COL_PLACES]),
+                              textANumero(camps[COL_ESTANCES]));
+                if (a_comarques[codiComarca].codi() == 0)       // primer cop que surt
+                    a_comarques[codiComarca] = Comarca(codiComarca, camps[COL_COMARCA]);
+                a_indexMunicipis.insert(make_pair(camps[COL_CODI_MUNICIPI], codiComarca));
+                a_comarques[codiComarca].afegirEstabliment(camps[COL_CODI_MUNICIPI], camps[COL_MUNICIPI], e);
+                n++;
+            }
         }
         getline(f, linia);          // següent línia
     }
@@ -88,10 +92,9 @@ vector<MunicipiResult> Establiments::municipisPerComarca(int codiComarca) const 
 }
 
 list<Establiment> Establiments::establimentsPerMunicipi(const string &codiMunicipi) const {
-    // per cada comarca, cerca dicotòmica del municipi dins els seus municipis (ordenats per codi)
-    for (size_t c = 1; c < a_comarques.size(); c++) {
-        if (a_comarques[c].existeixMunicipi(codiMunicipi))
-            return a_comarques.establimentsDeMunicipi;
+    map<string, int>::const_iterator it= a_indexMunicipis.find(codiMunicipi);
+    if (it!=a_indexMunicipis.end()){
+        return a_comarques[it->second].establimentsDeMunicipi(codiMunicipi);
     }
     return list<Establiment>(); // no existeix cap municipi amb aquest codi
 }
