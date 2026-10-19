@@ -62,8 +62,8 @@ void Comarca::afegirEstabliment(const string &codiMunicipi, const string &nomMun
     size_t index = a_establiments.size();
     a_establiments.push_back(e);
     a_municipis[pos].afegirEstabliment(index);
-    
-
+    a_municipis[pos].afegirCarrer(e.carrer(), e.places(), e.estances());   // enllaç opcions (d) i (f), zona persona A
+    actualitzarTop(index, e);                                              // enllaç opció (g), zona persona B
 
     // actualitzem el màxim: amb > estricte, en cas d'empat es queda el que hi ha arribat primer
     size_t n = a_municipis[pos].nEstabliments();
@@ -89,3 +89,18 @@ list<Establiment> Comarca::establimentsDeMunicipi(const string &codiMunicipi) co
     }
     return resultat;
 }
+
+// ===== ZONA PERSONA B: opció (g) =====
+
+top10EstablimentsResults Comarca::top10() const {
+    // TODO (persona B): recórrer a_top (ja ordenat) i construir els resultats amb les dades
+    //                   de a_establiments[clau.index()]
+    return top10EstablimentsResults();
+}
+
+void Comarca::actualitzarTop(size_t index, const Establiment &e) {
+    // TODO (persona B): inserir ClauTop(e.places(), e.estances(), index) a a_top i, si passa de deu,
+    //                   esborrar l'última clau (la pitjor)
+}
+
+// ===== FI ZONA PERSONA B =====

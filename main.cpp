@@ -83,6 +83,32 @@ void opcioMaximMunicipi(const Establiments &establiments) {
              << resultat[i].nEstabliments() << endl;
 }
 
+// ===== ZONA PERSONA A: opcions (d) i (f) =====
+
+void opcioComptadorsDeCarrer(const Establiments &establiments) {
+    // pre: cert
+    // post: llegeix un codi de municipi i el nom d'un carrer i mostra els seus comptadors
+    // TODO (persona A): els noms de carrer tenen espais: llegir-lo amb getline (compte amb el salt de línia pendent)
+}
+
+void opcioCarrerMesEstabliments(const Establiments &establiments) {
+    // pre: cert
+    // post: mostra, per cada comarca, el carrer amb més establiments
+    // TODO (persona A)
+}
+
+// ===== FI ZONA PERSONA A =====
+
+// ===== ZONA PERSONA B: opció (g) =====
+
+void opcioTop10Establiments(const Establiments &establiments) {
+    // pre: cert
+    // post: llegeix un codi de comarca i mostra els deu establiments amb més places
+    // TODO (persona B)
+}
+
+// ===== FI ZONA PERSONA B =====
+
 int main() {
     Establiments establiments;
     int opcio;
