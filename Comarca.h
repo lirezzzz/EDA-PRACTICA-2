@@ -7,6 +7,7 @@
 
 #include <string>
 #include <vector>
+#include <list>
 #include "Municipi.h"
 #include "Establiment.h"
 
@@ -56,7 +57,9 @@ public:
     // pre: el municipi codiMunicipi pertany a aquesta comarca
     // post: e s'ha afegit al final dels establiments del municipi codiMunicip. si el municipi no existia, s'ha creat amb el nom nomMunicipi.
     //       si ara aquest municipi té estrictament més establiments que el màxim anterior, passa a ser el municipi màxim
-
+    
+    list<Establiment> establimentsDeMunicipi(const string &codiMunicipi) const;
+    
     const Municipi &municipiMaxim() const;
     // pre: aquesta Comarca no és buida
     // post: retorna el municipi amb més establiments; en cas d'empat, el que hi ha arribat primer en l'ordre del fitxer
@@ -65,6 +68,7 @@ private:
     int a_codi;                  // Codi Comarca (IDESCAT)
     string a_nom;                // Comarca
     vector<Municipi> a_municipis;
+    vector<Establiment> a_establiments;
     string a_codiMaxim;          // codi del municipi amb més establiments
     size_t a_nMaxim;             // nombre d'establiments d'aquest municipi
 };
