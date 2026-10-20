@@ -102,8 +102,38 @@ Sense especificar | Baix Llobregat | num: 00022 | Número inscripció: HUTT-0123
 Sense especificar | de la Font | num: 00002 | Número inscripció: HUTT-043563 | places: 0 | estances: 0
 Sense especificar | Barcelona | num: 00004 | Número inscripció: HUTT-010290 | places: 0 | estances: 0
 Sense especificar | Cristofor Colom | num: 00022 | Número inscripció: HUTT-012249 | places: 6 | estances: 0
+****************************
+* 04: Carrer -> comptadors *
+****************************
+Codi de municipi: 170486
+Nom de carrer: Lliris
+Establiments: 1 | places: 0 | estances: 0
+****************************
+* 04: Carrer -> comptadors *
+****************************
+Codi de municipi: 082704
+Nom de carrer: Miquel Ribas i Llopis
+Establiments: 1 | places: 0 | estances: 0
+****************************
+* 04: Carrer -> comptadors *
+****************************
+Codi de municipi: 171175
+Nom de carrer: Consolat del Mar
+Establiments: 1 | places: 0 | estances: 0
+****************************
+* 04: Carrer -> comptadors *
+****************************
+Codi de municipi: 080193
+Nom de carrer: Fluvià
+Establiments: 1 | places: 0 | estances: 0
+****************************
+* 04: Carrer -> comptadors *
+****************************
+Codi de municipi: 170828
+Nom de carrer: Gomà
+Establiments: 1 | places: 0 | estances: 0
 *************************************
-* 04: Municipi amb mes establiments *
+* 05: Municipi amb mes establiments *
 *************************************
 Barcelonès | Barcelona => 19
 Tarragonès | Salou => 16
@@ -132,3 +162,83 @@ Berguedà | Saldes => 1
 Vallès Occidental | Sant Cugat del Vallès => 1
 Bages | Sant Mateu de Bages => 1
 Garrotxa | Santa Pau => 1
+***********************************
+* 06: Carrer amb mes establiments *
+***********************************
+Barcelonès | Barcelona | Arago => 2
+Tarragonès | Tarragona | Cerdanya => 2
+Ripollès | Camprodon | Antic Major => 1
+Berguedà | Saldes | B-400 km 13,5 => 1
+Solsonès | Odèn | CAL PASTOR => 1
+Baix Empordà | Begur | Cap Sa Sal (porta 159) => 1
+Selva | Fogars de la Selva | Casanovas => 1
+Montsià | Alcanar | Columbretes => 1
+Baix Camp | Cambrils | Diputació => 1
+Cerdanya | Guils de Cerdanya | Gomà => 1
+Baix Llobregat | Esplugues de Llobregat | Ignasi Iglesias => 1
+Gironès | Girona | Jaume Pons i Martí => 1
+Baix Ebre | Ametlla de Mar, l' | Juan d'Almenara => 1
+Baix Penedès | Calafell | Llorenç de Vilallonga => 1
+Pallars Jussà | Pobla de Segur, la | Major => 1
+Aran | Naut Aran | Perimetrau => 1
+Alt Empordà | Cadaqués | Quers => 1
+Alta Ribagorça | Vall de Boí, la | Salineres => 1
+Garrotxa | Olot | Sant Ferriol => 1
+Vallès Oriental | Granollers | Turó d'en Bruguet => 1
+Bages | Sant Mateu de Bages | Valls  Torroella-Salo => 1
+Pla de l'Estany | Banyoles | Verdaguer => 1
+Maresme | Alella | de Barcelona => 1
+Pallars Sobirà | Alt Àneu | de l' Església => 1
+Garraf | Canyelles | de la Selva Maravillas => 1
+Vallès Occidental | Sant Cugat del Vallès | de la Vall dOr => 1
+Noguera | Avellanes i Santa Linya, les | de tartareu, afores => 1
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 7
+Les Feixes de Coaner | places: 11 | estances: 4
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 13
+Atlas | places: 36 | estances: 20
+Hostal Lesseps | places: 25 | estances: 15
+Sense especificar | places: 6 | estances: 0
+Sense especificar | places: 6 | estances: 0
+AVENIDA EUROPA | places: 2 | estances: 1
+Sense especificar | places: 1 | estances: 0
+Sense especificar | places: 1 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 21
+H Top Olympic | places: 1022 | estances: 517
+ROSA DE ABRIL | places: 30 | estances: 11
+holidayinalella | places: 13 | estances: 0
+Sense especificar | places: 12 | estances: 6
+Sense especificar | places: 11 | estances: 5
+Sense especificar | places: 11 | estances: 4
+Sense especificar | places: 11 | estances: 4
+Sense especificar | places: 8 | estances: 4
+Sense especificar | places: 7 | estances: 4
+Matarolux24 | places: 7 | estances: 0
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 28
+CASA | places: 11 | estances: 0
+Sense especificar | places: 8 | estances: 0
+Sense especificar | places: 5 | estances: 0
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 35
+CAL PASTOR 1 | places: 7 | estances: 4
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 40
+Estudi | places: 3 | estances: 1

@@ -79,7 +79,7 @@ void opcioMaximMunicipi(const Establiments &establiments) {
     // pre: cert
     // post: mostra, per cada comarca, el municipi amb més establiments
     MaximMunicipiResults resultat = establiments.maximMunicipi();
-    mostrarTitol("04: Municipi amb mes establiments");
+    mostrarTitol("05: Municipi amb mes establiments");
     for (size_t i = 0; i < resultat.size(); i++)
         cout << resultat[i].comarca() << " | " << resultat[i].municipi() << " => "
              << resultat[i].nEstabliments() << endl;
@@ -96,9 +96,9 @@ void opcioComptadorsDeCarrer(const Establiments &establiments) {
     cin.ignore();               // descarta el salt de línia que ha quedat pendent després del codi
     getline(cin, carrer);       // el nom del carrer pot portar espais
     CarrerResult resultat = establiments.comptadorsDeCarrer(codi, carrer);
-    mostrarTitol("04: Comptadors de carrer");
+    mostrarTitol("04: Carrer -> comptadors");
     cout << "Codi de municipi: " << codi << endl;
-    cout << "Carrer: " << carrer << endl;
+    cout << "Nom de carrer: " << carrer << endl;
     cout << "Establiments: " << resultat.nEstabliments()
          << " | places: " << resultat.places()
          << " | estances: " << resultat.estances() << endl;
@@ -108,7 +108,7 @@ void opcioCarrerMesEstabliments(const Establiments &establiments) {
     // pre: cert
     // post: mostra, per cada comarca, el carrer amb més establiments
     CarrerMesEstResults resultat = establiments.carrerMesEstablimentsPerComarca();
-    mostrarTitol("06: Carrer amb mes establiments per comarca");
+    mostrarTitol("06: Carrer amb mes establiments");
     for (size_t i = 0; i < resultat.size(); i++)
         cout << resultat[i].comarca() << " | " << resultat[i].municipi() << " | "
              << resultat[i].carrer() << " => " << resultat[i].nEstabliments() << endl;
@@ -122,7 +122,7 @@ void opcioTop10Establiments(const Establiments &establiments) {
     int codi;
     cin >> codi;
 
-    mostrarTitol("07: Top 10 establiments per comarca");
+    mostrarTitol("07: Top 10 establiments");
     cout << "Codi de comarca: " << codi << endl;
 
     top10EstablimentsResults r = establiments.top10Establiments(codi);
