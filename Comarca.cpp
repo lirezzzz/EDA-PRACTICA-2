@@ -98,10 +98,8 @@ top10EstablimentsResults Comarca::top10() const {
     // Recórrer el set ja ordenat del millor al pitjor
     for (const ClauTop &clau : a_top) {
         const Establiment &e = a_establiments[clau.index()];
-        resultat.push_back(Top10EstablimentsResult(
-            e.retol(),
-            e.nomVia(),
-            e.numero(),
+        resultat.push_back(Top10EstablimentResult(
+            e.nom(),
             e.places(),
             e.estances()
         ));

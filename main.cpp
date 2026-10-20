@@ -28,10 +28,6 @@ void mostrarMenu() {
     cerr << "05: Municipi amb mes establiments" << endl;
     cerr << "06: Carrer amb mes establiments" << endl;       // (f)
     cerr << "07: Top 10 establiments per comarca" << endl;   // (g)
-    cerr << "08: Totals municipi" << endl;                   // (h)
-    cerr << "09: Carrer mes establiments del municipi" << endl; // (i)
-    cerr << "10: Top 10 titulars" << endl;                   // (j)
-    cerr << "11: Places unitat" << endl;                     // (k)
     cerr << "0: Acabar" << endl;
     cerr << "Opcio: ";
 }
@@ -123,9 +119,6 @@ void opcioCarrerMesEstabliments(const Establiments &establiments) {
 // ===== ZONA PERSONA B: opció (g) =====
 
 void opcioTop10Establiments(const Establiments &establiments) {
-    // pre: cert
-    // post: llegeix un codi de comarca i mostra els deu establiments amb més places
-
     int codi;
     cin >> codi;
 
@@ -134,14 +127,15 @@ void opcioTop10Establiments(const Establiments &establiments) {
 
     top10EstablimentsResults r = establiments.top10Establiments(codi);
 
-    for (const Top10EstablimentsResult &e : r) {
-        cout << e.retol << " | "
-             << e.nomVia << " | num: " << e.numero
-             << " | places: " << e.places
-             << " | estances: " << e.estances
+    for (const Top10EstablimentResult &e : r) {
+        cout << e.nom() << " | "
+             << "places: " << e.places()
+             << " | estances: " << e.estances()
              << endl;
     }
 }
+
+
 
 // ===== FI ZONA PERSONA B =====
 
@@ -162,10 +156,6 @@ int main() {
         else if (opcio == 5) opcioMaximMunicipi(establiments);
         else if (opcio == 6) opcioCarrerMesEstabliments(establiments);       // (f)
         else if (opcio == 7) opcioTop10Establiments(establiments);           // (g)
-        else if (opcio == 8) opcioTotalsMunicipi(establiments);              // (h)
-        else if (opcio == 9) opcioCarrerMesEstabMunicipi(establiments);      // (i)
-        else if (opcio == 10) opcioTop10Titulars(establiments);              // (j)
-        else if (opcio == 11) opcioPlacesUnitat(establiments);               // (k)
         else cerr << "Opcio incorrecta" << endl;
 
         mostrarMenu();
