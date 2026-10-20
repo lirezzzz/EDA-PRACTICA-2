@@ -32,6 +32,7 @@ void Municipi::afegirEstabliment(size_t index) {
 
 void Municipi::afegirCarrer(const string &carrer, int places, int estances) {
     // TODO (persona A): localitzar o crear l'entrada del carrer a a_carrers i comptar-hi l'establiment
+    a_carrers[carrer].afegir(places, estances);
 }
 
 CarrerResult Municipi::comptadorsDeCarrer(const string &carrer) const {

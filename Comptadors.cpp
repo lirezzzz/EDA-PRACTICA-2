@@ -8,6 +8,9 @@ Comptadors::Comptadors() : a_nEstabliments(0), a_places(0), a_estances(0) {}
 
 void Comptadors::afegir(int places, int estances) {
     // TODO (persona A): sumar un establiment i les seves places i estances als comptadors
+    a_nEstabliments++;
+    a_places+=places;
+    a_estances+=estances;
 }
 
 size_t Comptadors::nEstabliments() const {
