@@ -130,12 +130,42 @@ CarrerResult Establiments::comptadorsDeCarrer(const string &codiMunicipi, const 
 
 
 // ===== ZONA PERSONA A: opció (f) =====
+// pre: cert
+// post: diu si a va abans que b: més establiments primer; en cas d'empat, carrer ascendent i, si encara
+//       empaten, nom de comarca ascendent (ordre total)
+static bool ordreCarrerMes(const CarrerMesEstResult &a, const CarrerMesEstResult &b) {
+    if (a.nEstabliments() != b.nEstabliments()) return a.nEstabliments() > b.nEstabliments();
+    if (a.carrer() != b.carrer()) return a.carrer() < b.carrer();
+    return a.comarca() < b.comarca();
+}
 
 CarrerMesEstResults Establiments::carrerMesEstablimentsPerComarca() const {
     // TODO (persona A): per cada comarca, recórrer els carrers() de cada municipi i quedar-se amb el que
     //                   té més establiments; ordenar el resultat (nombre desc, nom de carrer asc)
-    return CarrerMesEstResults();
-}
+    CarrerMesEstResults resultat;
+    for (size_t i=1; i<a_comarques.size(); i++){
+        const Comarca &comarca = a_comarques[i];
+        if (comarca.codi()!=0){
+            string millorCarrer, millorMunicipi;
+            size_t millorN = 0;
+            const vector<Municipi> &municipis = comarca.municipis();
+            for (size_t j=0;j<municipis.size();j++){
+                const map<string, Comptadors> &carrers = municipis[j].carrers();
+                for (map<string, Comptadors>::const_iterator it = carrers.begin(); it!=carrers.end(); ++it){
+                    if (it->second.nEstabliments()>millorN){
+                        millorN = it->second.nEstabliments();
+                        millorCarrer = it->first;
+                        millorMunicipi = municipis[j].nom();
+                    }
+                }
+            }
+            resultat.push_back(CarrerMesEstResult(comarca.nom(),millorMunicipi,millorCarrer,millorN));
+        }
+    }
+    
+    sort(resultat.begin(),resultat.end(),ordreCarrerMes);
+    return resultat;
+    }
 
 // ===== FI ZONA PERSONA A =====
 
