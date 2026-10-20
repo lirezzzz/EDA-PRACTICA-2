@@ -21,7 +21,8 @@ prova() {
     if grep -q "establimentsLlarg" "$entrada" && [ ! -f joc_proves/establimentsLlarg.csv ]; then
         echo "SALTAT  $nom (falta joc_proves/establimentsLlarg.csv)"; return
     fi
-    sed "s#/u/prof/dfiguls/Public/#$DIR/joc_proves/#" "$entrada" > "$TMP/in.txt"
+    # el programa llegeix el path amb cin >> (talla als espais): fem servir enllacos a $TMP, que no en té
+    sed "s#/u/prof/dfiguls/Public/#$TMP/#" "$entrada" > "$TMP/in.txt"
     local t0=$(date +%s%N)
     "$TMP/prog" < "$TMP/in.txt" > "$TMP/out.txt" 2> /dev/null
     local t=$(( ($(date +%s%N) - t0) / 1000000 ))
@@ -36,6 +37,8 @@ prova() {
         KO=$((KO+1))
     fi
 }
+
+for csv in joc_proves/*.csv; do [ -f "$csv" ] && ln -sf "$DIR/$csv" "$TMP/$(basename "$csv")"; done
 
 echo "== Proves =="
 prova t1 t1.txt t1_out.txt
