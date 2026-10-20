@@ -135,9 +135,14 @@ CarrerMesEstResults Establiments::carrerMesEstablimentsPerComarca() const {
 // ===== ZONA PERSONA B: opció (g) =====
 
 top10EstablimentsResults Establiments::top10Establiments(int codiComarca) const {
-    // TODO (persona B): comprovar el rang del codi (com a municipisPerComarca) i demanar a la comarca
-    //                   el seu top10()
-    return top10EstablimentsResults();
+    // Comprovar rang (igual que municipisPerComarca)
+    if (codiComarca < 1 || codiComarca >= (int)a_comarques.size())
+        return top10EstablimentsResults();   // comarca no existeix → resultat buit
+
+    // Delegar a la comarca
+    return a_comarques[codiComarca].top10();
 }
+
+
 
 // ===== FI ZONA PERSONA B =====

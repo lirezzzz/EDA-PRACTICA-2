@@ -20,16 +20,22 @@ void mostrarTitol(const string &titol) {
 }
 
 void mostrarMenu() {
-    // pre: cert
-    // post: s'ha mostrat el menú per cerr (no forma part de la sortida)
     cerr << endl;
     cerr << "01: Llegir dades" << endl;
     cerr << "02: Codi comarca -> municipis" << endl;
     cerr << "03: Codi municipi -> establiments" << endl;
-    cerr << "04: Municipi amb mes establiments" << endl;
+    cerr << "04: Comptadors de carrer" << endl;              // (d)
+    cerr << "05: Municipi amb mes establiments" << endl;
+    cerr << "06: Carrer amb mes establiments" << endl;       // (f)
+    cerr << "07: Top 10 establiments per comarca" << endl;   // (g)
+    cerr << "08: Totals municipi" << endl;                   // (h)
+    cerr << "09: Carrer mes establiments del municipi" << endl; // (i)
+    cerr << "10: Top 10 titulars" << endl;                   // (j)
+    cerr << "11: Places unitat" << endl;                     // (k)
     cerr << "0: Acabar" << endl;
     cerr << "Opcio: ";
 }
+
 
 void opcioLlegirDades(Establiments &establiments) {
     // pre: cert
@@ -104,10 +110,26 @@ void opcioCarrerMesEstabliments(const Establiments &establiments) {
 void opcioTop10Establiments(const Establiments &establiments) {
     // pre: cert
     // post: llegeix un codi de comarca i mostra els deu establiments amb més places
-    // TODO (persona B)
+
+    int codi;
+    cin >> codi;
+
+    mostrarTitol("07: Top 10 establiments per comarca");
+    cout << "Codi de comarca: " << codi << endl;
+
+    top10EstablimentsResults r = establiments.top10Establiments(codi);
+
+    for (const Top10EstablimentsResult &e : r) {
+        cout << e.retol << " | "
+             << e.nomVia << " | num: " << e.numero
+             << " | places: " << e.places
+             << " | estances: " << e.estances
+             << endl;
+    }
 }
 
 // ===== FI ZONA PERSONA B =====
+
 
 int main() {
     Establiments establiments;
@@ -115,14 +137,26 @@ int main() {
 
     mostrarMenu();
     cin >> opcio;
+
     while (opcio != 0) {
+
         if (opcio == 1) opcioLlegirDades(establiments);
         else if (opcio == 2) opcioMunicipisPerComarca(establiments);
         else if (opcio == 3) opcioEstablimentsPerMunicipi(establiments);
-        else if (opcio == 4) opcioMaximMunicipi(establiments);
+        else if (opcio == 4) opcioComptadorsDeCarrer(establiments);          // (d)
+        else if (opcio == 5) opcioMaximMunicipi(establiments);
+        else if (opcio == 6) opcioCarrerMesEstabliments(establiments);       // (f)
+        else if (opcio == 7) opcioTop10Establiments(establiments);           // (g)
+        else if (opcio == 8) opcioTotalsMunicipi(establiments);              // (h)
+        else if (opcio == 9) opcioCarrerMesEstabMunicipi(establiments);      // (i)
+        else if (opcio == 10) opcioTop10Titulars(establiments);              // (j)
+        else if (opcio == 11) opcioPlacesUnitat(establiments);               // (k)
         else cerr << "Opcio incorrecta" << endl;
+
         mostrarMenu();
         cin >> opcio;
     }
+
     return 0;
 }
+
