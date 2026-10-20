@@ -22,16 +22,16 @@ prova() {
         echo "SALTAT  $nom (falta joc_proves/establimentsLlarg.csv)"; return
     fi
     sed "s#/u/prof/dfiguls/Public/#$DIR/joc_proves/#" "$entrada" > "$TMP/in.txt"
-    local t0=$(date +%s.%N)
+    local t0=$(date +%s%N)
     "$TMP/prog" < "$TMP/in.txt" > "$TMP/out.txt" 2> /dev/null
-    local t=$(echo "$(date +%s.%N) - $t0" | bc)
+    local t=$(( ($(date +%s%N) - t0) / 1000000 ))
     if [ -z "$esperada" ]; then
-        echo "EXECUTAT $nom (${t}s) -> sortida a $DIR/sortides/$nom.txt (sense fitxer esperat)"
+        echo "EXECUTAT $nom (${t} ms) -> sortida a $DIR/sortides/$nom.txt (sense fitxer esperat)"
         mkdir -p sortides; cp "$TMP/out.txt" "sortides/$nom.txt"
     elif diff -q "$TMP/out.txt" "$esperada" > /dev/null; then
-        echo "OK      $nom (${t}s)"; OK=$((OK+1))
+        echo "OK      $nom (${t} ms)"; OK=$((OK+1))
     else
-        echo "DIFERENT $nom (${t}s)  -> veure sortides/$nom.diff"
+        echo "DIFERENT $nom (${t} ms)  -> veure sortides/$nom.diff"
         mkdir -p sortides; diff "$TMP/out.txt" "$esperada" > "sortides/$nom.diff"
         KO=$((KO+1))
     fi
