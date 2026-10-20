@@ -115,12 +115,19 @@ MaximMunicipiResults Establiments::maximMunicipi() const {
 // ===== ZONA PERSONA A: opció (d) =====
 
 CarrerResult Establiments::comptadorsDeCarrer(const string &codiMunicipi, const string &nomCarrer) const {
-    // TODO (persona A): cercar la comarca del municipi a a_indexMunicipis (find), trobar el municipi
-    //                   a la comarca (cercaDicotomica) i demanar-li comptadorsDeCarrer(nomCarrer)
+    map<string, int>::const_iterator it= a_indexMunicipis.find(codiMunicipi);
+    if (it!=a_indexMunicipis.end()){
+        int codi=it->second;
+        const Comarca &comarca = a_comarques[it->second];
+        int pos = comarca.cercaDicotomica(codiMunicipi);
+        if (pos!=-1){
+           return  comarca.municipis()[pos].comptadorsDeCarrer(nomCarrer));
+        }
+    }
     return CarrerResult(nomCarrer, 0, 0, 0);
 }
 
-// ===== FI ZONA PERSONA A =====
+
 
 // ===== ZONA PERSONA A: opció (f) =====
 

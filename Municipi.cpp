@@ -37,6 +37,10 @@ void Municipi::afegirCarrer(const string &carrer, int places, int estances) {
 
 CarrerResult Municipi::comptadorsDeCarrer(const string &carrer) const {
     // TODO (persona A): cercar el carrer amb find (a un mètode const no es pot fer servir [])
+   map<string, Comptadors>::const_iterator it = a_carrers.find(carrer);
+   if (it!= a_carrers.end()){
+    return CarrerResult(it->first,it->second.nEstabliments(),it->second.places(),it->second.estances());
+   }
     return CarrerResult(carrer, 0, 0, 0);
 }
 
