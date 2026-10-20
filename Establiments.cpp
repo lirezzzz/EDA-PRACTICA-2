@@ -121,7 +121,7 @@ CarrerResult Establiments::comptadorsDeCarrer(const string &codiMunicipi, const 
         const Comarca &comarca = a_comarques[it->second];
         int pos = comarca.cercaDicotomica(codiMunicipi);
         if (pos!=-1){
-           return  comarca.municipis()[pos].comptadorsDeCarrer(nomCarrer));
+           return  comarca.municipis()[pos].comptadorsDeCarrer(nomCarrer);
         }
     }
     return CarrerResult(nomCarrer, 0, 0, 0);
