@@ -21,21 +21,24 @@ prova() {
     if grep -q "establimentsLlarg" "$entrada" && [ ! -f joc_proves/establimentsLlarg.csv ]; then
         echo "SALTAT  $nom (falta joc_proves/establimentsLlarg.csv)"; return
     fi
-    sed "s#/u/prof/dfiguls/Public/#$DIR/joc_proves/#" "$entrada" > "$TMP/in.txt"
-    local t0=$(date +%s.%N)
+    # el programa llegeix el path amb cin >> (talla als espais): fem servir enllacos a $TMP, que no en té
+    sed "s#/u/prof/dfiguls/Public/#$TMP/#" "$entrada" > "$TMP/in.txt"
+    local t0=$(date +%s%N)
     "$TMP/prog" < "$TMP/in.txt" > "$TMP/out.txt" 2> /dev/null
-    local t=$(echo "$(date +%s.%N) - $t0" | bc)
+    local t=$(( ($(date +%s%N) - t0) / 1000000 ))
     if [ -z "$esperada" ]; then
-        echo "EXECUTAT $nom (${t}s) -> sortida a $DIR/sortides/$nom.txt (sense fitxer esperat)"
+        echo "EXECUTAT $nom (${t} ms) -> sortida a $DIR/sortides/$nom.txt (sense fitxer esperat)"
         mkdir -p sortides; cp "$TMP/out.txt" "sortides/$nom.txt"
     elif diff -q "$TMP/out.txt" "$esperada" > /dev/null; then
-        echo "OK      $nom (${t}s)"; OK=$((OK+1))
+        echo "OK      $nom (${t} ms)"; OK=$((OK+1))
     else
-        echo "DIFERENT $nom (${t}s)  -> veure sortides/$nom.diff"
+        echo "DIFERENT $nom (${t} ms)  -> veure sortides/$nom.diff"
         mkdir -p sortides; diff "$TMP/out.txt" "$esperada" > "sortides/$nom.diff"
         KO=$((KO+1))
     fi
 }
+
+for csv in joc_proves/*.csv; do [ -f "$csv" ] && ln -sf "$DIR/$csv" "$TMP/$(basename "$csv")"; done
 
 echo "== Proves =="
 prova t1 t1.txt t1_out.txt
