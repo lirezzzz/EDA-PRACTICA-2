@@ -87,14 +87,29 @@ void opcioMaximMunicipi(const Establiments &establiments) {
 
 void opcioComptadorsDeCarrer(const Establiments &establiments) {
     // pre: cert
-    // post: llegeix un codi de municipi i el nom d'un carrer i mostra els seus comptadors
-    // TODO (persona A): els noms de carrer tenen espais: llegir-lo amb getline (compte amb el salt de línia pendent)
+    // post: llegeix un codi de municipi i el nom d'un carrer i mostra el seu nombre d'establiments,
+    //       de places i d'estances
+    string codi, carrer;
+    cin >> codi;
+    cin.ignore();               // descarta el salt de línia que ha quedat pendent després del codi
+    getline(cin, carrer);       // el nom del carrer pot portar espais
+    CarrerResult resultat = establiments.comptadorsDeCarrer(codi, carrer);
+    mostrarTitol("04: Comptadors de carrer");
+    cout << "Codi de municipi: " << codi << endl;
+    cout << "Carrer: " << carrer << endl;
+    cout << "Establiments: " << resultat.nEstabliments()
+         << " | places: " << resultat.places()
+         << " | estances: " << resultat.estances() << endl;
 }
 
 void opcioCarrerMesEstabliments(const Establiments &establiments) {
     // pre: cert
     // post: mostra, per cada comarca, el carrer amb més establiments
-    // TODO (persona A)
+    CarrerMesEstResults resultat = establiments.carrerMesEstablimentsPerComarca();
+    mostrarTitol("06: Carrer amb mes establiments per comarca");
+    for (size_t i = 0; i < resultat.size(); i++)
+        cout << resultat[i].comarca() << " | " << resultat[i].municipi() << " | "
+             << resultat[i].carrer() << " => " << resultat[i].nEstabliments() << endl;
 }
 
 // ===== FI ZONA PERSONA A =====
