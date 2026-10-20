@@ -93,14 +93,35 @@ list<Establiment> Comarca::establimentsDeMunicipi(const string &codiMunicipi) co
 // ===== ZONA PERSONA B: opció (g) =====
 
 top10EstablimentsResults Comarca::top10() const {
-    // TODO (persona B): recórrer a_top (ja ordenat) i construir els resultats amb les dades
-    //                   de a_establiments[clau.index()]
-    return top10EstablimentsResults();
+    top10EstablimentsResults resultat;
+
+    // Recórrer el set ja ordenat del millor al pitjor
+    for (const ClauTop &clau : a_top) {
+        const Establiment &e = a_establiments[clau.index()];
+        resultat.push_back(Top10EstablimentsResult(
+            e.retol(),
+            e.nomVia(),
+            e.numero(),
+            e.places(),
+            e.estances()
+        ));
+    }
+
+    return resultat;
 }
 
+
 void Comarca::actualitzarTop(size_t index, const Establiment &e) {
-    // TODO (persona B): inserir ClauTop(e.places(), e.estances(), index) a a_top i, si passa de deu,
-    //                   esborrar l'última clau (la pitjor)
+    // Inserim la nova clau al set
+    a_top.insert(ClauTop(e.places(), e.estances(), index));
+
+    // Si hi ha més de 10 elements, eliminem el pitjor (l'últim del set)
+    if (a_top.size() > 10) {
+        auto it = a_top.end();
+        --it;  // apunta al pitjor establiment
+        a_top.erase(it);
+    }
 }
+
 
 // ===== FI ZONA PERSONA B =====

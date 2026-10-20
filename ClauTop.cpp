@@ -20,6 +20,16 @@ size_t ClauTop::index() const {
 }
 
 bool ClauTop::operator<(const ClauTop &altra) const {
-    // TODO (persona B): ordre total estricte: places desc, estances desc, índex asc
-    return false;
+    // Més places primer (ordre descendent)
+    if (a_places != altra.a_places)
+        return a_places > altra.a_places;
+
+    // En cas d'empat, més estances primer (ordre descendent)
+    if (a_estances != altra.a_estances)
+        return a_estances > altra.a_estances;
+
+    // Si tornen a empatar, l'índex més petit primer (ordre ascendent)
+    return a_index < altra.a_index;
 }
+
+
