@@ -1,14 +1,61 @@
 01
 /u/prof/dfiguls/Public/establimentsLlarg.csv
 02
-43
+01
 02
-5
+05
 02
-27
+20
+02
+25
+02
+30
+02
+35
 03
-080446
+170031
 03
-430770
+170433
+03
+172039
+03
+171518
+03
+171485
+03
+172235
+03
+171077
 04
+170237
+Cristòfol Colom-Els Pins
+04
+080193
+Consell de Cent
+04
+171523
+Mercè Rodoreda
+04
+170195
+del Pont
+04
+170335
+Joaquim Vayreda
+04
+171100
+dels Magraners
+05
+06
+07
+04
+07
+11
+07
+19
+07
+26
+07
+32
+07
+39
 0

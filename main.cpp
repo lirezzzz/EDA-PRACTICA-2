@@ -28,10 +28,6 @@ void mostrarMenu() {
     cerr << "05: Municipi amb mes establiments" << endl;
     cerr << "06: Carrer amb mes establiments" << endl;       // (f)
     cerr << "07: Top 10 establiments per comarca" << endl;   // (g)
-    cerr << "08: Totals municipi" << endl;                   // (h)
-    cerr << "09: Carrer mes establiments del municipi" << endl; // (i)
-    cerr << "10: Top 10 titulars" << endl;                   // (j)
-    cerr << "11: Places unitat" << endl;                     // (k)
     cerr << "0: Acabar" << endl;
     cerr << "Opcio: ";
 }
@@ -83,7 +79,7 @@ void opcioMaximMunicipi(const Establiments &establiments) {
     // pre: cert
     // post: mostra, per cada comarca, el municipi amb més establiments
     MaximMunicipiResults resultat = establiments.maximMunicipi();
-    mostrarTitol("04: Municipi amb mes establiments");
+    mostrarTitol("05: Municipi amb mes establiments");
     for (size_t i = 0; i < resultat.size(); i++)
         cout << resultat[i].comarca() << " | " << resultat[i].municipi() << " => "
              << resultat[i].nEstabliments() << endl;
@@ -100,9 +96,9 @@ void opcioComptadorsDeCarrer(const Establiments &establiments) {
     cin.ignore();               // descarta el salt de línia que ha quedat pendent després del codi
     getline(cin, carrer);       // el nom del carrer pot portar espais
     CarrerResult resultat = establiments.comptadorsDeCarrer(codi, carrer);
-    mostrarTitol("04: Comptadors de carrer");
+    mostrarTitol("04: Carrer -> comptadors");
     cout << "Codi de municipi: " << codi << endl;
-    cout << "Carrer: " << carrer << endl;
+    cout << "Nom de carrer: " << carrer << endl;
     cout << "Establiments: " << resultat.nEstabliments()
          << " | places: " << resultat.places()
          << " | estances: " << resultat.estances() << endl;
@@ -112,7 +108,7 @@ void opcioCarrerMesEstabliments(const Establiments &establiments) {
     // pre: cert
     // post: mostra, per cada comarca, el carrer amb més establiments
     CarrerMesEstResults resultat = establiments.carrerMesEstablimentsPerComarca();
-    mostrarTitol("06: Carrer amb mes establiments per comarca");
+    mostrarTitol("06: Carrer amb mes establiments");
     for (size_t i = 0; i < resultat.size(); i++)
         cout << resultat[i].comarca() << " | " << resultat[i].municipi() << " | "
              << resultat[i].carrer() << " => " << resultat[i].nEstabliments() << endl;
@@ -123,25 +119,23 @@ void opcioCarrerMesEstabliments(const Establiments &establiments) {
 // ===== ZONA PERSONA B: opció (g) =====
 
 void opcioTop10Establiments(const Establiments &establiments) {
-    // pre: cert
-    // post: llegeix un codi de comarca i mostra els deu establiments amb més places
-
     int codi;
     cin >> codi;
 
-    mostrarTitol("07: Top 10 establiments per comarca");
+    mostrarTitol("07: Top 10 establiments");
     cout << "Codi de comarca: " << codi << endl;
 
     top10EstablimentsResults r = establiments.top10Establiments(codi);
 
-    for (const Top10EstablimentsResult &e : r) {
-        cout << e.retol << " | "
-             << e.nomVia << " | num: " << e.numero
-             << " | places: " << e.places
-             << " | estances: " << e.estances
+    for (const Top10EstablimentResult &e : r) {
+        cout << e.nom() << " | "
+             << "places: " << e.places()
+             << " | estances: " << e.estances()
              << endl;
     }
 }
+
+
 
 // ===== FI ZONA PERSONA B =====
 
@@ -162,10 +156,6 @@ int main() {
         else if (opcio == 5) opcioMaximMunicipi(establiments);
         else if (opcio == 6) opcioCarrerMesEstabliments(establiments);       // (f)
         else if (opcio == 7) opcioTop10Establiments(establiments);           // (g)
-        else if (opcio == 8) opcioTotalsMunicipi(establiments);              // (h)
-        else if (opcio == 9) opcioCarrerMesEstabMunicipi(establiments);      // (i)
-        else if (opcio == 10) opcioTop10Titulars(establiments);              // (j)
-        else if (opcio == 11) opcioPlacesUnitat(establiments);               // (k)
         else cerr << "Opcio incorrecta" << endl;
 
         mostrarMenu();
