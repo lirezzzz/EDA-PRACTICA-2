@@ -4,9 +4,9 @@
 
 #include "Comarca.h"
 
-Comarca::Comarca() : a_codi(0), a_nMaxim(0) {}
+Comarca::Comarca() : a_codi(0), a_nEstabliments(0), a_nMaxim(0) {}
 
-Comarca::Comarca(int codi, const string &nom) : a_codi(codi), a_nom(nom), a_nMaxim(0) {}
+Comarca::Comarca(int codi, const string &nom) : a_codi(codi), a_nom(nom), a_nEstabliments(0), a_nMaxim(0) {}
 
 int Comarca::codi() const {
     return a_codi;
@@ -55,11 +55,8 @@ void Comarca::afegirEstabliment(const string &codiMunicipi, const string &nomMun
     if (cercaDicotomica(codiMunicipi, pos) == -1) { // no existeix: pos és on ha d'anar per mantenir l'ordre
         a_municipis.insert(a_municipis.begin() + pos, Municipi(codiMunicipi, nomMunicipi));
     }
-    size_t index = a_establiments.size();
-    a_establiments.push_back(e);
-    a_municipis[pos].afegirEstabliment(index);
-    a_municipis[pos].afegirCarrer(e.carrer(), e.places(), e.estances());   // comptadors del carrer (opcions d i f)
-    actualitzarTop(index, e);                                              // top 10 de la comarca (opció g)
+    a_municipis[pos].afegirEstabliment(e);
+    actualitzarTop(e);
 
     // actualitzem el màxim: amb > estricte, en cas d'empat es queda el que hi ha arribat primer
     size_t n = a_municipis[pos].nEstabliments();
@@ -75,35 +72,37 @@ const Municipi &Comarca::municipiMaxim() const {
 }
 
 list<Establiment> Comarca::establimentsDeMunicipi(const string &codiMunicipi) const{
-    list<Establiment> resultat; 
     int pos = cercaDicotomica(codiMunicipi);
-    if (pos!=-1){
-       const vector<size_t> &indexs = a_municipis[pos].indexs();
-       for (size_t i=0; i<indexs.size(); i++){
-            resultat.push_back(a_establiments[indexs[i]]);
-       }
+    if (pos != -1) return a_municipis[pos].establiments();
+    return list<Establiment>();
+}
+
+CarrerMesEstResult Comarca::carrerMesEstabliments() const {
+    CarrerResult millor("", 0, 0, 0);
+    string nomMunicipi;
+    for (size_t j = 0; j < a_municipis.size(); j++) {
+        CarrerResult r = a_municipis[j].carrerMesEstabliments();
+        if (r.nEstabliments() > millor.nEstabliments()) {       // estricte: en empat es queda el municipi de codi més petit
+            millor = r;
+            nomMunicipi = a_municipis[j].nom();
+        }
     }
-    return resultat;
+    return CarrerMesEstResult(a_nom, nomMunicipi, millor.carrer(), millor.nEstabliments());
 }
 
 top10EstablimentsResults Comarca::top10() const {
     top10EstablimentsResults resultat;
 
-    // Recórrer el set ja ordenat del millor al pitjor
-    for (const ClauTop &clau : a_top) {
-        const Establiment &e = a_establiments[clau.index()];
-        resultat.push_back(Top10EstablimentResult(
-            e.nom(),
-            e.places(),
-            e.estances()
-        ));
-    }
+    // Recórrer el vector, ja ordenat del millor al pitjor
+    for (size_t i = 0; i < a_top.size(); i++)
+        resultat.push_back(Top10EstablimentResult(a_top[i].nom(), a_top[i].places(), a_top[i].estances()));
 
     return resultat;
 }
 
-void Comarca::actualitzarTop(size_t index, const Establiment &e) {
-    ClauTop clau(e.places(), e.estances(), index);
+void Comarca::actualitzarTop(const Establiment &e) {
+    ClauTop clau(e.places(), e.estances(), a_nEstabliments, e.nom());
+    a_nEstabliments++;
     if (a_top.size() == 10 && !(clau < a_top.back())) return;   // no millora el pitjor dels deu
     vector<ClauTop>::iterator it = a_top.begin();
     while (it != a_top.end() && *it < clau) ++it;                 // posició on va, mantenint l'ordre

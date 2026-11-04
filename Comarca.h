@@ -10,12 +10,13 @@
 #include <list>
 #include "Municipi.h"
 #include "Establiment.h"
+#include "CarrerMesEstResult.h"
 #include "ClauTop.h"
 #include "Top10EstablimentResult.h"
 
 using namespace std;
 
-/// Una comarca amb un vector on estan els seus municipis.
+/// Una comarca amb els seus municipis (cada un guarda els seus establiments) i el top 10 d'establiments.
 class Comarca {
 public:
     Comarca();
@@ -65,20 +66,25 @@ public:
     // post: retorna els (com a màxim) deu establiments d'aquesta comarca amb més places (en cas d'empat,
     //       més estances), ordenats del millor al pitjor
 
+    CarrerMesEstResult carrerMesEstabliments() const;
+    // pre: aquesta Comarca no és buida
+    // post: retorna el carrer amb més establiments de la comarca, amb el nom de la comarca i del municipi on és;
+    //       en cas d'empat, el del municipi de codi més petit i, dins d'ell, el primer per ordre alfabètic
+
     const Municipi &municipiMaxim() const;
     // pre: aquesta Comarca no és buida
     // post: retorna el municipi amb més establiments; en cas d'empat, el que hi ha arribat primer en l'ordre del fitxer
 
 private:
-    void actualitzarTop(size_t index, const Establiment &e);
-    // pre: index és la posició d'e dins a_establiments
+    void actualitzarTop(const Establiment &e);
+    // pre: e és el darrer establiment afegit a la comarca
     // post: e s'ha tingut en compte per al top 10: si està entre els deu millors, és dins a_top
     //       i a_top no té mai més de deu claus
 
     int a_codi;                  // Codi Comarca (IDESCAT)
     string a_nom;                // Comarca
     vector<Municipi> a_municipis;
-    vector<Establiment> a_establiments;
+    size_t a_nEstabliments;      // establiments de la comarca llegits fins ara (dóna l'ordre d'arribada)
     string a_codiMaxim;          // codi del municipi amb més establiments
     size_t a_nMaxim;             // nombre d'establiments d'aquest municipi
     vector<ClauTop> a_top;       // els deu millors establiments, ordenats del millor al pitjor

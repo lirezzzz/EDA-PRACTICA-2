@@ -17,19 +17,16 @@ string Municipi::nom() const {
 }
 
 size_t Municipi::nEstabliments() const {
-    return a_indexs.size();
+    return a_establiments.size();
 }
 
-const vector<size_t> &Municipi:: indexs() const{ 
-     return a_indexs;
+void Municipi::afegirEstabliment(const Establiment &e) {
+    a_establiments.push_back(e);
+    a_carrers[e.carrer()].afegir(e.places(), e.estances());
 }
 
-void Municipi::afegirEstabliment(size_t index) {
-    a_indexs.push_back(index);
-}
-
-void Municipi::afegirCarrer(const string &carrer, int places, int estances) {
-    a_carrers[carrer].afegir(places, estances);
+list<Establiment> Municipi::establiments() const {
+    return list<Establiment>(a_establiments.begin(), a_establiments.end());
 }
 
 CarrerResult Municipi::comptadorsDeCarrer(const string &carrer) const {
@@ -40,7 +37,12 @@ CarrerResult Municipi::comptadorsDeCarrer(const string &carrer) const {
     return CarrerResult(carrer, 0, 0, 0);
 }
 
-const map<string, Comptadors> &Municipi::carrers() const {
-    return a_carrers;
+CarrerResult Municipi::carrerMesEstabliments() const {
+    CarrerResult millor("", 0, 0, 0);
+    for (map<string, Comptadors>::const_iterator it = a_carrers.begin(); it != a_carrers.end(); ++it) {
+        if (it->second.nEstabliments() > millor.nEstabliments())      // estricte: en empat es queda el primer per ordre alfabètic
+            millor = CarrerResult(it->first, it->second.nEstabliments(), it->second.places(), it->second.estances());
+    }
+    return millor;
 }
 

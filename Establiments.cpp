@@ -135,29 +135,12 @@ static bool ordreCarrerMes(const CarrerMesEstResult &a, const CarrerMesEstResult
 
 CarrerMesEstResults Establiments::carrerMesEstablimentsPerComarca() const {
     CarrerMesEstResults resultat;
-    for (size_t i=1; i<a_comarques.size(); i++){
-        const Comarca &comarca = a_comarques[i];
-        if (comarca.codi()!=0){
-            string millorCarrer, millorMunicipi;
-            size_t millorN = 0;
-            const vector<Municipi> &municipis = comarca.municipis();
-            for (size_t j=0;j<municipis.size();j++){
-                const map<string, Comptadors> &carrers = municipis[j].carrers();
-                for (map<string, Comptadors>::const_iterator it = carrers.begin(); it!=carrers.end(); ++it){
-                    if (it->second.nEstabliments()>millorN){
-                        millorN = it->second.nEstabliments();
-                        millorCarrer = it->first;
-                        millorMunicipi = municipis[j].nom();
-                    }
-                }
-            }
-            resultat.push_back(CarrerMesEstResult(comarca.nom(),millorMunicipi,millorCarrer,millorN));
-        }
-    }
-    
-    sort(resultat.begin(),resultat.end(),ordreCarrerMes);
+    for (size_t i = 1; i < a_comarques.size(); i++)
+        if (!a_comarques[i].buida())
+            resultat.push_back(a_comarques[i].carrerMesEstabliments());
+    sort(resultat.begin(), resultat.end(), ordreCarrerMes);
     return resultat;
-    }
+}
 
 top10EstablimentsResults Establiments::top10Establiments(int codiComarca) const {
     // Comprovar rang (igual que municipisPerComarca)
@@ -167,4 +150,3 @@ top10EstablimentsResults Establiments::top10Establiments(int codiComarca) const 
     // Delegar a la comarca
     return a_comarques[codiComarca].top10();
 }
-

@@ -7,13 +7,15 @@
 
 #include <string>
 #include <vector>
+#include <list>
 #include <map>
+#include "Establiment.h"
 #include "Comptadors.h"
 #include "CarrerResult.h"
 
 using namespace std;
 
-/// Un municipi amb els índexs dels seus establiments (dins el vector d'establiments de la seva Comarca), en l'ordre del fitxer CSV.
+/// Un municipi amb els seus establiments (en l'ordre del fitxer CSV) i els comptadors de cada carrer.
 class Municipi {
 public:
     Municipi();
@@ -36,31 +38,28 @@ public:
     // pre: cert
     // post: retorna el numero d'establiments del municipi
 
-    const vector<size_t> &indexs() const;
+    void afegirEstabliment(const Establiment &e);
     // pre: cert
-    // post: retorna els índexs dels establiments del municipi en l'ordre del fitxer
-
-    void afegirEstabliment(size_t index);
-    // pre: cert
-    // post: index s'ha afegit al final dels índexs d'establiments del municipi
-
-    void afegirCarrer(const string &carrer, int places, int estances);
-    // pre: cert
-    // post: als comptadors del carrer s'ha comptat un establiment més amb aquestes places i estances
+    // post: e s'ha afegit al final dels establiments del municipi i s'ha comptat als comptadors del seu carrer
     //       (si el carrer no existia, s'ha creat amb aquest únic establiment)
+
+    list<Establiment> establiments() const;
+    // pre: cert
+    // post: retorna els establiments del municipi en l'ordre del fitxer
 
     CarrerResult comptadorsDeCarrer(const string &carrer) const;
     // pre: cert
     // post: retorna els comptadors del carrer d'aquest municipi; tot a 0 si el carrer no hi és
 
-    const map<string, Comptadors> &carrers() const;
+    CarrerResult carrerMesEstabliments() const;
     // pre: cert
-    // post: retorna els comptadors de tots els carrers del municipi, ordenats pel nom del carrer
+    // post: retorna el carrer del municipi amb més establiments (amb els seus comptadors); en cas d'empat,
+    //       el primer per ordre alfabètic. Tot a 0 i carrer buit si el municipi no té cap establiment
 
 private:
     string a_codi;                    // Codi Municipi (IDESCAT)
     string a_nom;                     // Municipi
-    vector<size_t> a_indexs;          // índexs dels establiments, en ordre del fitxer
+    vector<Establiment> a_establiments; // els establiments del municipi, en ordre del fitxer
     map<string, Comptadors> a_carrers; // nom del carrer -> comptadors
 };
 
