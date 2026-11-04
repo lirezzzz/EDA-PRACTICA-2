@@ -1,6 +1,8 @@
-// Diego Cortés
-// Usuari u6112490
-// Practica 1
+/** @file ClauTop.h
+    @author Diego Cortés, usuari u6112490
+
+    Practica 1
+*/
 
 #ifndef CLAUTOP_H
 #define CLAUTOP_H

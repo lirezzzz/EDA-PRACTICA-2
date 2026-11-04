@@ -1,6 +1,8 @@
-// Diego Cortés
-// Usuari u6112490
-// Practica 1
+/** @file MaximMunicipiResult.h
+    @author Diego Cortés, usuari u6112490
+
+    Practica 1
+*/
 
 #ifndef MAXIMMUNICIPIRESULT_H
 #define MAXIMMUNICIPIRESULT_H

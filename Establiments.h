@@ -1,6 +1,8 @@
-// Diego Cortés
-// Usuari u6112490
-// Practica 1
+/** @file Establiments.h
+    @author Diego Cortés, usuari u6112490
+
+    Practica 1
+*/
 
 #ifndef ESTABLIMENTS_H
 #define ESTABLIMENTS_H

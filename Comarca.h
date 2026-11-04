@@ -1,6 +1,8 @@
-// Diego Cortés
-// Usuari u6112490
-// Practica 1
+/** @file Comarca.h
+    @author Diego Cortés, usuari u6112490
+
+    Practica 1
+*/
 
 #ifndef COMARCA_H
 #define COMARCA_H

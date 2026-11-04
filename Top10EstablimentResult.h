@@ -1,6 +1,8 @@
-// Diego Cortés
-// Usuari u6112490
-// Practica 1
+/** @file Top10EstablimentResult.h
+    @author Diego Cortés, usuari u6112490
+
+    Practica 1
+*/
 
 #ifndef TOP10ESTABLIMENTRESULT_H
 #define TOP10ESTABLIMENTRESULT_H

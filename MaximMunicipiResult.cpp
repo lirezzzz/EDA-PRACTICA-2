@@ -1,6 +1,8 @@
-// Diego Cortés
-// Usuari u6112490
-// Practica 1
+/** @file MaximMunicipiResult.cpp
+    @author Diego Cortés, usuari u6112490
+
+    Practica 1
+*/
 
 #include "MaximMunicipiResult.h"
 

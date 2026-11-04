@@ -1,6 +1,8 @@
-// Diego Cortés
-// Usuari u6112490
-// Practica 1
+/** @file MunicipiResult.cpp
+    @author Diego Cortés, usuari u6112490
+
+    Practica 1
+*/
 
 #include "MunicipiResult.h"
 

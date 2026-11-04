@@ -1,6 +1,8 @@
-// Diego Cortés
-// Usuari u6112490
-// Practica 1
+/** @file CarrerMesEstResult.h
+    @author Diego Cortés, usuari u6112490
+
+    Practica 1
+*/
 
 #ifndef CARRERMESESTRESULT_H
 #define CARRERMESESTRESULT_H

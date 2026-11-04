@@ -1,6 +1,8 @@
-// Diego Cortés
-// Usuari u6112490
-// Practica 1
+/** @file CarrerMesEstResult.cpp
+    @author Diego Cortés, usuari u6112490
+
+    Practica 1
+*/
 
 #include "CarrerMesEstResult.h"
 
