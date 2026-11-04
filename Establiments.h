@@ -7,6 +7,7 @@
 
 #include <string>
 #include <vector>
+#include <list>
 #include <map>
 #include "Comarca.h"
 #include "MunicipiResult.h"
@@ -33,7 +34,7 @@ public:
     // post: retorna els municipis de la comarca codiComarca amb el seu nombre d'establiments,
     //       ordenats pel nom del municipi ascendentment; buit si la comarca no existeix
 
-    vector<Establiment> establimentsPerMunicipi(const string &codiMunicipi) const;
+    list<Establiment> establimentsPerMunicipi(const string &codiMunicipi) const;
     // pre: cert
     // post: retorna els establiments del municipi amb codi IDESCAT codiMunicipi en l'ordre del fitxer;
     //       buida si el municipi no existeix

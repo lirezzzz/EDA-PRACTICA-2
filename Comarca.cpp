@@ -74,12 +74,11 @@ const Municipi &Comarca::municipiMaxim() const {
     return a_municipis[cercaDicotomica(a_codiMaxim)];
 }
 
-vector<Establiment> Comarca::establimentsDeMunicipi(const string &codiMunicipi) const{
-    vector<Establiment> resultat;
+list<Establiment> Comarca::establimentsDeMunicipi(const string &codiMunicipi) const{
+    list<Establiment> resultat; 
     int pos = cercaDicotomica(codiMunicipi);
     if (pos!=-1){
        const vector<size_t> &indexs = a_municipis[pos].indexs();
-       resultat.reserve(indexs.size());                  // ja sabem quants n'hi haurà
        for (size_t i=0; i<indexs.size(); i++){
             resultat.push_back(a_establiments[indexs[i]]);
        }

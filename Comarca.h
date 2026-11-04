@@ -7,6 +7,7 @@
 
 #include <string>
 #include <vector>
+#include <list>
 #include "Municipi.h"
 #include "Establiment.h"
 #include "ClauTop.h"
@@ -55,7 +56,7 @@ public:
     // post: e s'ha afegit al final dels establiments del municipi codiMunicip. si el municipi no existia, s'ha creat amb el nom nomMunicipi.
     //       si ara aquest municipi té estrictament més establiments que el màxim anterior, passa a ser el municipi màxim
     
-    vector<Establiment> establimentsDeMunicipi(const string &codiMunicipi) const;
+    list<Establiment> establimentsDeMunicipi(const string &codiMunicipi) const;
     // pre: cert
     // post: retorna els establiments del municipi codiMunicipi en l'ordre del fitxer; buida si no hi és
 
