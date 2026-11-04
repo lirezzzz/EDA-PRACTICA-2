@@ -91,12 +91,12 @@ vector<MunicipiResult> Establiments::municipisPerComarca(int codiComarca) const 
     return resultat;
 }
 
-list<Establiment> Establiments::establimentsPerMunicipi(const string &codiMunicipi) const {
+vector<Establiment> Establiments::establimentsPerMunicipi(const string &codiMunicipi) const {
     map<string, int>::const_iterator it= a_indexMunicipis.find(codiMunicipi);
     if (it!=a_indexMunicipis.end()){
         return a_comarques[it->second].establimentsDeMunicipi(codiMunicipi);
     }
-    return list<Establiment>(); // no existeix cap municipi amb aquest codi
+    return vector<Establiment>(); // no existeix cap municipi amb aquest codi
 }
 
 MaximMunicipiResults Establiments::maximMunicipi() const {

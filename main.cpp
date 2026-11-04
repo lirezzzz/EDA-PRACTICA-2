@@ -5,7 +5,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <list>
 #include "Establiments.h"
 
 using namespace std;
