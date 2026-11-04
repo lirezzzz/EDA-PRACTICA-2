@@ -68,7 +68,9 @@ size_t Establiments::llegirDades(const string &path) {
                               textANumero(camps[COL_ESTANCES]));
                 if (a_comarques[codiComarca].codi() == 0)       // primer cop que surt
                     a_comarques[codiComarca] = Comarca(codiComarca, camps[COL_COMARCA]);
-                a_indexMunicipis.insert(make_pair(camps[COL_CODI_MUNICIPI], codiComarca));
+                // guardem el municipi a la taula només la primera vegada que surt, així no fem còpies que després es descarten
+                if (a_indexMunicipis.find(camps[COL_CODI_MUNICIPI]) == a_indexMunicipis.end())
+                    a_indexMunicipis.insert(make_pair(camps[COL_CODI_MUNICIPI], codiComarca));
                 a_comarques[codiComarca].afegirEstabliment(camps[COL_CODI_MUNICIPI], camps[COL_MUNICIPI], e);
                 n++;
             }
