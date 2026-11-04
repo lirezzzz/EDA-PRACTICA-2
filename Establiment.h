@@ -1,6 +1,6 @@
-// Diego Cortés i Oriol Sala
-// Usuari u6112490, u6112518
-// Exercici 2
+// Diego Cortés
+// Usuari u6112490
+// Practica 1
 
 #ifndef ESTABLIMENT_H
 #define ESTABLIMENT_H
