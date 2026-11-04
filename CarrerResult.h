@@ -12,25 +12,30 @@ using namespace std;
 /// Comptadors d'un carrer: resultat de l'opció (d) comptadorsDeCarrer.
 class CarrerResult {
 public:
+    /** @pre cert
+        @post resultat amb el nom del carrer i el seu nombre d'establiments, de places i d'estances
+    */
     CarrerResult(const string &carrer, size_t nEstabliments, int places, int estances);
-    // pre: cert
-    // post: resultat amb el nom del carrer i el seu nombre d'establiments, de places i d'estances
 
+    /** @pre cert
+        @post retorna el nom del carrer
+    */
     string carrer() const;
-    // pre: cert
-    // post: retorna el nom del carrer
 
+    /** @pre cert
+        @post retorna el nombre d'establiments del carrer
+    */
     size_t nEstabliments() const;
-    // pre: cert
-    // post: retorna el nombre d'establiments del carrer
 
+    /** @pre cert
+        @post retorna el total de places del carrer
+    */
     int places() const;
-    // pre: cert
-    // post: retorna el total de places del carrer
 
+    /** @pre cert
+        @post retorna el total d'estances del carrer
+    */
     int estances() const;
-    // pre: cert
-    // post: retorna el total d'estances del carrer
 
 private:
     string a_carrer;

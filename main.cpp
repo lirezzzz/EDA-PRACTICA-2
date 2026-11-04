@@ -10,18 +10,20 @@
 
 using namespace std;
 
+/** @pre cert
+    @post s'ha mostrat per cout el títol emmarcat amb asteriscs
+*/
 void mostrarTitol(const string &titol) {
-    // pre: cert
-    // post: s'ha mostrat per cout el títol emmarcat amb asteriscs
     string linia(titol.length() + 4, '*');
     cout << linia << endl;
     cout << "* " << titol << " *" << endl;
     cout << linia << endl;
 }
 
+/** @pre cert
+    @post s'ha mostrat el menú per cerr (no forma part de la sortida)
+*/
 void mostrarMenu() {
-    // pre: cert
-    // post: s'ha mostrat el menú per cerr (no forma part de la sortida)
     cerr << endl;
     cerr << "01: Llegir dades" << endl;
     cerr << "02: Codi comarca -> municipis" << endl;
@@ -34,9 +36,10 @@ void mostrarMenu() {
     cerr << "Opcio: ";
 }
 
+/** @pre cert
+    @post llegeix el path del fitxer CSV, el carrega a establiments i mostra el nombre de línies llegides
+*/
 void opcioLlegirDades(Establiments &establiments) {
-    // pre: cert
-    // post: llegeix el path del fitxer CSV, el carrega a establiments i mostra el nombre de línies llegides
     string path;
     cin >> path;
     size_t n = establiments.llegirDades(path);
@@ -44,9 +47,10 @@ void opcioLlegirDades(Establiments &establiments) {
     cout << "Numero de linies: " << n << endl;
 }
 
+/** @pre cert
+    @post llegeix un codi de comarca i mostra els seus municipis amb el nombre d'establiments
+*/
 void opcioMunicipisPerComarca(const Establiments &establiments) {
-    // pre: cert
-    // post: llegeix un codi de comarca i mostra els seus municipis amb el nombre d'establiments
     int codi;
     cin >> codi;
     mostrarTitol("02: Codi comarca -> municipis");
@@ -55,17 +59,19 @@ void opcioMunicipisPerComarca(const Establiments &establiments) {
         cout << m.nom() << " => " << m.nEstabliments() << endl;
 }
 
+/** @pre cert
+    @post retorna numero; si comença per dígit, s'omple amb zeros a l'esquerra fins a 5 caràcters
+*/
 string formatNumero(const string &numero) {
-    // pre: cert
-    // post: retorna numero; si comença per dígit, s'omple amb zeros a l'esquerra fins a 5 caràcters
     if (numero.empty() || numero[0] < '0' || numero[0] > '9' || numero.length() >= 5)
         return numero;
     return string(5 - numero.length(), '0') + numero;
 }
 
+/** @pre cert
+    @post llegeix un codi de municipi i mostra els seus establiments
+*/
 void opcioEstablimentsPerMunicipi(const Establiments &establiments) {
-    // pre: cert
-    // post: llegeix un codi de municipi i mostra els seus establiments
     string codi;
     cin >> codi;
     mostrarTitol("03: Codi municipi -> establiments");
@@ -76,9 +82,10 @@ void opcioEstablimentsPerMunicipi(const Establiments &establiments) {
              << " | places: " << e.places() << " | estances: " << e.estances() << endl;
 }
 
+/** @pre cert
+    @post mostra, per cada comarca, el municipi amb més establiments
+*/
 void opcioMaximMunicipi(const Establiments &establiments) {
-    // pre: cert
-    // post: mostra, per cada comarca, el municipi amb més establiments
     MaximMunicipiResults resultat = establiments.maximMunicipi();
     mostrarTitol("05: Municipi amb mes establiments");
     for (size_t i = 0; i < resultat.size(); i++)
@@ -86,10 +93,11 @@ void opcioMaximMunicipi(const Establiments &establiments) {
              << resultat[i].nEstabliments() << endl;
 }
 
+/** @pre cert
+    @post llegeix un codi de municipi i el nom d'un carrer i mostra el seu nombre d'establiments,
+         de places i d'estances
+*/
 void opcioComptadorsDeCarrer(const Establiments &establiments) {
-    // pre: cert
-    // post: llegeix un codi de municipi i el nom d'un carrer i mostra el seu nombre d'establiments,
-    //       de places i d'estances
     string codi, carrer;
     cin >> codi;
     cin.ignore();               // descarta el salt de línia que ha quedat pendent després del codi
@@ -103,9 +111,10 @@ void opcioComptadorsDeCarrer(const Establiments &establiments) {
          << " | estances: " << resultat.estances() << endl;
 }
 
+/** @pre cert
+    @post mostra, per cada comarca, el carrer amb més establiments
+*/
 void opcioCarrerMesEstabliments(const Establiments &establiments) {
-    // pre: cert
-    // post: mostra, per cada comarca, el carrer amb més establiments
     CarrerMesEstResults resultat = establiments.carrerMesEstablimentsPerComarca();
     mostrarTitol("06: Carrer amb mes establiments");
     for (size_t i = 0; i < resultat.size(); i++)
@@ -113,9 +122,10 @@ void opcioCarrerMesEstabliments(const Establiments &establiments) {
              << resultat[i].carrer() << " => " << resultat[i].nEstabliments() << endl;
 }
 
+/** @pre cert
+    @post llegeix un codi de comarca i mostra els deu establiments amb més places
+*/
 void opcioTop10Establiments(const Establiments &establiments) {
-    // pre: cert
-    // post: llegeix un codi de comarca i mostra els deu establiments amb més places
     int codi;
     cin >> codi;
 
@@ -132,9 +142,10 @@ void opcioTop10Establiments(const Establiments &establiments) {
     }
 }
 
+/** @pre cert
+    @post retorna l'opció llegida; si la lectura falla (final de l'entrada o text no numèric) retorna 0 i el programa acaba
+*/
 int llegirOpcio() {
-    // pre: cert
-    // post: retorna l'opció llegida; si la lectura falla (final de l'entrada o text no numèric) retorna 0 i el programa acaba
     int opcio;
     cin >> opcio;
     if (cin.fail()) opcio = 0;

@@ -12,17 +12,20 @@ using namespace std;
 /// Resultat de l'opció 02: un municipi i el seu nombre d'establiments.
 class MunicipiResult {
 public:
+    /** @pre cert
+        @post resultat amb el nom del municipi i el seu nombre d'establiments
+    */
     MunicipiResult(const string &nom, size_t nEstabliments);
-    // pre: cert
-    // post: resultat amb el nom del municipi i el seu nombre d'establiments
 
+    /** @pre cert
+        @post retorna el nom del municipi
+    */
     string nom() const;
-    // pre: cert
-    // post: retorna el nom del municipi
 
+    /** @pre cert
+        @post retorna el nombre d'establiments del municipi
+    */
     size_t nEstabliments() const;
-    // pre: cert
-    // post: retorna el nombre d'establiments del municipi
 
 private:
     string a_nom;

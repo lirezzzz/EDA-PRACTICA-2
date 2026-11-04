@@ -12,25 +12,30 @@ using namespace std;
 /// Comptadors d'un carrer dins d'un municipi (peça interna, no es mostra directament).
 class Comptadors {
 public:
+    /** @pre cert
+        @post comptadors a zero (cap establiment, cap plaça, cap estança)
+    */
     Comptadors();
-    // pre: cert
-    // post: comptadors a zero (cap establiment, cap plaça, cap estança)
 
+    /** @pre places >= 0, estances >= 0
+        @post s'ha comptat un establiment més amb aquestes places i estances
+    */
     void afegir(int places, int estances);
-    // pre: places >= 0, estances >= 0
-    // post: s'ha comptat un establiment més amb aquestes places i estances
 
+    /** @pre cert
+        @post retorna el nombre d'establiments comptats
+    */
     size_t nEstabliments() const;
-    // pre: cert
-    // post: retorna el nombre d'establiments comptats
 
+    /** @pre cert
+        @post retorna la suma de places dels establiments comptats
+    */
     int places() const;
-    // pre: cert
-    // post: retorna la suma de places dels establiments comptats
 
+    /** @pre cert
+        @post retorna la suma d'estances dels establiments comptats
+    */
     int estances() const;
-    // pre: cert
-    // post: retorna la suma d'estances dels establiments comptats
 
 private:
     size_t a_nEstabliments;

@@ -19,8 +19,9 @@ const int COL_CODI_COMARCA = 16;
 const int COL_PLACES = 24;
 const int COL_ESTANCES = 25;
 
-// pre: cert
-// post: retorna el número format pels dígits de s (ignora qualsevol altre caràcter); si no n'hi ha cap, retorna 0
+/** @pre cert
+    @post retorna el número format pels dígits de s (ignora qualsevol altre caràcter); si no n'hi ha cap, retorna 0
+*/
 static int textANumero(const string &s) {
     int n = 0;
     for (size_t i = 0; i < s.length(); i++)
@@ -29,14 +30,16 @@ static int textANumero(const string &s) {
     return n;
 }
 
-// pre: cert
-// post: diu si el municipi a va abans que b per nom
+/** @pre cert
+    @post diu si el municipi a va abans que b per nom
+*/
 static bool menorPerNom(const MunicipiResult &a, const MunicipiResult &b) {
     return a.nom() < b.nom();
 }
 
-// pre: cert
-// post: diu si a va abans que b: més establiments primer i, en cas d'empat, nom del municipi ascendent
+/** @pre cert
+    @post diu si a va abans que b: més establiments primer i, en cas d'empat, nom del municipi ascendent
+*/
 static bool ordreMaxim(const MaximMunicipiResult &a, const MaximMunicipiResult &b) {
     if (a.nEstabliments() != b.nEstabliments())
         return a.nEstabliments() > b.nEstabliments();
@@ -126,9 +129,10 @@ CarrerResult Establiments::comptadorsDeCarrer(const string &codiMunicipi, const 
     return CarrerResult(nomCarrer, 0, 0, 0);
 }
 
-// pre: cert
-// post: diu si a va abans que b: més establiments primer; en cas d'empat, carrer ascendent i, si encara
-//       empaten, nom de comarca ascendent (ordre total)
+/** @pre cert
+    @post diu si a va abans que b: més establiments primer; en cas d'empat, carrer ascendent i, si encara
+         empaten, nom de comarca ascendent (ordre total)
+*/
 static bool ordreCarrerMes(const CarrerMesEstResult &a, const CarrerMesEstResult &b) {
     if (a.nEstabliments() != b.nEstabliments()) return a.nEstabliments() > b.nEstabliments();
     if (a.carrer() != b.carrer()) return a.carrer() < b.carrer();

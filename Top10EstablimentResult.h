@@ -13,21 +13,25 @@ using namespace std;
 /// Un element del resultat de l'opció (g): un dels establiments amb més places d'una comarca.
 class Top10EstablimentResult {
 public:
+    /** @pre cert
+        @post resultat amb el nom de l'establiment i les seves places i estances
+    */
     Top10EstablimentResult(const string &nom, int places, int estances);
-    // pre: cert
-    // post: resultat amb el nom de l'establiment i les seves places i estances
 
+    /** @pre cert
+        @post retorna el nom (rètol) de l'establiment
+    */
     string nom() const;
-    // pre: cert
-    // post: retorna el nom (rètol) de l'establiment
 
+    /** @pre cert
+        @post retorna el total de places de l'establiment
+    */
     int places() const;
-    // pre: cert
-    // post: retorna el total de places de l'establiment
 
+    /** @pre cert
+        @post retorna el total d'estances de l'establiment
+    */
     int estances() const;
-    // pre: cert
-    // post: retorna el total d'estances de l'establiment
 
 private:
     string a_nom;
