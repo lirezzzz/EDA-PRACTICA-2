@@ -1,6 +1,6 @@
 // Diego Cortés i Oriol Sala
 // Usuari u6112490, u6112518
-// Exercici 1
+// Exercici 2
 
 #include "Municipi.h"
 
@@ -28,15 +28,11 @@ void Municipi::afegirEstabliment(size_t index) {
     a_indexs.push_back(index);
 }
 
-// ===== ZONA PERSONA A: opcions (d) i (f) =====
-
 void Municipi::afegirCarrer(const string &carrer, int places, int estances) {
-    // TODO (persona A): localitzar o crear l'entrada del carrer a a_carrers i comptar-hi l'establiment
     a_carrers[carrer].afegir(places, estances);
 }
 
 CarrerResult Municipi::comptadorsDeCarrer(const string &carrer) const {
-    // TODO (persona A): cercar el carrer amb find (a un mètode const no es pot fer servir [])
    map<string, Comptadors>::const_iterator it = a_carrers.find(carrer);
    if (it!= a_carrers.end()){
     return CarrerResult(it->first,it->second.nEstabliments(),it->second.places(),it->second.estances());
@@ -48,4 +44,3 @@ const map<string, Comptadors> &Municipi::carrers() const {
     return a_carrers;
 }
 
-// ===== FI ZONA PERSONA A =====

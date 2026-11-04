@@ -1,6 +1,6 @@
 // Diego Cortés i Oriol Sala
 // Usuari u6112490, u6112518
-// Exercici 1
+// Exercici 2
 
 #ifndef ESTABLIMENTS_H
 #define ESTABLIMENTS_H
@@ -39,12 +39,10 @@ public:
     // post: retorna els establiments del municipi amb codi IDESCAT codiMunicipi en l'ordre del fitxer;
     //       buida si el municipi no existeix
 
-    // ===== ZONA PERSONA A: opció (d) =====
     CarrerResult comptadorsDeCarrer(const string &codiMunicipi, const string &nomCarrer) const;
     // pre: cert
     // post: retorna el nombre d'establiments, de places i d'estances del carrer nomCarrer del municipi
     //       codiMunicipi; tot a 0 si el municipi o el carrer no existeixen
-    // ===== FI ZONA PERSONA A =====
 
     MaximMunicipiResults maximMunicipi() const;
     // pre: cert
@@ -52,19 +50,15 @@ public:
     //       la comarca, el que hi ha arribat primer en l'ordre del fitxer), ordenats pel nombre
     //       d'establiments descendentment i, en cas d'empat, pel nom del municipi ascendentment
 
-    // ===== ZONA PERSONA A: opció (f) =====
     CarrerMesEstResults carrerMesEstablimentsPerComarca() const;
     // pre: cert
     // post: retorna, per cada comarca amb dades, el carrer (amb el seu municipi) amb més establiments,
     //       ordenats pel nombre d'establiments descendentment i, en cas d'empat, pel nom del carrer ascendentment
-    // ===== FI ZONA PERSONA A =====
 
-    // ===== ZONA PERSONA B: opció (g) =====
     top10EstablimentsResults top10Establiments(int codiComarca) const;
     // pre: cert
     // post: retorna els (com a màxim) deu establiments de la comarca codiComarca amb més places (en cas
     //       d'empat, més estances); buit si la comarca no existeix
-    // ===== FI ZONA PERSONA B =====
 
 private:
     vector<Comarca> a_comarques; // cada comarca conté els seus municipis

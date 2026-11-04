@@ -1,8 +1,10 @@
 *.o
-e1
-e2*
+*_meu.txt
 .DS_Store
 base_*.txt
-*_meu.txt
+e1
+e2*
 joc_proves/establimentsLlarg.csv
+primerSortida.txt
+programa
 sortides/

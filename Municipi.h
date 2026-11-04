@@ -1,6 +1,6 @@
 // Diego Cortés i Oriol Sala
 // Usuari u6112490, u6112518
-// Exercici 1
+// Exercici 2
 
 #ifndef MUNICIPI_H
 #define MUNICIPI_H
@@ -44,7 +44,6 @@ public:
     // pre: cert
     // post: index s'ha afegit al final dels índexs d'establiments del municipi
 
-    // ===== ZONA PERSONA A: opcions (d) i (f) =====
     void afegirCarrer(const string &carrer, int places, int estances);
     // pre: cert
     // post: als comptadors del carrer s'ha comptat un establiment més amb aquestes places i estances
@@ -57,13 +56,12 @@ public:
     const map<string, Comptadors> &carrers() const;
     // pre: cert
     // post: retorna els comptadors de tots els carrers del municipi, ordenats pel nom del carrer
-    // ===== FI ZONA PERSONA A =====
 
 private:
     string a_codi;                    // Codi Municipi (IDESCAT)
     string a_nom;                     // Municipi
     vector<size_t> a_indexs;          // índexs dels establiments, en ordre del fitxer
-    map<string, Comptadors> a_carrers; // nom del carrer -> comptadors (zona persona A)
+    map<string, Comptadors> a_carrers; // nom del carrer -> comptadors
 };
 
 #endif // MUNICIPI_H

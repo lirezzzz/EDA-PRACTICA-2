@@ -1,6 +1,6 @@
 // Diego Cortés i Oriol Sala
 // Usuari u6112490, u6112518
-// Exercici 1
+// Exercici 2
 
 #include <iostream>
 #include <string>
@@ -20,6 +20,8 @@ void mostrarTitol(const string &titol) {
 }
 
 void mostrarMenu() {
+    // pre: cert
+    // post: s'ha mostrat el menú per cerr (no forma part de la sortida)
     cerr << endl;
     cerr << "01: Llegir dades" << endl;
     cerr << "02: Codi comarca -> municipis" << endl;
@@ -31,7 +33,6 @@ void mostrarMenu() {
     cerr << "0: Acabar" << endl;
     cerr << "Opcio: ";
 }
-
 
 void opcioLlegirDades(Establiments &establiments) {
     // pre: cert
@@ -57,7 +58,7 @@ void opcioMunicipisPerComarca(const Establiments &establiments) {
 string formatNumero(const string &numero) {
     // pre: cert
     // post: retorna numero; si comença per dígit, s'omple amb zeros a l'esquerra fins a 5 caràcters
-    if (numero.empty() || !isdigit((unsigned char)numero[0]) || numero.length() >= 5)
+    if (numero.empty() || numero[0] < '0' || numero[0] > '9' || numero.length() >= 5)
         return numero;
     return string(5 - numero.length(), '0') + numero;
 }
@@ -84,8 +85,6 @@ void opcioMaximMunicipi(const Establiments &establiments) {
         cout << resultat[i].comarca() << " | " << resultat[i].municipi() << " => "
              << resultat[i].nEstabliments() << endl;
 }
-
-// ===== ZONA PERSONA A: opcions (d) i (f) =====
 
 void opcioComptadorsDeCarrer(const Establiments &establiments) {
     // pre: cert
@@ -114,11 +113,9 @@ void opcioCarrerMesEstabliments(const Establiments &establiments) {
              << resultat[i].carrer() << " => " << resultat[i].nEstabliments() << endl;
 }
 
-// ===== FI ZONA PERSONA A =====
-
-// ===== ZONA PERSONA B: opció (g) =====
-
 void opcioTop10Establiments(const Establiments &establiments) {
+    // pre: cert
+    // post: llegeix un codi de comarca i mostra els deu establiments amb més places
     int codi;
     cin >> codi;
 
@@ -135,17 +132,21 @@ void opcioTop10Establiments(const Establiments &establiments) {
     }
 }
 
-
-
-// ===== FI ZONA PERSONA B =====
-
+int llegirOpcio() {
+    // pre: cert
+    // post: retorna l'opció llegida; si la lectura falla (final de l'entrada o text no numèric) retorna 0 i el programa acaba
+    int opcio;
+    cin >> opcio;
+    if (cin.fail()) opcio = 0;
+    return opcio;
+}
 
 int main() {
     Establiments establiments;
     int opcio;
 
     mostrarMenu();
-    cin >> opcio;
+    opcio = llegirOpcio();
 
     while (opcio != 0) {
 
@@ -159,7 +160,7 @@ int main() {
         else cerr << "Opcio incorrecta" << endl;
 
         mostrarMenu();
-        cin >> opcio;
+        opcio = llegirOpcio();
     }
 
     return 0;

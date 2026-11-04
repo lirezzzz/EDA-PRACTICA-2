@@ -1,6 +1,6 @@
 // Diego Cortés i Oriol Sala
 // Usuari u6112490, u6112518
-// Exercici 1
+// Exercici 2
 
 #include "Comarca.h"
 
@@ -49,10 +49,6 @@ int Comarca::cercaDicotomica(const string &codiMunicipi, int &pos) const {
     return -1;
 }
 
-bool Comarca::existeixMunicipi(const string &codiMunicipi) const {
-    return cercaDicotomica(codiMunicipi) != -1;
-}
-
 void Comarca::afegirEstabliment(const string &codiMunicipi, const string &nomMunicipi,
                                 const Establiment &e) {
     int pos;
@@ -62,8 +58,8 @@ void Comarca::afegirEstabliment(const string &codiMunicipi, const string &nomMun
     size_t index = a_establiments.size();
     a_establiments.push_back(e);
     a_municipis[pos].afegirEstabliment(index);
-    a_municipis[pos].afegirCarrer(e.carrer(), e.places(), e.estances());   // enllaç opcions (d) i (f), zona persona A
-    actualitzarTop(index, e);                                              // enllaç opció (g), zona persona B
+    a_municipis[pos].afegirCarrer(e.carrer(), e.places(), e.estances());   // comptadors del carrer (opcions d i f)
+    actualitzarTop(index, e);                                              // top 10 de la comarca (opció g)
 
     // actualitzem el màxim: amb > estricte, en cas d'empat es queda el que hi ha arribat primer
     size_t n = a_municipis[pos].nEstabliments();
@@ -90,8 +86,6 @@ list<Establiment> Comarca::establimentsDeMunicipi(const string &codiMunicipi) co
     return resultat;
 }
 
-// ===== ZONA PERSONA B: opció (g) =====
-
 top10EstablimentsResults Comarca::top10() const {
     top10EstablimentsResults resultat;
 
@@ -108,18 +102,12 @@ top10EstablimentsResults Comarca::top10() const {
     return resultat;
 }
 
-
 void Comarca::actualitzarTop(size_t index, const Establiment &e) {
-    // Inserim la nova clau al set
-    a_top.insert(ClauTop(e.places(), e.estances(), index));
-
-    // Si hi ha més de 10 elements, eliminem el pitjor (l'últim del set)
-    if (a_top.size() > 10) {
-        auto it = a_top.end();
-        --it;  // apunta al pitjor establiment
-        a_top.erase(it);
-    }
+    ClauTop clau(e.places(), e.estances(), index);
+    if (a_top.size() == 10 && !(clau < a_top.back())) return;   // no millora el pitjor dels deu
+    vector<ClauTop>::iterator it = a_top.begin();
+    while (it != a_top.end() && *it < clau) ++it;                 // posició on va, mantenint l'ordre
+    a_top.insert(it, clau);
+    if (a_top.size() > 10) a_top.pop_back();                      // traiem el pitjor
 }
 
-
-// ===== FI ZONA PERSONA B =====

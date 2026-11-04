@@ -1,12 +1,11 @@
 // Diego Cortés i Oriol Sala
 // Usuari u6112490, u6112518
-// Exercici 1
+// Exercici 2
 
 #ifndef ESTABLIMENT_H
 #define ESTABLIMENT_H
 
 #include <string>
-#include <map>
 
 using namespace std;
 
@@ -54,7 +53,6 @@ private:
     string a_numInscripcio; // Número inscripció
     int a_places;           // Total places
     int a_estances;         // Total estances
-    map<string, int> a_indexMunicipis; //codi municipis i codi comarques
 };
 
 #endif // ESTABLIMENT_H

@@ -32,4 +32,3 @@ bool ClauTop::operator<(const ClauTop &altra) const {
     return a_index < altra.a_index;
 }
 
-

@@ -1,6 +1,6 @@
 // Diego Cortés i Oriol Sala
 // Usuari u6112490, u6112518
-// Exercici 1
+// Exercici 2
 
 #include "Establiments.h"
 #include "eines.h"
@@ -112,12 +112,9 @@ MaximMunicipiResults Establiments::maximMunicipi() const {
     return resultat;
 }
 
-// ===== ZONA PERSONA A: opció (d) =====
-
 CarrerResult Establiments::comptadorsDeCarrer(const string &codiMunicipi, const string &nomCarrer) const {
     map<string, int>::const_iterator it= a_indexMunicipis.find(codiMunicipi);
     if (it!=a_indexMunicipis.end()){
-        int codi=it->second;
         const Comarca &comarca = a_comarques[it->second];
         int pos = comarca.cercaDicotomica(codiMunicipi);
         if (pos!=-1){
@@ -127,9 +124,6 @@ CarrerResult Establiments::comptadorsDeCarrer(const string &codiMunicipi, const 
     return CarrerResult(nomCarrer, 0, 0, 0);
 }
 
-
-
-// ===== ZONA PERSONA A: opció (f) =====
 // pre: cert
 // post: diu si a va abans que b: més establiments primer; en cas d'empat, carrer ascendent i, si encara
 //       empaten, nom de comarca ascendent (ordre total)
@@ -140,8 +134,6 @@ static bool ordreCarrerMes(const CarrerMesEstResult &a, const CarrerMesEstResult
 }
 
 CarrerMesEstResults Establiments::carrerMesEstablimentsPerComarca() const {
-    // TODO (persona A): per cada comarca, recórrer els carrers() de cada municipi i quedar-se amb el que
-    //                   té més establiments; ordenar el resultat (nombre desc, nom de carrer asc)
     CarrerMesEstResults resultat;
     for (size_t i=1; i<a_comarques.size(); i++){
         const Comarca &comarca = a_comarques[i];
@@ -167,10 +159,6 @@ CarrerMesEstResults Establiments::carrerMesEstablimentsPerComarca() const {
     return resultat;
     }
 
-// ===== FI ZONA PERSONA A =====
-
-// ===== ZONA PERSONA B: opció (g) =====
-
 top10EstablimentsResults Establiments::top10Establiments(int codiComarca) const {
     // Comprovar rang (igual que municipisPerComarca)
     if (codiComarca < 1 || codiComarca >= (int)a_comarques.size())
@@ -180,6 +168,3 @@ top10EstablimentsResults Establiments::top10Establiments(int codiComarca) const 
     return a_comarques[codiComarca].top10();
 }
 
-
-
-// ===== FI ZONA PERSONA B =====

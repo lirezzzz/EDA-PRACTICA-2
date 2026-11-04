@@ -1,6 +1,6 @@
 // Diego Cortés i Oriol Sala
 // Usuari u6112490, u6112518
-// Exercici 1
+// Exercici 2
 
 #ifndef MAXIMMUNICIPIRESULT_H
 #define MAXIMMUNICIPIRESULT_H
