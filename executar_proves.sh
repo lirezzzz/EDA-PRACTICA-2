@@ -1,7 +1,7 @@
 #!/bin/bash
 # Script de proves de la Practica 1.
-# Compila el programa i l'executa amb cada joc de proves (els fitxers tN_*.txt), una prova darrere l'altra
-# i sense preguntar res. Per a cada prova compara la sortida amb la sortida esperada (la del fitxer tN_*_out.txt).
+# Compila el programa i l'executa amb cada joc de proves (els fitxers t1.txt, t2.txt ...), una prova darrere l'altra
+# i sense preguntar res. Per a cada prova compara la sortida amb la sortida esperada (la del fitxer tN_out.txt).
 # La sortida pel canal d'error (el menu) es descarta, perque no forma part de la sortida.
 # Cal executar-lo a bas.udg.edu, perque les proves llegeixen els CSV de /u/prof/dfiguls/Public/.
 
