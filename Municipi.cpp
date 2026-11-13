@@ -6,13 +6,7 @@
 
 #include "Municipi.h"
 
-Municipi::Municipi() : a_nMillorCarrer(0) {}
-
-Municipi::Municipi(const string &codi, const string &nom) : a_codi(codi), a_nom(nom), a_nMillorCarrer(0) {}
-
-string Municipi::codi() const { 
-    return a_codi; 
-}
+Municipi::Municipi(const string &nom) : a_nom(nom), a_nMillorCarrer(0) {}
 
 string Municipi::nom() const { 
     return a_nom; 

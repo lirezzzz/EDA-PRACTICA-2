@@ -16,11 +16,6 @@ using namespace std;
 /// el número de la seva fila a les taules d'Establiments (així no es repeteix el text a cada establiment).
 class Establiment {
 public:
-    /** @pre cert
-        @post establiment buit (cadenes buides, places, estances, unitat i titular a 0)
-    */
-    Establiment();
-
     /** @pre places >= 0, estances >= 0
         @post establiment amb les dades indicades; unitat i titular són els números de fila de la seva unitat
              d'allotjament i del seu titular

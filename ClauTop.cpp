@@ -17,10 +17,6 @@ int ClauTop::estances() const {
     return a_estances;
 }
 
-size_t ClauTop::ordre() const {
-    return a_ordre;
-}
-
 string ClauTop::nom() const {
     return a_nom;
 }

@@ -6,8 +6,6 @@
 
 #include "Establiment.h"
 
-Establiment::Establiment() : a_places(0), a_estances(0), a_unitat(0), a_titular(0) {}
-
 Establiment::Establiment(const string &nom, const string &carrer, const string &numero,
                          const string &numInscripcio, int places, int estances, int unitat, int titular)
     : a_nom(nom), a_carrer(carrer), a_numero(numero),

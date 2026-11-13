@@ -21,20 +21,10 @@ using namespace std;
 /// Un municipi amb els seus establiments (en l'ordre del fitxer CSV) i els comptadors de cada carrer.
 class Municipi {
 public:
-    /** @pre cert
-        @post municipi buit, sense cap establiment
+    /** @pre nom és el nom del poble
+        @post municipi amb el nom indicat i sense establiments
     */
-    Municipi();
-
-    /** @pre codi és el codi idescat del municipi i nom, el nom del poble
-        @post municipi amb el codi i nom indicats i sense establiments
-    */
-    Municipi(const string &codi, const string &nom);
-
-    /** @pre cert
-        @post retorna el codi idescat del municipi
-    */
-    string codi() const;
+    Municipi(const string &nom);
 
     /** @pre cert
         @post retorna el nom del municipi
@@ -86,7 +76,6 @@ public:
     void sumarTitulars(vector<int> &places, vector<size_t> &nEstabliments) const;
 
 private:
-    string a_codi;                    ///< Codi Municipi (IDESCAT)
     string a_nom;                     ///< Municipi
     list<Establiment> a_establiments;   ///< els establiments del municipi, en ordre del fitxer
     map<string, Comptadors> a_carrers; ///< nom del carrer -> comptadors

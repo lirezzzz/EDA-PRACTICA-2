@@ -33,7 +33,7 @@ void Comarca::afegirEstabliment(const string &codiMunicipi, const string &nomMun
                                 const Establiment &e) {
     map<string, list<Municipi>::iterator>::iterator it = a_index.find(codiMunicipi);
     if (it == a_index.end()) {          // municipi nou: el posem al final de la llista
-        a_municipis.push_back(Municipi(codiMunicipi, nomMunicipi));
+        a_municipis.push_back(Municipi(nomMunicipi));
         it = a_index.insert(make_pair(codiMunicipi, --a_municipis.end())).first;
     }
     it->second->afegirEstabliment(e);

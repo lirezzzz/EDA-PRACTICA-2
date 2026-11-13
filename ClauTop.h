@@ -32,11 +32,6 @@ public:
     int estances() const;
 
     /** @pre cert
-        @post retorna l'ordre d'arribada de l'establiment dins la comarca (0 és el primer del fitxer)
-    */
-    size_t ordre() const;
-
-    /** @pre cert
         @post retorna el nom (rètol) de l'establiment
     */
     string nom() const;
