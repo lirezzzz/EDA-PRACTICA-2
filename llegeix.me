@@ -1,121 +1,108 @@
-LLEGEIX.ME - Pràctica 1: Estructures de Dades (EDA, curs 2026/27)
-Autor: Diego Cortés - usuari u6112490
+LLEGEIX.ME - Pràctica 1 d'Estructures de Dades (EDA, curs 2026/27)
+Diego Cortés Sanchez - u6112490
 
 
-1. ESTAT DE LA PRÀCTICA
------------------------
-Estan implementades totes les operacions de l'enunciat, de la (a) a la (k), amb el menú 0..11.
-Segons les nostres proves, tot funciona. La sortida de les 11 opcions coincideix exactament (amb diff) amb la
-sortida dels fitxers de proves oficials, tant amb establimentsCurt.csv (t1) com amb establimentsLlarg.csv (t2).
-No coneixem cap error. Les limitacions que sí coneixem estan a l'apartat 8.
+1. En quin estat està la pràctica
+Estan fetes totes les operacions de l'enunciat, de la (a) a la (k), amb el menú de 0 a 11.
+He comprovat que la sortida de les 11 opcions és exactament igual (amb diff) que la dels fitxers de proves del
+professor, tant amb establimentsCurt.csv (t1) com amb establimentsLlarg.csv (t2). A les proves no he trobat cap error.
 
 
-2. COM COMPILAR I EXECUTAR
---------------------------
+2. Com compilar i executar
 Compilar:             g++ -std=c++11 -O2 -o programa *.cpp
 Executar una prova:   ./programa < t1.txt
-Totes les proves:     ./executar_proves.sh      (compila, executa t1..t8 i compara cada sortida amb tN_out.txt)
+Totes les proves:     ./executar_proves.sh
+                      (compila, executa de t1 a t8 i compara cada sortida amb la seva tN_out.txt)
 
-El menú surt per cerr i el resultat per cout, com demana l'enunciat. Tota l'entrada es llegeix de l'entrada
-estàndard. Les proves llegeixen els CSV de /u/prof/dfiguls/Public/, per tant s'han d'executar a bas.udg.edu.
-Per provar-ho en un altre ordinador cal canviar el path de l'opció 01 dins dels fitxers tN.txt.
+El menú va per cerr i els resultats per cout, com demana l'enunciat. Tot el que s'ha d'escriure es llegeix de
+l'entrada estàndard. Les proves llegeixen els CSV de /u/prof/dfiguls/Public/, així que s'han d'executar a
+bas.udg.edu. Si es vol provar en un altre ordinador, cal canviar el path de l'opció 01 dins dels fitxers tN.txt.
 
 
-3. FITXERS DEL LLIURAMENT
--------------------------
-Codi font:      main.cpp, Establiments, Comarca, Municipi, Establiment, Comptadors i ClauTop (.h i .cpp),
+3. Fitxers del lliurament
+Codi:           main.cpp, Establiments, Comarca, Municipi, Establiment, Comptadors i ClauTop (.h i .cpp),
                 les classes de resultat (MunicipiResult, MaximMunicipiResult, CarrerResult, CarrerMesEstResult,
-                Top10EstablimentResult i Top10TitularResult) i eines.h / eines.cpp (donats pel professor).
-Proves:         t1.txt ... t8.txt (entrades) i t1_out.txt ... t8_out.txt (sortides esperades).
+                Top10EstablimentResult i Top10TitularResult) i eines.h / eines.cpp (que dona el professor).
+Proves:         t1.txt ... t8.txt (entrades) i t1_out.txt ... t8_out.txt (sortides que s'esperen).
 Script:         executar_proves.sh
-Documentació:   carpeta html (generada amb doxygen; obrir html/index.html) i informe.pdf.
+Documentació:   la carpeta html (feta amb doxygen, s'obre amb html/index.html) i informe.pdf.
 
 
-4. OPCIONS DEL MENÚ
--------------------
-01 Llegir dades (a)                                  06 Carrer amb més establiments per comarca (f)
-02 Municipis d'una comarca (b)                       07 Top 10 establiments d'una comarca (g)
-03 Establiments d'un municipi (c)                    08 Total de places i estances d'un municipi (h)
-04 Establiments, places i estances d'un carrer (d)   09 Carrer amb més establiments d'un municipi (i)
-05 Municipi amb més establiments per comarca (e)     10 Top 10 titulars (j)
-0  Acabar                                            11 Places per unitat d'allotjament d'una comarca (k)
+4. Opcions del menú
+01  Llegir dades (a)
+02  Municipis d'una comarca (b)
+03  Establiments d'un municipi (c)
+04  Establiments, places i estances d'un carrer (d)
+05  Municipi amb més establiments per comarca (e)
+06  Carrer amb més establiments per comarca (f)
+07  Top 10 establiments d'una comarca (g)
+08  Total de places i estances d'un municipi (h)
+09  Carrer amb més establiments d'un municipi (i)
+10  Top 10 titulars (j)
+11  Places per unitat d'allotjament d'una comarca (k)
+0   Acabar
 
 
-5. ESTRUCTURES DE DADES (resum; el detall i la justificació són a informe.pdf)
------------------------------------------------------------------------------
-Establiments  -> vector<Comarca> (la posició és el codi de comarca, 1..43)
-                 map<codi municipi, codi comarca>, per trobar la comarca d'un municipi
-                 vector de unitats d'allotjament i vector de titulars (CIF, raó social)
-Comarca       -> list<Municipi>, en l'ordre en què surten al fitxer
-                 map<codi municipi, iterador a la llista>, per trobar un municipi pel seu codi
-                 vector<ClauTop> amb els 10 millors establiments (màxim 10 elements)
-Municipi      -> list<Establiment>, en l'ordre del fitxer
-                 map<carrer, Comptadors> (establiments, places i estances de cada carrer)
-Establiment   -> rètol, carrer, número, número d'inscripció, places, estances, i el número de fila de la seva
-                 unitat d'allotjament i del seu titular (el text es guarda una sola vegada en una taula)
+5. Estructures de dades
+Aquí només hi ha un resum. A informe.pdf s'explica amb més detall per què he triat cada una.
 
-Dades precalculades (només les que fan falta per complir l'eficiència que demana l'enunciat):
-  comptadors per carrer (d), municipi màxim de cada comarca (e), top 10 de cada comarca (g) i
-  millor carrer de cada municipi (i). Les operacions (f), (h), (j) i (k) es calculen en el moment de la consulta.
+Establiments:
+  - vector<Comarca>: la posició és el codi de comarca (1..43)
+  - map<codi municipi, codi comarca>, per saber en quina comarca és un municipi
+  - un vector amb les unitats d'allotjament i un altre amb els titulars (CIF i raó social)
+Comarca:
+  - list<Municipi>, en l'ordre en què surten al fitxer
+  - map<codi municipi, iterador a la llista>, per trobar un municipi pel seu codi
+  - vector<ClauTop> amb els 10 millors establiments (mai en té més de 10)
+Municipi:
+  - list<Establiment>, en l'ordre del fitxer
+  - map<carrer, Comptadors>, amb els establiments, places i estances de cada carrer
+Establiment:
+  - rètol, carrer, número, número d'inscripció, places i estances
+  - el número de fila de la seva unitat d'allotjament i del seu titular (el text de la unitat i del titular es
+    guarda una sola vegada en una taula, així no es repeteix a cada establiment)
+
+Dades que es calculen mentre es llegeix el fitxer (només les que fan falta perquè les operacions siguin
+prou ràpides, com demana l'enunciat):
+  - els comptadors de cada carrer, per a la (d)
+  - el municipi amb més establiments de cada comarca, per a la (e)
+  - el top 10 de cada comarca, per a la (g)
+  - el millor carrer de cada municipi, per a la (i)
+Les operacions (f), (h), (j) i (k) es calculen quan es fa la consulta.
 
 Cost de cada operació (M = municipis, E = establiments, EM = establiments d'un municipi,
 CM = carrers d'un municipi, C = comarques):
-  (b) O(M log M), amb M els de la comarca     (c) O(log M + EM)         (d) O(log M + log CM)
-  (e) O(C log C)                              (g) O(10)                 (i) O(log M + log CM)
-  (f), (h), (j) i (k): sense restricció de cost
+  (b) O(M log M), amb M els municipis de la comarca
+  (c) O(log M + EM)
+  (d) O(log M + log CM)
+  (e) O(C log C)
+  (g) O(10)
+  (i) O(log M + log CM)
+  (f), (h), (j) i (k): l'enunciat no demana cap cost concret
 
 
-6. DECISIONS I CASOS QUE L'ENUNCIAT NO DEFINEIX
------------------------------------------------
-- (f) Dins d'un municipi, el carrer amb més establiments; si n'hi ha més d'un, el primer per ordre alfabètic.
-  Entre els municipis d'una comarca que empaten, guanya el que surt primer al fitxer. Això reprodueix la sortida
-  oficial. Si dos resultats de (f) empaten en nombre i en carrer, s'ordenen pel nom del municipi i de la comarca.
-- (i) Si dos carrers empaten, el primer per ordre alfabètic.
-- (j) Els titulars s'agrupen pel CIF. Si un CIF surt amb diverses raons socials, es mostra la primera per ordre
-  alfabètic sense comptar les buides. El titular "No aplica" (persones físiques) es compta com un titular més.
-  Si hi ha empat en places i en establiments, s'ordena pel CIF.
-- (h) amb un municipi que no existeix mostra "Places: 0 | estances: 0".
-- (i) amb un municipi que no existeix mostra " => 0" (carrer buit).
-- (k) amb una comarca que no existeix només mostra el títol i el codi, sense cap unitat.
-- (k) només mostra les unitats que tenen algun establiment a la comarca.
-- Les files amb un codi de comarca fora de 1..43 s'ignoren i no es compten.
-- Els números (places, estances) es llegeixen agafant només els dígits del camp (un camp buit dóna 0).
-- A l'opció 03, el número de carrer que comença per un dígit es mostra amb zeros a l'esquerra fins a 5 caràcters
-  (38 -> 00038), com a la sortida del professor.
-- No es recodifiquen els caràcters: es mostren tal com vénen al CSV.
+6. Jocs de proves
+Cada prova són dos fitxers: l'entrada (tN.txt) i la sortida que s'espera (tN_out.txt).
 
-
-7. JOCS DE PROVES
------------------
-Cada prova són dos fitxers: l'entrada (tN.txt) i la sortida esperada (tN_out.txt).
-t1  Joc de proves oficial amb establimentsCurt.csv (entrada i sortida del professor): les 11 opcions.
-t2  Joc de proves oficial amb establimentsLlarg.csv: les 11 opcions amb el fitxer complet (112714 files).
-t3  Càrrega i errors d'entrada: consultes abans de llegir dades, un fitxer que no existeix, tornar a llegir les
-    dades (no s'han de duplicar), opcions que no existeixen (12, 99, -4) i entrada que acaba sense el 0 final.
-t4  Valors límit i codis que no existeixen: comarques 0, -3, 44 i 100000; municipis que no existeixen; carrer que
-    no existeix i carrer buit; comarca amb menys de 10 establiments al top 10 i comarca amb més de 10; municipi
-    d'un sol establiment; (h), (i) i (k) amb dades que no hi són.
+t1  Joc de proves oficial amb establimentsCurt.csv (entrada i sortida del professor). Prova les 11 opcions.
+t2  Joc de proves oficial amb establimentsLlarg.csv. Prova les 11 opcions amb el fitxer complet (112714 files).
+t3  Llegir dades i errors d'entrada: consultes abans de llegir res, un fitxer que no existeix, tornar a llegir
+    les dades (no s'han de duplicar), opcions que no existeixen (12, 99, -4) i una entrada que acaba sense el 0.
+t4  Valors límit i codis que no existeixen: comarques 0, -3, 44 i 100000, municipis que no existeixen, un carrer
+    que no existeix i un carrer buit, una comarca amb menys de 10 establiments al top 10 i una amb més de 10,
+    un municipi amb un sol establiment, i les opcions (h), (i) i (k) amb dades que no hi són.
 t5  Empats: carrers empatats en un municipi (es tria el primer per ordre alfabètic), empats a (e) i (f),
-    establiments amb les mateixes places i estances al top 10, i el top 10 de titulars.
-t6  Noms de carrer a l'opció 04: amb espais dobles, parèntesis, comes, accents i majúscules; el nom no es troba
-    si canvia una majúscula o hi ha un espai al final.
-t7  (h), (i), (j) i (k) amb el fitxer curt: total de places i estances, carrer més gran, top 10 de titulars i
-    places per unitat en set comarques.
-t8  Fitxer llarg amb municipis i comarques grans (Barcelona, Barcelonès, Selva): comprova el funcionament i el
-    temps (menys d'un segon) amb les 112714 files.
-Les sortides esperades de t1 i t2 són les del professor. Les de t3 a t8 les ha generat el nostre programa.
+    establiments amb les mateixes places i estances al top 10 i el top 10 de titulars.
+t6  Noms de carrer a l'opció 04: amb espais dobles, parèntesis, comes, accents i majúscules. També que no el
+    troba si es canvia una majúscula o hi ha un espai al final.
+t7  Les opcions (h), (i), (j) i (k) amb el fitxer curt: total de places i estances, carrer més gran, top 10 de
+    titulars i places per unitat en set comarques.
+t8  Fitxer llarg amb municipis i comarques grans (Barcelona, Barcelonès i Selva). Serveix per veure que
+    funciona i que triga poc (menys d'un segon) amb les 112714 files.
+
+Les sortides de t1 i t2 són les del professor. Les de t3 a t8 les ha generat el mateix programa.
 
 
-8. LIMITACIONS CONEGUDES
-------------------------
-- Si el CSV no acaba en salt de línia, l'última fila no es llegeix (és el comportament del bucle de lectura de
-  l'exemple de l'enunciat). Els dos fitxers oficials acaben en salt de línia.
-- El path de l'opció 01 es llegeix amb cin >>, per tant no pot tenir espais.
-- Només es llegeixen files amb 33 camps i separador coma.
-- Una comarca amb un codi fora de 1..43 no es carregaria.
-
-
-9. DOCUMENTACIÓ
----------------
-Documentació generada amb doxygen a la carpeta html (obrir html/index.html). El codi té les pre i postcondicions
-als fitxers .h i a main.cpp, en format doxygen.
+7. Documentació
+La documentació està feta amb doxygen i és a la carpeta html (s'obre amb html/index.html). Les pre i
+postcondicions estan als fitxers .h i a main.cpp, en format doxygen.
