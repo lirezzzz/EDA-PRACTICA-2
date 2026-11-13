@@ -11,6 +11,7 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <utility>
 #include "Municipi.h"
 #include "MunicipiResult.h"
 #include "Establiment.h"
@@ -49,7 +50,7 @@ public:
     bool buida() const;
 
     /** @pre cert
-        @post retorna els municipis de la comarca amb el seu nombre d'establiments, ordenats pel codi del municipi
+        @post retorna els municipis de la comarca amb el seu nombre d'establiments, en l'ordre en què surten al fitxer
     */
     vector<MunicipiResult> resultatMunicipis() const;
 
@@ -76,9 +77,32 @@ public:
     */
     top10EstablimentsResults top10() const;
 
+    /** @pre cert
+        @post retorna el total de places i d'estances del municipi codiMunicipi; (0, 0) si la comarca no el té
+    */
+    pair<int, int> totalsMunicipi(const string &codiMunicipi) const;
+
+    /** @pre cert
+        @post retorna el carrer amb més establiments del municipi codiMunicipi (en cas d'empat, el primer per ordre
+             alfabètic); carrer buit i tot a 0 si la comarca no té el municipi
+    */
+    CarrerResult carrerMesEstablimentsDelMunicipi(const string &codiMunicipi) const;
+
+    /** @pre places i nEstabliments tenen una posició per cada unitat d'allotjament
+        @post a cada unitat, s'hi han sumat les places dels establiments de la comarca que són d'aquesta unitat
+             i s'hi ha comptat un establiment més per cada un
+    */
+    void sumarUnitats(vector<int> &places, vector<size_t> &nEstabliments) const;
+
+    /** @pre places i nEstabliments tenen una posició per cada titular
+        @post a cada titular, s'hi han sumat les places dels establiments de la comarca que són seus
+             i s'hi ha comptat un establiment més per cada un
+    */
+    void sumarTitulars(vector<int> &places, vector<size_t> &nEstabliments) const;
+
     /** @pre aquesta Comarca no és buida
         @post retorna el carrer amb més establiments de la comarca, amb el nom de la comarca i del municipi on és;
-             en cas d'empat, el del municipi de codi més petit i, dins d'ell, el primer per ordre alfabètic
+             en cas d'empat entre municipis, el que surt abans al fitxer i, dins d'ell, el primer per ordre alfabètic
     */
     CarrerMesEstResult carrerMesEstabliments() const;
 
@@ -96,7 +120,8 @@ private:
 
     int a_codi;                  ///< Codi Comarca (IDESCAT)
     string a_nom;                ///< Comarca
-    map<string, Municipi> a_municipis; ///< els municipis de la comarca, pel seu codi
+    list<Municipi> a_municipis;  ///< els municipis de la comarca, en l'ordre en què surten al fitxer
+    map<string, list<Municipi>::iterator> a_index; ///< codi del municipi -> el seu lloc a la llista
     size_t a_nEstabliments;      ///< establiments de la comarca llegits fins ara (dóna l'ordre d'arribada)
     string a_codiMaxim;          ///< codi del municipi amb més establiments
     size_t a_nMaxim;             ///< nombre d'establiments d'aquest municipi

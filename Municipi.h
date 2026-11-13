@@ -10,6 +10,7 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <utility>
 #include <map>
 #include "Establiment.h"
 #include "Comptadors.h"
@@ -67,11 +68,30 @@ public:
     */
     CarrerResult carrerMesEstabliments() const;
 
+    /** @pre cert
+        @post retorna el total de places i el total d'estances dels establiments del municipi
+    */
+    pair<int, int> totals() const;
+
+    /** @pre places i nEstabliments tenen una posició per cada unitat d'allotjament
+        @post a cada unitat, s'hi han sumat les places dels establiments del municipi que són d'aquesta unitat
+             i s'hi ha comptat un establiment més per cada un
+    */
+    void sumarUnitats(vector<int> &places, vector<size_t> &nEstabliments) const;
+
+    /** @pre places i nEstabliments tenen una posició per cada titular
+        @post a cada titular, s'hi han sumat les places dels establiments del municipi que són seus
+             i s'hi ha comptat un establiment més per cada un
+    */
+    void sumarTitulars(vector<int> &places, vector<size_t> &nEstabliments) const;
+
 private:
     string a_codi;                    ///< Codi Municipi (IDESCAT)
     string a_nom;                     ///< Municipi
     list<Establiment> a_establiments;   ///< els establiments del municipi, en ordre del fitxer
     map<string, Comptadors> a_carrers; ///< nom del carrer -> comptadors
+    string a_millorCarrer;            ///< carrer amb més establiments (en empat, el primer per ordre alfabètic)
+    size_t a_nMillorCarrer;           ///< nombre d'establiments d'aquest carrer
 };
 
 #endif // MUNICIPI_H

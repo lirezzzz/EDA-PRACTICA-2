@@ -18,8 +18,11 @@ const int COL_MUNICIPI = 13;
 const int COL_CODI_MUNICIPI = 14;
 const int COL_COMARCA = 15;
 const int COL_CODI_COMARCA = 16;
+const int COL_UNITAT = 23;
 const int COL_PLACES = 24;
 const int COL_ESTANCES = 25;
+const int COL_CIF = 28;
+const int COL_RAO_SOCIAL = 29;
 
 /** @pre cert
     @post retorna el número format pels dígits de s (ignora qualsevol altre caràcter); si no n'hi ha cap, retorna 0
@@ -51,7 +54,11 @@ static bool ordreMaxim(const MaximMunicipiResult &a, const MaximMunicipiResult &
 size_t Establiments::llegirDades(const string &path) {
     a_comarques.clear();
     a_indexMunicipis.clear();
+    a_unitats.clear();
+    a_titulars.clear();
     a_comarques.resize(44);         // una posició per cada codi de comarca (1..43)
+    map<string, int> filaUnitat;    // per llegir: unitat -> número de fila (no cal guardar-ho després)
+    map<string, int> filaTitular;   // per llegir: CIF -> número de fila
 
     ifstream f(path);
     if (f.fail()) return 0;
@@ -65,12 +72,29 @@ size_t Establiments::llegirDades(const string &path) {
         if (camps.size() == 33) {
             int codiComarca = textANumero(camps[COL_CODI_COMARCA]);
             if (codiComarca >= 1 && codiComarca < int(a_comarques.size())) {
+                // la unitat i el titular es guarden una sola vegada a una taula; a l'establiment només el seu número de fila
+                map<string, int>::iterator itU = filaUnitat.find(camps[COL_UNITAT]);
+                if (itU == filaUnitat.end()) {
+                    itU = filaUnitat.insert(make_pair(camps[COL_UNITAT], int(a_unitats.size()))).first;
+                    a_unitats.push_back(camps[COL_UNITAT]);
+                }
+                map<string, int>::iterator itT = filaTitular.find(camps[COL_CIF]);
+                if (itT == filaTitular.end()) {
+                    itT = filaTitular.insert(make_pair(camps[COL_CIF], int(a_titulars.size()))).first;
+                    a_titulars.push_back(make_pair(camps[COL_CIF], string()));
+                }
+                // si un CIF surt amb diverses raons socials, ens quedem la primera per ordre alfabètic (sense les buides)
+                string &raoSocial = a_titulars[itT->second].second;
+                if (!camps[COL_RAO_SOCIAL].empty() && (raoSocial.empty() || camps[COL_RAO_SOCIAL] < raoSocial))
+                    raoSocial = camps[COL_RAO_SOCIAL];
                 Establiment e(camps[COL_RETOL],
                               camps[COL_NOM_VIA],
                               camps[COL_NUMERO],
                               camps[COL_NUM_INSCRIPCIO],
                               textANumero(camps[COL_PLACES]),
-                              textANumero(camps[COL_ESTANCES]));
+                              textANumero(camps[COL_ESTANCES]),
+                              itU->second,
+                              itT->second);
                 if (a_comarques[codiComarca].codi() == 0)       // primer cop que surt
                     a_comarques[codiComarca] = Comarca(codiComarca, camps[COL_COMARCA]);
                 // guardem el municipi a la taula només la primera vegada que surt, així no fem còpies que després es descarten
@@ -125,11 +149,12 @@ CarrerResult Establiments::comptadorsDeCarrer(const string &codiMunicipi, const 
 
 /** @pre cert
     @post diu si a va abans que b: més establiments primer; en cas d'empat, carrer ascendent i, si encara
-         empaten, nom de comarca ascendent
+         empaten, nom del municipi i després nom de la comarca ascendents
 */
 static bool ordreCarrerMes(const CarrerMesEstResult &a, const CarrerMesEstResult &b) {
     if (a.nEstabliments() != b.nEstabliments()) return a.nEstabliments() > b.nEstabliments();
     if (a.carrer() != b.carrer()) return a.carrer() < b.carrer();
+    if (a.municipi() != b.municipi()) return a.municipi() < b.municipi();
     return a.comarca() < b.comarca();
 }
 
@@ -149,4 +174,51 @@ top10EstablimentsResults Establiments::top10Establiments(int codiComarca) const 
 
     // Delegar a la comarca
     return a_comarques[codiComarca].top10();
+}
+
+pair<int, int> Establiments::totalsMunicipi(const string &codiMunicipi) const {
+    map<string, int>::const_iterator it = a_indexMunicipis.find(codiMunicipi);
+    if (it == a_indexMunicipis.end()) return make_pair(0, 0);
+    return a_comarques[it->second].totalsMunicipi(codiMunicipi);
+}
+
+CarrerResult Establiments::carrerMesEstablimentsDelMunicipi(const string &codiMunicipi) const {
+    map<string, int>::const_iterator it = a_indexMunicipis.find(codiMunicipi);
+    if (it == a_indexMunicipis.end()) return CarrerResult("", 0, 0, 0);
+    return a_comarques[it->second].carrerMesEstablimentsDelMunicipi(codiMunicipi);
+}
+
+/** @pre cert
+    @post diu si el titular a va abans que b: més places, després més establiments, després CIF ascendent
+*/
+static bool ordreTitular(const Top10TitularResult &a, const Top10TitularResult &b) {
+    if (a.places() != b.places()) return a.places() > b.places();
+    if (a.nEstabliments() != b.nEstabliments()) return a.nEstabliments() > b.nEstabliments();
+    return a.cif() < b.cif();
+}
+
+top10TitularsResults Establiments::top10Titulars() const {
+    vector<int> places(a_titulars.size(), 0);
+    vector<size_t> nEstabliments(a_titulars.size(), 0);
+    for (size_t i = 1; i < a_comarques.size(); i++)
+        a_comarques[i].sumarTitulars(places, nEstabliments);
+    top10TitularsResults resultat;
+    for (size_t t = 0; t < a_titulars.size(); t++)
+        resultat.push_back(Top10TitularResult(a_titulars[t].first, a_titulars[t].second, places[t], nEstabliments[t]));
+    sort(resultat.begin(), resultat.end(), ordreTitular);
+    if (resultat.size() > 10) resultat.erase(resultat.begin() + 10, resultat.end());
+    return resultat;
+}
+
+map<string, int> Establiments::placesUnitat(int codiComarca) const {
+    map<string, int> resultat;
+    if (codiComarca >= 1 && codiComarca < int(a_comarques.size())) {
+        vector<int> places(a_unitats.size(), 0);
+        vector<size_t> nEstabliments(a_unitats.size(), 0);
+        a_comarques[codiComarca].sumarUnitats(places, nEstabliments);
+        for (size_t u = 0; u < a_unitats.size(); u++)
+            if (nEstabliments[u] > 0)       // només les unitats que tenen algun establiment a la comarca
+                resultat[a_unitats[u]] = places[u];
+    }
+    return resultat;
 }

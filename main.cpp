@@ -34,6 +34,10 @@ void mostrarMenu() {
     cerr << "05: Municipi amb mes establiments" << endl;
     cerr << "06: Carrer amb mes establiments" << endl;       // (f)
     cerr << "07: Top 10 establiments per comarca" << endl;   // (g)
+    cerr << "08: Totals del municipi" << endl;                // (h)
+    cerr << "09: Carrer amb mes establiments del municipi" << endl; // (i)
+    cerr << "10: Top 10 titulars" << endl;                    // (j)
+    cerr << "11: Places per unitat d'allotjament" << endl;     // (k)
     cerr << "0: Acabar" << endl;
     cerr << "Opcio: ";
 }
@@ -145,6 +149,54 @@ void opcioTop10Establiments(const Establiments &establiments) {
 }
 
 /** @pre cert
+    @post llegeix un codi de municipi i mostra el seu total de places i d'estances
+*/
+void opcioTotalsMunicipi(const Establiments &establiments) {
+    string codi;
+    cin >> codi;
+    pair<int, int> t = establiments.totalsMunicipi(codi);
+    mostrarTitol("08: Totals del municipi");
+    cout << "Codi de municipi: " << codi << endl;
+    cout << "Places: " << t.first << " | estances: " << t.second << endl;
+}
+
+/** @pre cert
+    @post llegeix un codi de municipi i mostra el seu carrer amb més establiments
+*/
+void opcioCarrerMesEstablimentsDelMunicipi(const Establiments &establiments) {
+    string codi;
+    cin >> codi;
+    CarrerResult r = establiments.carrerMesEstablimentsDelMunicipi(codi);
+    mostrarTitol("09: Carrer amb mes establiments del municipi");
+    cout << "Codi de municipi: " << codi << endl;
+    cout << r.carrer() << " => " << r.nEstabliments() << endl;
+}
+
+/** @pre cert
+    @post mostra els deu titulars amb més places
+*/
+void opcioTop10Titulars(const Establiments &establiments) {
+    mostrarTitol("10: Top 10 titulars");
+    top10TitularsResults r = establiments.top10Titulars();
+    for (size_t i = 0; i < r.size(); i++)
+        cout << r[i].cif() << " | " << r[i].raoSocial() << " | places: " << r[i].places()
+             << " | establiments: " << r[i].nEstabliments() << endl;
+}
+
+/** @pre cert
+    @post llegeix un codi de comarca i mostra les places de cada unitat d'allotjament
+*/
+void opcioPlacesUnitat(const Establiments &establiments) {
+    int codi;
+    cin >> codi;
+    mostrarTitol("11: Places per unitat d'allotjament");
+    cout << "Codi de comarca: " << codi << endl;
+    map<string, int> places = establiments.placesUnitat(codi);
+    for (map<string, int>::const_iterator it = places.begin(); it != places.end(); ++it)
+        cout << it->first << " => " << it->second << " places" << endl;
+}
+
+/** @pre cert
     @post retorna l'opció llegida; si la lectura falla (final de l'entrada o text no numèric) retorna 0 i el programa acaba
 */
 int llegirOpcio() {
@@ -170,6 +222,10 @@ int main() {
         else if (opcio == 5) opcioMaximMunicipi(establiments);
         else if (opcio == 6) opcioCarrerMesEstabliments(establiments);       // (f)
         else if (opcio == 7) opcioTop10Establiments(establiments);           // (g)
+        else if (opcio == 8) opcioTotalsMunicipi(establiments);              // (h)
+        else if (opcio == 9) opcioCarrerMesEstablimentsDelMunicipi(establiments); // (i)
+        else if (opcio == 10) opcioTop10Titulars(establiments);              // (j)
+        else if (opcio == 11) opcioPlacesUnitat(establiments);               // (k)
         else cerr << "Opcio incorrecta" << endl;
 
         mostrarMenu();

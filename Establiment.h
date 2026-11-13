@@ -12,19 +12,21 @@
 using namespace std;
 
 /// Un establiment turístic (una fila del fitxer CSV).
-/// Només guardem els camps que necessitem per mostrar-lo a l'opció 03.
+/// Només guardem els camps que necessitem: els de l'opció 03 i, de la unitat d'allotjament i del titular,
+/// el número de la seva fila a les taules d'Establiments (així no es repeteix el text a cada establiment).
 class Establiment {
 public:
     /** @pre cert
-        @post establiment buit (cadenes buides, places i estances a 0)
+        @post establiment buit (cadenes buides, places, estances, unitat i titular a 0)
     */
     Establiment();
 
     /** @pre places >= 0, estances >= 0
-        @post establiment amb les dades indicades
+        @post establiment amb les dades indicades; unitat i titular són els números de fila de la seva unitat
+             d'allotjament i del seu titular
     */
     Establiment(const string &nom, const string &carrer, const string &numero,
-                const string &numInscripcio, int places, int estances);
+                const string &numInscripcio, int places, int estances, int unitat, int titular);
 
     /** @pre cert
         @post retorna el rètol (nom) de l'establiment
@@ -56,6 +58,16 @@ public:
     */
     int estances() const;
 
+    /** @pre cert
+        @post retorna el número de fila de la unitat d'allotjament de l'establiment
+    */
+    int unitat() const;
+
+    /** @pre cert
+        @post retorna el número de fila del titular de l'establiment
+    */
+    int titular() const;
+
 private:
     string a_nom;           ///< Rètol
     string a_carrer;        ///< Nom de la via
@@ -63,6 +75,8 @@ private:
     string a_numInscripcio; ///< Número inscripció
     int a_places;           ///< Total places
     int a_estances;         ///< Total estances
+    int a_unitat;           ///< Número de fila de la unitat d'allotjament
+    int a_titular;          ///< Número de fila del titular
 };
 
 #endif // ESTABLIMENT_H

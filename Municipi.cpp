@@ -6,9 +6,9 @@
 
 #include "Municipi.h"
 
-Municipi::Municipi() {}
+Municipi::Municipi() : a_nMillorCarrer(0) {}
 
-Municipi::Municipi(const string &codi, const string &nom) : a_codi(codi), a_nom(nom) {}
+Municipi::Municipi(const string &codi, const string &nom) : a_codi(codi), a_nom(nom), a_nMillorCarrer(0) {}
 
 string Municipi::codi() const { 
     return a_codi; 
@@ -24,7 +24,13 @@ size_t Municipi::nEstabliments() const {
 
 void Municipi::afegirEstabliment(const Establiment &e) {
     a_establiments.push_back(e);
-    a_carrers[e.carrer()].afegir(e.places(), e.estances());
+    Comptadors &c = a_carrers[e.carrer()];
+    c.afegir(e.places(), e.estances());
+    // només pot canviar el millor carrer el que acabem de comptar; en empat, ens quedem el que va primer per ordre alfabètic
+    if (c.nEstabliments() > a_nMillorCarrer || (c.nEstabliments() == a_nMillorCarrer && e.carrer() < a_millorCarrer)) {
+        a_nMillorCarrer = c.nEstabliments();
+        a_millorCarrer = e.carrer();
+    }
 }
 
 list<Establiment> Municipi::establiments() const {
@@ -40,11 +46,28 @@ CarrerResult Municipi::comptadorsDeCarrer(const string &carrer) const {
 }
 
 CarrerResult Municipi::carrerMesEstabliments() const {
-    CarrerResult millor("", 0, 0, 0);
-    for (map<string, Comptadors>::const_iterator it = a_carrers.begin(); it != a_carrers.end(); ++it) {
-        if (it->second.nEstabliments() > millor.nEstabliments())      // estricte: en empat es queda el primer per ordre alfabètic
-            millor = CarrerResult(it->first, it->second.nEstabliments(), it->second.places(), it->second.estances());
-    }
-    return millor;
+    return comptadorsDeCarrer(a_millorCarrer);      // si no hi ha establiments, a_millorCarrer és buit i dóna tot a 0
 }
 
+pair<int, int> Municipi::totals() const {
+    pair<int, int> t(0, 0);
+    for (map<string, Comptadors>::const_iterator it = a_carrers.begin(); it != a_carrers.end(); ++it) {
+        t.first += it->second.places();
+        t.second += it->second.estances();
+    }
+    return t;
+}
+
+void Municipi::sumarUnitats(vector<int> &places, vector<size_t> &nEstabliments) const {
+    for (list<Establiment>::const_iterator it = a_establiments.begin(); it != a_establiments.end(); ++it) {
+        places[it->unitat()] += it->places();
+        nEstabliments[it->unitat()]++;
+    }
+}
+
+void Municipi::sumarTitulars(vector<int> &places, vector<size_t> &nEstabliments) const {
+    for (list<Establiment>::const_iterator it = a_establiments.begin(); it != a_establiments.end(); ++it) {
+        places[it->titular()] += it->places();
+        nEstabliments[it->titular()]++;
+    }
+}

@@ -6,12 +6,13 @@
 
 #include "Establiment.h"
 
-Establiment::Establiment() : a_places(0), a_estances(0) {}
+Establiment::Establiment() : a_places(0), a_estances(0), a_unitat(0), a_titular(0) {}
 
 Establiment::Establiment(const string &nom, const string &carrer, const string &numero,
-                         const string &numInscripcio, int places, int estances)
+                         const string &numInscripcio, int places, int estances, int unitat, int titular)
     : a_nom(nom), a_carrer(carrer), a_numero(numero),
-      a_numInscripcio(numInscripcio), a_places(places), a_estances(estances) {}
+      a_numInscripcio(numInscripcio), a_places(places), a_estances(estances),
+      a_unitat(unitat), a_titular(titular) {}
 
 string Establiment::nom() const {
     return a_nom;
@@ -35,4 +36,12 @@ int Establiment::places() const {
 
 int Establiment::estances() const {
     return a_estances;
+}
+
+int Establiment::unitat() const {
+    return a_unitat;
+}
+
+int Establiment::titular() const {
+    return a_titular;
 }

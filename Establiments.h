@@ -11,12 +11,14 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <utility>
 #include "Comarca.h"
 #include "MunicipiResult.h"
 #include "MaximMunicipiResult.h"
 #include "CarrerResult.h"
 #include "CarrerMesEstResult.h"
 #include "Top10EstablimentResult.h"
+#include "Top10TitularResult.h"
 
 using namespace std;
 
@@ -69,8 +71,35 @@ public:
     */
     top10EstablimentsResults top10Establiments(int codiComarca) const;
 
+    /** @pre cert
+        @post retorna el total de places i el total d'estances del municipi amb codi IDESCAT codiMunicipi;
+             (0, 0) si el municipi no existeix
+    */
+    pair<int, int> totalsMunicipi(const string &codiMunicipi) const;
+
+    /** @pre cert
+        @post retorna el carrer del municipi codiMunicipi amb més establiments, amb els seus comptadors (en cas
+             d'empat, el primer per ordre alfabètic); carrer buit i tot a 0 si el municipi no existeix
+    */
+    CarrerResult carrerMesEstablimentsDelMunicipi(const string &codiMunicipi) const;
+
+    /** @pre cert
+        @post retorna els (com a màxim) deu titulars (agrupats pel CIF) amb més places; en cas d'empat, els que tenen
+             més establiments i, si encara empaten, per CIF ascendentment. De cada titular es dóna la raó social que va
+             primer per ordre alfabètic, sense comptar les buides
+    */
+    top10TitularsResults top10Titulars() const;
+
+    /** @pre cert
+        @post retorna, per cada unitat d'allotjament de la comarca codiComarca, el total de places dels seus
+             establiments, ordenades pel nom de la unitat; buit si la comarca no existeix
+    */
+    map<string, int> placesUnitat(int codiComarca) const;
+
 private:
     vector<Comarca> a_comarques; ///< cada comarca conté els seus municipis
+    vector<string> a_unitats;    ///< les unitats d'allotjament, per número de fila
+    vector<pair<string, string> > a_titulars; ///< els titulars (CIF i raó social), per número de fila
     map<string, int> a_indexMunicipis;  ///< codi del municipi i codi de la seva comarca
 };
 

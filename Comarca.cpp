@@ -24,21 +24,23 @@ bool Comarca::buida() const {
 
 vector<MunicipiResult> Comarca::resultatMunicipis() const {
     vector<MunicipiResult> resultat;
-    for (map<string, Municipi>::const_iterator it = a_municipis.begin(); it != a_municipis.end(); ++it)
-        resultat.push_back(MunicipiResult(it->second.nom(), it->second.nEstabliments()));
+    for (list<Municipi>::const_iterator it = a_municipis.begin(); it != a_municipis.end(); ++it)
+        resultat.push_back(MunicipiResult(it->nom(), it->nEstabliments()));
     return resultat;
 }
 
 void Comarca::afegirEstabliment(const string &codiMunicipi, const string &nomMunicipi,
                                 const Establiment &e) {
-    map<string, Municipi>::iterator it = a_municipis.find(codiMunicipi);
-    if (it == a_municipis.end())        // municipi nou: el creem
-        it = a_municipis.insert(make_pair(codiMunicipi, Municipi(codiMunicipi, nomMunicipi))).first;
-    it->second.afegirEstabliment(e);
+    map<string, list<Municipi>::iterator>::iterator it = a_index.find(codiMunicipi);
+    if (it == a_index.end()) {          // municipi nou: el posem al final de la llista
+        a_municipis.push_back(Municipi(codiMunicipi, nomMunicipi));
+        it = a_index.insert(make_pair(codiMunicipi, --a_municipis.end())).first;
+    }
+    it->second->afegirEstabliment(e);
     actualitzarTop(e);
 
     // actualitzem el màxim: amb > estricte, en cas d'empat es queda el que hi ha arribat primer
-    size_t n = it->second.nEstabliments();
+    size_t n = it->second->nEstabliments();
     if (n > a_nMaxim) {
         a_nMaxim = n;
         a_codiMaxim = codiMunicipi;
@@ -46,29 +48,51 @@ void Comarca::afegirEstabliment(const string &codiMunicipi, const string &nomMun
 }
 
 const Municipi &Comarca::municipiMaxim() const {
-    return a_municipis.find(a_codiMaxim)->second;
+    return *a_index.find(a_codiMaxim)->second;
 }
 
 list<Establiment> Comarca::establimentsDeMunicipi(const string &codiMunicipi) const {
-    map<string, Municipi>::const_iterator it = a_municipis.find(codiMunicipi);
-    if (it != a_municipis.end()) return it->second.establiments();
+    map<string, list<Municipi>::iterator>::const_iterator it = a_index.find(codiMunicipi);
+    if (it != a_index.end()) return it->second->establiments();
     return list<Establiment>();
 }
 
 CarrerResult Comarca::comptadorsDeCarrer(const string &codiMunicipi, const string &nomCarrer) const {
-    map<string, Municipi>::const_iterator it = a_municipis.find(codiMunicipi);
-    if (it != a_municipis.end()) return it->second.comptadorsDeCarrer(nomCarrer);
+    map<string, list<Municipi>::iterator>::const_iterator it = a_index.find(codiMunicipi);
+    if (it != a_index.end()) return it->second->comptadorsDeCarrer(nomCarrer);
     return CarrerResult(nomCarrer, 0, 0, 0);
+}
+
+pair<int, int> Comarca::totalsMunicipi(const string &codiMunicipi) const {
+    map<string, list<Municipi>::iterator>::const_iterator it = a_index.find(codiMunicipi);
+    if (it != a_index.end()) return it->second->totals();
+    return make_pair(0, 0);
+}
+
+CarrerResult Comarca::carrerMesEstablimentsDelMunicipi(const string &codiMunicipi) const {
+    map<string, list<Municipi>::iterator>::const_iterator it = a_index.find(codiMunicipi);
+    if (it != a_index.end()) return it->second->carrerMesEstabliments();
+    return CarrerResult("", 0, 0, 0);
+}
+
+void Comarca::sumarUnitats(vector<int> &places, vector<size_t> &nEstabliments) const {
+    for (list<Municipi>::const_iterator it = a_municipis.begin(); it != a_municipis.end(); ++it)
+        it->sumarUnitats(places, nEstabliments);
+}
+
+void Comarca::sumarTitulars(vector<int> &places, vector<size_t> &nEstabliments) const {
+    for (list<Municipi>::const_iterator it = a_municipis.begin(); it != a_municipis.end(); ++it)
+        it->sumarTitulars(places, nEstabliments);
 }
 
 CarrerMesEstResult Comarca::carrerMesEstabliments() const {
     CarrerResult millor("", 0, 0, 0);
     string nomMunicipi;
-    for (map<string, Municipi>::const_iterator it = a_municipis.begin(); it != a_municipis.end(); ++it) {
-        CarrerResult r = it->second.carrerMesEstabliments();
-        if (r.nEstabliments() > millor.nEstabliments()) {       // estricte: en empat es queda el municipi de codi més petit
+    for (list<Municipi>::const_iterator it = a_municipis.begin(); it != a_municipis.end(); ++it) {
+        CarrerResult r = it->carrerMesEstabliments();
+        if (r.nEstabliments() > millor.nEstabliments()) {       // estricte: en empat es queda el municipi que surt primer al fitxer
             millor = r;
-            nomMunicipi = it->second.nom();
+            nomMunicipi = it->nom();
         }
     }
     return CarrerMesEstResult(a_nom, nomMunicipi, millor.carrer(), millor.nEstabliments());
