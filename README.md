@@ -1,1 +1,0 @@
-# EDA-PRACTICA-2

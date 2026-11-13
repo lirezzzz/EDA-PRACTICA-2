@@ -1,0 +1,177 @@
+********************
+* 01: Llegir dades *
+********************
+Numero de linies: 112714
+*********************************
+* 02: Codi comarca -> municipis *
+*********************************
+Codi de comarca: 13
+Badalona => 291
+Barcelona => 11418
+Hospitalet de Llobregat, l' => 708
+Sant Adrià de Besòs => 279
+Santa Coloma de Gramenet => 54
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 080193
+Places: 92592 | estances: 45564
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 080193
+Consell de Cent => 159
+****************************
+* 04: Carrer -> comptadors *
+****************************
+Codi de municipi: 080193
+Nom de carrer: Consell de Cent
+Establiments: 159 | places: 828 | estances: 345
+*************************************
+* 05: Municipi amb mes establiments *
+*************************************
+Barcelonès | Barcelona => 11418
+Tarragonès | Salou => 7207
+Alt Empordà | Roses => 5401
+Baix Camp | Cambrils => 3807
+Selva | Lloret de Mar => 3308
+Baix Empordà | Castell d'Aro, Platja d'Aro i s'Agaró => 2958
+Baix Ebre | Ametlla de Mar, l' => 1805
+Garraf | Sitges => 1778
+Baix Penedès | Calafell => 1724
+Aran | Naut Aran => 1323
+Maresme | Pineda de Mar => 870
+Gironès | Girona => 827
+Montsià | Ràpita, la => 694
+Alta Ribagorça | Vall de Boí, la => 492
+Baix Llobregat | Castelldefels => 469
+Cerdanya | Puigcerdà => 324
+Ripollès | Camprodon => 201
+Pallars Sobirà | Esterri d'Àneu => 200
+Vallès Occidental | Terrassa => 190
+Bages | Manresa => 174
+Garrotxa | Olot => 133
+Segrià | Lleida => 122
+Pla de l'Estany | Banyoles => 115
+Pallars Jussà | Tremp => 106
+Priorat | Cornudella de Montsant => 75
+Alt Urgell | Seu d'Urgell, la => 70
+Osona | Vic => 65
+Conca de Barberà | Montblanc => 63
+Terra Alta | Horta de Sant Joan => 58
+Solsonès | Solsona => 58
+Anoia | Igualada => 52
+Noguera | Àger => 51
+Berguedà | Bagà => 46
+Vallès Oriental | Vallromanes => 42
+Alt Camp | Aiguamúrcia => 39
+Alt Penedès | Olèrdola => 36
+Ribera d'Ebre | Rasquera => 33
+Urgell | Tàrrega => 33
+Moianès | Moià => 23
+Lluçanès | Perafita => 17
+Segarra | Cervera => 16
+Garrigues | Borges Blanques, les => 14
+Pla d'Urgell | Mollerussa => 7
+***********************************
+* 06: Carrer amb mes establiments *
+***********************************
+Tarragonès | Salou | Vendrell => 604
+Alt Empordà | Castelló d'Empúries | Delta Muga => 338
+Baix Camp | Cambrils | Diputació => 314
+Baix Empordà | Torroella de Montgrí | Costa Brava => 167
+Barcelonès | Barcelona | Consell de Cent => 159
+Baix Penedès | Calafell | Marítim Sant Joan de Déu => 133
+Aran | Naut Aran | Perimetrau => 133
+Selva | Lloret de Mar | Ponent => 91
+Alta Ribagorça | Vall de Boí, la | Pla de l'Hermita => 87
+Maresme | Santa Susanna | Pins => 86
+Baix Llobregat | Castelldefels | Marítim => 83
+Baix Ebre | Ametlla de Mar, l' | Mar => 53
+Garraf | Sitges | Vilanova => 52
+Montsià | Amposta | Eucaliptus => 44
+Bages | Manresa | Codinella => 38
+Pallars Sobirà | Esterri d'Àneu | Major => 36
+Cerdanya | Alp | Coma Oriola => 35
+Gironès | Girona | Barca => 33
+Segrià | Lleida | Prï¿¿ncep de Viana => 30
+Alt Urgell | Seu d'Urgell, la | Pau Claris => 16
+Priorat | Cornudella de Montsant | Major => 15
+Anoia | Igualada | Rambla Nova => 13
+Solsonès | Riner | EDIFICI NOSTRA SENYORA => 12
+Garrotxa | Olot | Girona => 12
+Osona | Roda de Ter | Josep Puigdollers => 12
+Urgell | Tàrrega | La Granja => 11
+Conca de Barberà | Montblanc | Major => 11
+Ripollès | Ribes de Freser | Balandrau => 10
+Terra Alta | Horta de Sant Joan | Sant Salvador => 10
+Berguedà | Castellar de N'Hug | Orient => 9
+Vallès Occidental | Sant Cugat del Vallès | Sant Esteve (de) => 8
+Vallès Oriental | Gualba | Montseny => 7
+Noguera | Avellanes i Santa Linya, les | Santa Anna => 7
+Pla de l'Estany | Banyoles | Llibertat => 6
+Pallars Jussà | Sarroca de Bellera | Únic => 6
+Moianès | Collsuspina | Major => 5
+Ribera d'Ebre | Móra d'Ebre | de Tivissa => 5
+Segarra | Cervera | Catalunya => 4
+Lluçanès | Perafita | Major => 4
+Alt Penedès | Castellet i la Gornal | Nou => 4
+Alt Camp | Mont-ral | Cadeneta => 3
+Garrigues | Arbeca | Francesc Macià => 3
+Pla d'Urgell | Linyola | Ramon i Cajal => 2
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 13
+Arts Barcelona | places: 1012 | estances: 494
+W Barcelona | places: 954 | estances: 477
+SLS BARCELONA | places: 942 | estances: 471
+HOTEL SOFIA | places: 869 | estances: 466
+Hotel Gran Melià Torre Melina | places: 866 | estances: 432
+Hilton Diagonal Mar | places: 862 | estances: 431
+MOXY BARCELONA | places: 804 | estances: 414
+TEMBO BARCELONA | places: 770 | estances: 280
+Barceló Sants | places: 754 | estances: 377
+Leonardo Royal Hotel Barcelona Forum | places: 736 | estances: 368
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 34
+Camping La Masia | places: 2448 | estances: 816
+CAMPING CAN MARTÍ | places: 1971 | estances: 657
+Bella Terra | places: 1908 | estances: 636
+Cala Llevadó | places: 1836 | estances: 612
+CAMPING SANTA ELENA | places: 1695 | estances: 565
+Gran Hotel Don Juan Resort | places: 1675 | estances: 820
+Solmar | places: 1308 | estances: 436
+ALANNIA EL PINAR | places: 1140 | estances: 380
+Turismar | places: 1080 | estances: 360
+Tossa | places: 969 | estances: 323
+***********************
+* 10: Top 10 titulars *
+***********************
+No aplica | No aplica | places: 183881 | establiments: 85585
+A63776306 | PORT AVENTURA ENTERTAINMENT SAU | places: 7660 | establiments: 12
+A08568883 | INICIATIVAS TURISTICAS SA | places: 5353 | establiments: 13
+A17073693 | CAMPING LES DUNES, SA | places: 4722 | establiments: 1
+A43055177 | CAMPING SANGULÍ S.A.U. | places: 4485 | establiments: 1
+B58474214 | MOOREA SL | places: 4317 | establiments: 2
+B61676490 | NEMBA RCH, SL | places: 4116 | establiments: 1
+A17075649 | TURISCAMP, SA | places: 3942 | establiments: 1
+A08371346 | ESSENDI HOSPITALITY SPAIN SA | places: 3921 | establiments: 15
+A17043670 | PROOCIONES TURISTICAS MEYBRU S.A | places: 3795 | establiments: 1
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 13
+Allotjament sencer => 10874 places
+Apartaments => 1549 places
+Habitació => 92708 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 34
+Allotjament sencer => 6930 places
+Apartaments => 1884 places
+Habitació => 44256 places
+Unitats d'acampada => 22098 places

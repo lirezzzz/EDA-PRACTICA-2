@@ -1,0 +1,139 @@
+********************
+* 01: Llegir dades *
+********************
+Numero de linies: 225
+*************************************
+* 05: Municipi amb mes establiments *
+*************************************
+Barcelonès | Barcelona => 19
+Tarragonès | Salou => 16
+Alt Empordà | Roses => 11
+Selva | Lloret de Mar => 7
+Baix Camp | Mont-roig del Camp => 7
+Baix Empordà | Torroella de Montgrí => 6
+Baix Penedès | Vendrell, el => 6
+Baix Ebre | Ametlla de Mar, l' => 5
+Cerdanya | Bellver de Cerdanya => 4
+Garraf | Sitges => 4
+Maresme | Pineda de Mar => 3
+Montsià | Alcanar => 2
+Pla de l'Estany | Banyoles => 2
+Gironès | Girona => 2
+Alta Ribagorça | Vall de Boí, la => 2
+Pallars Sobirà | Alt Àneu => 1
+Noguera | Avellanes i Santa Linya, les => 1
+Ripollès | Camprodon => 1
+Baix Llobregat | Esplugues de Llobregat => 1
+Vallès Oriental | Granollers => 1
+Aran | Naut Aran => 1
+Solsonès | Odèn => 1
+Pallars Jussà | Pobla de Segur, la => 1
+Berguedà | Saldes => 1
+Vallès Occidental | Sant Cugat del Vallès => 1
+Bages | Sant Mateu de Bages => 1
+Garrotxa | Santa Pau => 1
+***********************************
+* 06: Carrer amb mes establiments *
+***********************************
+Barcelonès | Barcelona | Arago => 2
+Tarragonès | Tarragona | Cerdanya => 2
+Ripollès | Camprodon | Antic Major => 1
+Maresme | Vilassar de Mar | Argentona => 1
+Berguedà | Saldes | B-400 km 13,5 => 1
+Solsonès | Odèn | CAL PASTOR => 1
+Alt Empordà | Roses | Canyelles => 1
+Montsià | Alcanar | Columbretes => 1
+Baix Empordà | Torroella de Montgrí | Costa Brava => 1
+Cerdanya | Bellver de Cerdanya | DE SANSOR DE BALTARGA => 1
+Selva | Lloret de Mar | Europa => 1
+Garraf | Sitges | Europa => 1
+Baix Llobregat | Esplugues de Llobregat | Ignasi Iglesias => 1
+Gironès | Girona | Jaume Pons i Martí => 1
+Baix Ebre | Ametlla de Mar, l' | Juan d'Almenara => 1
+Baix Penedès | Calafell | Llorenç de Vilallonga => 1
+Pallars Jussà | Pobla de Segur, la | Major => 1
+Baix Camp | Mont-roig del Camp | Marítim => 1
+Aran | Naut Aran | Perimetrau => 1
+Alta Ribagorça | Vall de Boí, la | Salineres => 1
+Vallès Oriental | Granollers | Turó d'en Bruguet => 1
+Bages | Sant Mateu de Bages | Valls  Torroella-Salo => 1
+Garrotxa | Santa Pau | de Sant Marti => 1
+Pla de l'Estany | Serinyà | de Sant Sebastià => 1
+Pallars Sobirà | Alt Àneu | de l' Església => 1
+Vallès Occidental | Sant Cugat del Vallès | de la Vall dOr => 1
+Noguera | Avellanes i Santa Linya, les | de tartareu, afores => 1
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 171175
+Balears => 1
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 170340
+Canyers => 1
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 082191
+Argentona => 1
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 431482
+Cerdanya => 2
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 13
+Atlas | places: 36 | estances: 20
+Hostal Lesseps | places: 25 | estances: 15
+Sense especificar | places: 6 | estances: 0
+Sense especificar | places: 6 | estances: 0
+AVENIDA EUROPA | places: 2 | estances: 1
+Sense especificar | places: 1 | estances: 0
+Sense especificar | places: 1 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 21
+H Top Olympic | places: 1022 | estances: 517
+ROSA DE ABRIL | places: 30 | estances: 11
+holidayinalella | places: 13 | estances: 0
+Sense especificar | places: 12 | estances: 6
+Sense especificar | places: 11 | estances: 5
+Sense especificar | places: 11 | estances: 4
+Sense especificar | places: 11 | estances: 4
+Sense especificar | places: 8 | estances: 4
+Sense especificar | places: 7 | estances: 4
+Matarolux24 | places: 7 | estances: 0
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 36
+Sense especificar | places: 6 | estances: 0
+Sense especificar | places: 5 | estances: 0
+Sense especificar | places: 4 | estances: 0
+Sense especificar | places: 3 | estances: 0
+Sense especificar | places: 2 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+***********************
+* 10: Top 10 titulars *
+***********************
+B17528068 | PROYECTO EMPRESARIAL TENA SL | places: 1022 | establiments: 1
+No aplica | No aplica | places: 336 | establiments: 171
+B59381194 | FONDESE, SL | places: 218 | establiments: 1
+B60434511 | Camping Pedraforca S.L. | places: 198 | establiments: 1
+A59837369 | HOTEL ESPLUGUES, SA | places: 78 | establiments: 1
+B17929944 | GREEN AND GREEN 2007, SL | places: 36 | establiments: 1
+B25673807 | GORDO TURCH SL | places: 33 | establiments: 1
+B67111856 | ABEL ABRIL, SL | places: 30 | establiments: 1
+B62392972 | REFORMAS Y CONSTRUCCIONES PUIG, SL | places: 11 | establiments: 1
+B08391104 | INMOBILIARIA VALL D¿ANEU S.L | places: 8 | establiments: 1

@@ -1,0 +1,101 @@
+********************
+* 01: Llegir dades *
+********************
+Numero de linies: 225
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 080193
+Places: 75 | estances: 35
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 439057
+Places: 6 | estances: 0
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 171523
+Places: 0 | estances: 0
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 431482
+Places: 11 | estances: 0
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 170950
+Places: 4 | estances: 2
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 080193
+Arago => 2
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 439057
+Vendrell => 2
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 171523
+Canyelles => 1
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 170950
+Europa => 1
+***********************
+* 10: Top 10 titulars *
+***********************
+B17528068 | PROYECTO EMPRESARIAL TENA SL | places: 1022 | establiments: 1
+No aplica | No aplica | places: 336 | establiments: 171
+B59381194 | FONDESE, SL | places: 218 | establiments: 1
+B60434511 | Camping Pedraforca S.L. | places: 198 | establiments: 1
+A59837369 | HOTEL ESPLUGUES, SA | places: 78 | establiments: 1
+B17929944 | GREEN AND GREEN 2007, SL | places: 36 | establiments: 1
+B25673807 | GORDO TURCH SL | places: 33 | establiments: 1
+B67111856 | ABEL ABRIL, SL | places: 30 | establiments: 1
+B62392972 | REFORMAS Y CONSTRUCCIONES PUIG, SL | places: 11 | establiments: 1
+B08391104 | INMOBILIARIA VALL D¿ANEU S.L | places: 8 | establiments: 1
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 2
+Allotjament sencer => 0 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 8
+Allotjament sencer => 29 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 10
+Allotjament sencer => 40 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 13
+Allotjament sencer => 14 places
+Habitació => 63 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 21
+Allotjament sencer => 104 places
+Apartaments => 30 places
+Habitació => 1022 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 34
+Allotjament sencer => 10 places
+Habitació => 4 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 36
+Allotjament sencer => 20 places

@@ -445,7 +445,7 @@ Vallès Occidental | Sant Cugat del Vallès | Sant Esteve (de) => 8
 Vallès Oriental | Gualba | Montseny => 7
 Noguera | Avellanes i Santa Linya, les | Santa Anna => 7
 Pla de l'Estany | Banyoles | Llibertat => 6
-Pallars Jussà | Conca de Dalt | Únic => 6
+Pallars Jussà | Sarroca de Bellera | Únic => 6
 Moianès | Collsuspina | Major => 5
 Ribera d'Ebre | Móra d'Ebre | de Tivissa => 5
 Segarra | Cervera | Catalunya => 4
@@ -453,7 +453,7 @@ Lluçanès | Perafita | Major => 4
 Alt Penedès | Castellet i la Gornal | Nou => 4
 Alt Camp | Mont-ral | Cadeneta => 3
 Garrigues | Arbeca | Francesc Macià => 3
-Pla d'Urgell | Ivars d'Urgell | Barbens => 2
+Pla d'Urgell | Linyola | Ramon i Cajal => 2
 ***************************
 * 07: Top 10 establiments *
 ***************************
@@ -538,3 +538,122 @@ Yerla | places: 285 | estances: 95
 Val de Neu | places: 266 | estances: 120
 Parador Nacional Vall d'Aran | places: 240 | estances: 120
 AC Hotel Baqueira | places: 192 | estances: 96
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 171181
+Places: 7898 | estances: 2262
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 170715
+Places: 186 | estances: 44
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 170139
+Places: 3915 | estances: 1139
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 170195
+Places: 484 | estances: 141
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 170237
+Places: 15622 | estances: 5535
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 171100
+Places: 1905 | estances: 542
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 170433
+Fontalba => 4
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 080193
+Consell de Cent => 159
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 170335
+N-II => 25
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 170340
+Torre Valentina => 140
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 172137
+Paradís => 16
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 170062
+Coma Oriola => 35
+***********************
+* 10: Top 10 titulars *
+***********************
+No aplica | No aplica | places: 183881 | establiments: 85585
+A63776306 | PORT AVENTURA ENTERTAINMENT SAU | places: 7660 | establiments: 12
+A08568883 | INICIATIVAS TURISTICAS SA | places: 5353 | establiments: 13
+A17073693 | CAMPING LES DUNES, SA | places: 4722 | establiments: 1
+A43055177 | CAMPING SANGULÍ S.A.U. | places: 4485 | establiments: 1
+B58474214 | MOOREA SL | places: 4317 | establiments: 2
+B61676490 | NEMBA RCH, SL | places: 4116 | establiments: 1
+A17075649 | TURISCAMP, SA | places: 3942 | establiments: 1
+A08371346 | ESSENDI HOSPITALITY SPAIN SA | places: 3921 | establiments: 15
+A17043670 | PROOCIONES TURISTICAS MEYBRU S.A | places: 3795 | establiments: 1
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 4
+Allotjament sencer => 1361 places
+Apartaments => 123 places
+Habitació => 1795 places
+Unitats d'acampada => 2625 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 9
+Allotjament sencer => 11164 places
+Apartaments => 217 places
+Habitació => 3095 places
+Unitats d'acampada => 4305 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 20
+Allotjament sencer => 2470 places
+Apartaments => 42 places
+Habitació => 3662 places
+Unitats d'acampada => 744 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 27
+Allotjament sencer => 288 places
+Habitació => 242 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 34
+Allotjament sencer => 6930 places
+Apartaments => 1884 places
+Habitació => 44256 places
+Unitats d'acampada => 22098 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 39
+Allotjament sencer => 3987 places
+Apartaments => 72 places
+Habitació => 2678 places
+Unitats d'acampada => 3069 places

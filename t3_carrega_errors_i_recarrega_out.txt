@@ -1,0 +1,119 @@
+*********************************
+* 02: Codi comarca -> municipis *
+*********************************
+Codi de comarca: 5
+*************************************
+* 03: Codi municipi -> establiments *
+*************************************
+Codi de municipi: 080193
+*************************************
+* 05: Municipi amb mes establiments *
+*************************************
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 2
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 080193
+Places: 0 | estances: 0
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 080193
+ => 0
+***********************
+* 10: Top 10 titulars *
+***********************
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 2
+********************
+* 01: Llegir dades *
+********************
+Numero de linies: 0
+*********************************
+* 02: Codi comarca -> municipis *
+*********************************
+Codi de comarca: 2
+*************************************
+* 05: Municipi amb mes establiments *
+*************************************
+***********************
+* 10: Top 10 titulars *
+***********************
+********************
+* 01: Llegir dades *
+********************
+Numero de linies: 225
+*************************************
+* 05: Municipi amb mes establiments *
+*************************************
+Barcelonès | Barcelona => 19
+Tarragonès | Salou => 16
+Alt Empordà | Roses => 11
+Selva | Lloret de Mar => 7
+Baix Camp | Mont-roig del Camp => 7
+Baix Empordà | Torroella de Montgrí => 6
+Baix Penedès | Vendrell, el => 6
+Baix Ebre | Ametlla de Mar, l' => 5
+Cerdanya | Bellver de Cerdanya => 4
+Garraf | Sitges => 4
+Maresme | Pineda de Mar => 3
+Montsià | Alcanar => 2
+Pla de l'Estany | Banyoles => 2
+Gironès | Girona => 2
+Alta Ribagorça | Vall de Boí, la => 2
+Pallars Sobirà | Alt Àneu => 1
+Noguera | Avellanes i Santa Linya, les => 1
+Ripollès | Camprodon => 1
+Baix Llobregat | Esplugues de Llobregat => 1
+Vallès Oriental | Granollers => 1
+Aran | Naut Aran => 1
+Solsonès | Odèn => 1
+Pallars Jussà | Pobla de Segur, la => 1
+Berguedà | Saldes => 1
+Vallès Occidental | Sant Cugat del Vallès => 1
+Bages | Sant Mateu de Bages => 1
+Garrotxa | Santa Pau => 1
+********************
+* 01: Llegir dades *
+********************
+Numero de linies: 225
+*********************************
+* 02: Codi comarca -> municipis *
+*********************************
+Codi de comarca: 5
+Vall de Boí, la => 2
+*************************************
+* 05: Municipi amb mes establiments *
+*************************************
+Barcelonès | Barcelona => 19
+Tarragonès | Salou => 16
+Alt Empordà | Roses => 11
+Selva | Lloret de Mar => 7
+Baix Camp | Mont-roig del Camp => 7
+Baix Empordà | Torroella de Montgrí => 6
+Baix Penedès | Vendrell, el => 6
+Baix Ebre | Ametlla de Mar, l' => 5
+Cerdanya | Bellver de Cerdanya => 4
+Garraf | Sitges => 4
+Maresme | Pineda de Mar => 3
+Montsià | Alcanar => 2
+Pla de l'Estany | Banyoles => 2
+Gironès | Girona => 2
+Alta Ribagorça | Vall de Boí, la => 2
+Pallars Sobirà | Alt Àneu => 1
+Noguera | Avellanes i Santa Linya, les => 1
+Ripollès | Camprodon => 1
+Baix Llobregat | Esplugues de Llobregat => 1
+Vallès Oriental | Granollers => 1
+Aran | Naut Aran => 1
+Solsonès | Odèn => 1
+Pallars Jussà | Pobla de Segur, la => 1
+Berguedà | Saldes => 1
+Vallès Occidental | Sant Cugat del Vallès => 1
+Bages | Sant Mateu de Bages => 1
+Garrotxa | Santa Pau => 1

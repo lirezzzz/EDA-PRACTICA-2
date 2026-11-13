@@ -168,28 +168,28 @@ Garrotxa | Santa Pau => 1
 Barcelonès | Barcelona | Arago => 2
 Tarragonès | Tarragona | Cerdanya => 2
 Ripollès | Camprodon | Antic Major => 1
+Maresme | Vilassar de Mar | Argentona => 1
 Berguedà | Saldes | B-400 km 13,5 => 1
 Solsonès | Odèn | CAL PASTOR => 1
-Baix Empordà | Begur | Cap Sa Sal (porta 159) => 1
-Selva | Fogars de la Selva | Casanovas => 1
+Alt Empordà | Roses | Canyelles => 1
 Montsià | Alcanar | Columbretes => 1
-Baix Camp | Cambrils | Diputació => 1
-Cerdanya | Guils de Cerdanya | Gomà => 1
+Baix Empordà | Torroella de Montgrí | Costa Brava => 1
+Cerdanya | Bellver de Cerdanya | DE SANSOR DE BALTARGA => 1
+Selva | Lloret de Mar | Europa => 1
+Garraf | Sitges | Europa => 1
 Baix Llobregat | Esplugues de Llobregat | Ignasi Iglesias => 1
 Gironès | Girona | Jaume Pons i Martí => 1
 Baix Ebre | Ametlla de Mar, l' | Juan d'Almenara => 1
 Baix Penedès | Calafell | Llorenç de Vilallonga => 1
 Pallars Jussà | Pobla de Segur, la | Major => 1
+Baix Camp | Mont-roig del Camp | Marítim => 1
 Aran | Naut Aran | Perimetrau => 1
-Alt Empordà | Cadaqués | Quers => 1
 Alta Ribagorça | Vall de Boí, la | Salineres => 1
-Garrotxa | Olot | Sant Ferriol => 1
 Vallès Oriental | Granollers | Turó d'en Bruguet => 1
 Bages | Sant Mateu de Bages | Valls  Torroella-Salo => 1
-Pla de l'Estany | Banyoles | Verdaguer => 1
-Maresme | Alella | de Barcelona => 1
+Garrotxa | Santa Pau | de Sant Marti => 1
+Pla de l'Estany | Serinyà | de Sant Sebastià => 1
 Pallars Sobirà | Alt Àneu | de l' Església => 1
-Garraf | Canyelles | de la Selva Maravillas => 1
 Vallès Occidental | Sant Cugat del Vallès | de la Vall dOr => 1
 Noguera | Avellanes i Santa Linya, les | de tartareu, afores => 1
 ***************************
@@ -242,3 +242,92 @@ CAL PASTOR 1 | places: 7 | estances: 4
 ***************************
 Codi de comarca: 40
 Estudi | places: 3 | estances: 1
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 171181
+Places: 4 | estances: 0
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 170237
+Places: 4 | estances: 0
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 431482
+Places: 11 | estances: 0
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 080193
+Places: 75 | estances: 35
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 170950
+Europa => 1
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 080193
+Arago => 2
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 171175
+Balears => 1
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 170340
+Canyers => 1
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 172137
+Camelia => 1
+***********************
+* 10: Top 10 titulars *
+***********************
+B17528068 | PROYECTO EMPRESARIAL TENA SL | places: 1022 | establiments: 1
+No aplica | No aplica | places: 336 | establiments: 171
+B59381194 | FONDESE, SL | places: 218 | establiments: 1
+B60434511 | Camping Pedraforca S.L. | places: 198 | establiments: 1
+A59837369 | HOTEL ESPLUGUES, SA | places: 78 | establiments: 1
+B17929944 | GREEN AND GREEN 2007, SL | places: 36 | establiments: 1
+B25673807 | GORDO TURCH SL | places: 33 | establiments: 1
+B67111856 | ABEL ABRIL, SL | places: 30 | establiments: 1
+B62392972 | REFORMAS Y CONSTRUCCIONES PUIG, SL | places: 11 | establiments: 1
+B08391104 | INMOBILIARIA VALL D¿ANEU S.L | places: 8 | establiments: 1
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 7
+Allotjament sencer => 11 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 9
+Allotjament sencer => 40 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 20
+Allotjament sencer => 6 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 34
+Allotjament sencer => 10 places
+Habitació => 4 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 35
+Allotjament sencer => 7 places
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 40
+Habitació => 3 places

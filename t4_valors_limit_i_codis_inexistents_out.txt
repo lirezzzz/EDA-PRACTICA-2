@@ -1,0 +1,125 @@
+********************
+* 01: Llegir dades *
+********************
+Numero de linies: 225
+*********************************
+* 02: Codi comarca -> municipis *
+*********************************
+Codi de comarca: 0
+*********************************
+* 02: Codi comarca -> municipis *
+*********************************
+Codi de comarca: -3
+*********************************
+* 02: Codi comarca -> municipis *
+*********************************
+Codi de comarca: 44
+*********************************
+* 02: Codi comarca -> municipis *
+*********************************
+Codi de comarca: 100000
+*********************************
+* 02: Codi comarca -> municipis *
+*********************************
+Codi de comarca: 7
+Sant Mateu de Bages => 1
+*************************************
+* 03: Codi municipi -> establiments *
+*************************************
+Codi de municipi: 999999
+*************************************
+* 03: Codi municipi -> establiments *
+*************************************
+Codi de municipi: 000000
+*************************************
+* 03: Codi municipi -> establiments *
+*************************************
+Codi de municipi: 430120
+Sense especificar | Forti | num: 00019 | Número inscripció: HUTT-004943 | places: 0 | estances: 0
+****************************
+* 04: Carrer -> comptadors *
+****************************
+Codi de municipi: 999999
+Nom de carrer: X
+Establiments: 0 | places: 0 | estances: 0
+****************************
+* 04: Carrer -> comptadors *
+****************************
+Codi de municipi: 080193
+Nom de carrer: Carrer que no existeix
+Establiments: 0 | places: 0 | estances: 0
+****************************
+* 04: Carrer -> comptadors *
+****************************
+Codi de municipi: 080193
+Nom de carrer: 
+Establiments: 0 | places: 0 | estances: 0
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 0
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: -1
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 44
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 15
+Sense especificar | places: 4 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Cal Cardina | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+***************************
+* 07: Top 10 establiments *
+***************************
+Codi de comarca: 8
+Sense especificar | places: 9 | estances: 0
+Sense especificar | places: 8 | estances: 0
+Sense especificar | places: 6 | estances: 0
+Sense especificar | places: 4 | estances: 0
+Sense especificar | places: 2 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+Sense especificar | places: 0 | estances: 0
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 999999
+Places: 0 | estances: 0
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 999999
+ => 0
+***************************
+* 08: Totals del municipi *
+***************************
+Codi de municipi: 430120
+Places: 0 | estances: 0
+************************************************
+* 09: Carrer amb mes establiments del municipi *
+************************************************
+Codi de municipi: 430120
+Forti => 1
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 0
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 44
+***************************************
+* 11: Places per unitat d'allotjament *
+***************************************
+Codi de comarca: 39
+Allotjament sencer => 0 places

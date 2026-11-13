@@ -1,0 +1,36 @@
+01
+/u/prof/dfiguls/Public/establimentsCurt.csv
+04
+082299
+Valls  Torroella-Salo
+04
+080351
+de Sant Antoni (Núm. 157-261)
+04
+170139
+Cap Sa Sal (porta 159)
+04
+081901
+B-400 km 13,5
+04
+080193
+Fluvià
+04
+080193
+FERNANDO POO
+04
+080193
+arago
+04
+080193
+Arago 
+04
+080193
+Arago
+04
+431482
+Cerdanya
+04
+171241
+Comtat de Pals-Golf
+0
