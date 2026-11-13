@@ -13,13 +13,12 @@ No coneixem cap error. Les limitacions que sí coneixem estan a l'apartat 8.
 2. COM COMPILAR I EXECUTAR
 --------------------------
 Compilar:             g++ -std=c++11 -O2 -o programa *.cpp
-Executar una prova:   ./programa < t1_oficial_curt_11_opcions.txt
-Totes les proves:     ./executar_proves.sh      (compila, executa cada prova tN_*.txt i compara la seva sortida
-                                                 amb la sortida esperada, que és la del fitxer tN_*_out.txt)
+Executar una prova:   ./programa < t1.txt
+Totes les proves:     ./executar_proves.sh      (compila, executa t1..t8 i compara cada sortida amb tN_out.txt)
 
 El menú surt per cerr i el resultat per cout, com demana l'enunciat. Tota l'entrada es llegeix de l'entrada
 estàndard. Les proves llegeixen els CSV de /u/prof/dfiguls/Public/, per tant s'han d'executar a bas.udg.edu.
-Per provar-ho en un altre ordinador cal canviar el path de l'opció 01 dins dels fitxers tN_*.txt.
+Per provar-ho en un altre ordinador cal canviar el path de l'opció 01 dins dels fitxers tN.txt.
 
 
 3. FITXERS DEL LLIURAMENT
@@ -27,7 +26,7 @@ Per provar-ho en un altre ordinador cal canviar el path de l'opció 01 dins dels
 Codi font:      main.cpp, Establiments, Comarca, Municipi, Establiment, Comptadors i ClauTop (.h i .cpp),
                 les classes de resultat (MunicipiResult, MaximMunicipiResult, CarrerResult, CarrerMesEstResult,
                 Top10EstablimentResult i Top10TitularResult) i eines.h / eines.cpp (donats pel professor).
-Proves:         t1 ... t8: cada prova té un fitxer d'entrada tN_descripcio.txt i la sortida esperada tN_descripcio_out.txt.
+Proves:         t1.txt ... t8.txt (entrades) i t1_out.txt ... t8_out.txt (sortides esperades).
 Script:         executar_proves.sh
 Documentació:   carpeta html (generada amb doxygen; obrir html/index.html) i informe.pdf.
 
@@ -88,30 +87,21 @@ CM = carrers d'un municipi, C = comarques):
 
 7. JOCS DE PROVES
 -----------------
-Cada prova són dos fitxers: l'entrada (tN_descripcio.txt) i la sortida esperada (tN_descripcio_out.txt). El nom de
-la prova diu què comprova.
-t1_oficial_curt_11_opcions
-    Joc de proves oficial amb establimentsCurt.csv (entrada i sortida del professor): les 11 opcions.
-t2_oficial_llarg_11_opcions
-    Joc de proves oficial amb establimentsLlarg.csv: les 11 opcions amb el fitxer complet (112714 files).
-t3_carrega_errors_i_recarrega
-    Càrrega i errors d'entrada: consultes abans de llegir dades, un fitxer que no existeix, tornar a llegir les
+Cada prova són dos fitxers: l'entrada (tN.txt) i la sortida esperada (tN_out.txt).
+t1  Joc de proves oficial amb establimentsCurt.csv (entrada i sortida del professor): les 11 opcions.
+t2  Joc de proves oficial amb establimentsLlarg.csv: les 11 opcions amb el fitxer complet (112714 files).
+t3  Càrrega i errors d'entrada: consultes abans de llegir dades, un fitxer que no existeix, tornar a llegir les
     dades (no s'han de duplicar), opcions que no existeixen (12, 99, -4) i entrada que acaba sense el 0 final.
-t4_valors_limit_i_codis_inexistents
-    Comarques 0, -3, 44 i 100000; municipis que no existeixen; carrer que no existeix i carrer buit; comarca amb
-    menys de 10 establiments al top 10 i comarca amb més de 10; municipi d'un sol establiment; (h), (i) i (k)
-    amb dades que no hi són.
-t5_empats
-    Carrers empatats en un municipi (es tria el primer per ordre alfabètic), empats a (e) i (f), establiments amb
-    les mateixes places i estances al top 10, i el top 10 de titulars.
-t6_noms_de_carrer
-    Noms de carrer a l'opció 04: amb espais dobles, parèntesis, comes, accents i majúscules; el nom no es troba
+t4  Valors límit i codis que no existeixen: comarques 0, -3, 44 i 100000; municipis que no existeixen; carrer que
+    no existeix i carrer buit; comarca amb menys de 10 establiments al top 10 i comarca amb més de 10; municipi
+    d'un sol establiment; (h), (i) i (k) amb dades que no hi són.
+t5  Empats: carrers empatats en un municipi (es tria el primer per ordre alfabètic), empats a (e) i (f),
+    establiments amb les mateixes places i estances al top 10, i el top 10 de titulars.
+t6  Noms de carrer a l'opció 04: amb espais dobles, parèntesis, comes, accents i majúscules; el nom no es troba
     si canvia una majúscula o hi ha un espai al final.
-t7_totals_titulars_i_unitats_curt
-    (h), (i), (j) i (k) amb el fitxer curt: total de places i estances, carrer més gran, top 10 de titulars i
+t7  (h), (i), (j) i (k) amb el fitxer curt: total de places i estances, carrer més gran, top 10 de titulars i
     places per unitat en set comarques.
-t8_fitxer_llarg_municipis_grans
-    Fitxer llarg amb municipis i comarques grans (Barcelona, Barcelonès, Selva): comprova el funcionament i el
+t8  Fitxer llarg amb municipis i comarques grans (Barcelona, Barcelonès, Selva): comprova el funcionament i el
     temps (menys d'un segon) amb les 112714 files.
 Les sortides esperades de t1 i t2 són les del professor. Les de t3 a t8 les ha generat el nostre programa.
 
