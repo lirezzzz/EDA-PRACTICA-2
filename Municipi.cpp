@@ -28,7 +28,7 @@ void Municipi::afegirEstabliment(const Establiment &e) {
 }
 
 list<Establiment> Municipi::establiments() const {
-    return list<Establiment>(a_establiments.begin(), a_establiments.end());
+    return a_establiments;
 }
 
 CarrerResult Municipi::comptadorsDeCarrer(const string &carrer) const {

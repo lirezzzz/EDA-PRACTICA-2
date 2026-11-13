@@ -70,7 +70,7 @@ public:
 private:
     string a_codi;                    ///< Codi Municipi (IDESCAT)
     string a_nom;                     ///< Municipi
-    vector<Establiment> a_establiments; ///< els establiments del municipi, en ordre del fitxer
+    list<Establiment> a_establiments;   ///< els establiments del municipi, en ordre del fitxer
     map<string, Comptadors> a_carrers; ///< nom del carrer -> comptadors
 };
 
