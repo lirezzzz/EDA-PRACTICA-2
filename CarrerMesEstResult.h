@@ -12,7 +12,7 @@
 
 using namespace std;
 
-/// Un element del resultat de l'opció (f): el carrer amb més establiments d'una comarca.
+/// Un element del resultat de l'opció (f) el carrer amb més establiments d'una comarca.
 class CarrerMesEstResult {
 public:
     /** @pre cert

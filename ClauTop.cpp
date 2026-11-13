@@ -22,15 +22,15 @@ string ClauTop::nom() const {
 }
 
 bool ClauTop::operator<(const ClauTop &altra) const {
-    // Més places primer (ordre descendent)
+    // Més places primer (descendent)
     if (a_places != altra.a_places)
         return a_places > altra.a_places;
 
-    // En cas d'empat, més estances primer (ordre descendent)
+    // En cas d'empat, més estances primer (descendent)
     if (a_estances != altra.a_estances)
         return a_estances > altra.a_estances;
 
-    // Si tornen a empatar, l'ordre més petit primer (ordre ascendent)
+    // Si tornen a empatar, l'ordre més petit primer (ascendent)
     return a_ordre < altra.a_ordre;
 }
 

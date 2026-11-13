@@ -44,8 +44,9 @@ CarrerResult Municipi::carrerMesEstabliments() const {
 
 pair<int, int> Municipi::totals() const {
     pair<int, int> t(0, 0);
+    // sumem els comptadors de cada carrer, així no cal recórrer tots els establiments
     for (map<string, Comptadors>::const_iterator it = a_carrers.begin(); it != a_carrers.end(); ++it) {
-        t.first += it->second.places();
+        t.first += it->second.places(); // first són les places i second les estances, de tots els carrers del municipi
         t.second += it->second.estances();
     }
     return t;

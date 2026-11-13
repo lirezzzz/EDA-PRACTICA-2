@@ -26,14 +26,14 @@ void mostrarTitol(const string &titol) {
 void mostrarMenu() {
     cerr << endl;
     cerr << "01: Llegir dades" << endl;                  // (a)
-    cerr << "02: Codi comarca -> municipis" << endl;      // (b)
-    cerr << "03: Codi municipi -> establiments" << endl;  // (c)
+    cerr <<"02: Codi comarca -> municipis" << endl;      // (b)
+    cerr<< "03: Codi municipi -> establiments" << endl;  // (c)
     cerr << "04: Comptadors de carrer" << endl;              // (d)
     cerr << "05: Municipi amb mes establiments" << endl;    // (e)
-    cerr << "06: Carrer amb mes establiments" << endl;       // (f)
+    cerr <<"06: Carrer amb mes establiments" << endl;       // (f)
     cerr << "07: Top 10 establiments per comarca" << endl;   // (g)
     cerr << "08: Totals del municipi" << endl;                // (h)
-    cerr << "09: Carrer amb mes establiments del municipi" << endl; // (i)
+    cerr<< "09: Carrer amb mes establiments del municipi" << endl; // (i)
     cerr << "10: Top 10 titulars" << endl;                    // (j)
     cerr << "11: Places per unitat d'allotjament" << endl;     // (k)
     cerr << "0: Acabar" << endl;
@@ -46,6 +46,7 @@ void mostrarMenu() {
 void opcioLlegirDades(Establiments &establiments) {
     string path;
     cin >> path;
+
     size_t n = establiments.llegirDades(path);
     mostrarTitol("01: Llegir dades");
     cout << "Numero de linies: " << n << endl;
@@ -58,6 +59,7 @@ void opcioMunicipisPerComarca(const Establiments &establiments) {
     int codi;
     cin >> codi;
     mostrarTitol("02: Codi comarca -> municipis");
+
     cout << "Codi de comarca: " << codi << endl;
     for (const MunicipiResult &m : establiments.municipisPerComarca(codi))
         cout << m.nom() << " => " << m.nEstabliments() << endl;
@@ -69,6 +71,7 @@ void opcioMunicipisPerComarca(const Establiments &establiments) {
 string formatNumero(const string &numero) {
     if (numero.empty() or numero[0] < '0' or numero[0] > '9' or numero.length() >= 5)
         return numero;
+        
     return string(5 - numero.length(), '0') + numero;
 }
 

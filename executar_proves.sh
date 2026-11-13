@@ -1,10 +1,3 @@
-#!/bin/bash
-# Script de proves de la Practica 1.
-# Compila el programa i l'executa amb cada joc de proves (els fitxers t1.txt, t2.txt ...), una prova darrere l'altra
-# i sense preguntar res. Per a cada prova compara la sortida amb la sortida esperada (la del fitxer tN_out.txt).
-# La sortida pel canal d'error (el menu) es descarta, perque no forma part de la sortida.
-# Cal executar-lo a bas.udg.edu, perque les proves llegeixen els CSV de /u/prof/dfiguls/Public/.
-
 g++ -std=c++11 -O2 -o programa *.cpp || { echo "ERROR: el programa no compila"; exit 1; }
 
 total=0
@@ -12,7 +5,7 @@ correctes=0
 for entrada in t[0-9]*.txt; do
     # saltem les sortides esperades i les que genera aquest mateix script
     case $entrada in
-        *_out.txt|*_out_meu.txt) continue ;;
+        *_out.txt|*_meu.txt) continue ;;
     esac
     nom=${entrada%.txt}
     total=$((total + 1))

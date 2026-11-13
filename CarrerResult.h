@@ -11,7 +11,7 @@
 
 using namespace std;
 
-/// Comptadors d'un carrer: resultat de l'opció (d) comptadorsDeCarrer.
+/// Comptadors d'un carrer, resultat de l'opció (d) comptadorsDeCarrer.
 class CarrerResult {
 public:
     /** @pre cert

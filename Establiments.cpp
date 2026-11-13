@@ -197,21 +197,26 @@ static bool ordreTitular(const Top10TitularResult &a, const Top10TitularResult &
 }
 
 top10TitularsResults Establiments::top10Titulars() const {
+    // un vector per cada cosa que volem sumar, amb una posició per titular (la mateixa fila que a a_titulars)
     vector<int> places(a_titulars.size(), 0);
     vector<size_t> nEstabliments(a_titulars.size(), 0);
+    // cada comarca recorre els seus establiments i suma al seu titular
     for (size_t i = 1; i < a_comarques.size(); i++)
         a_comarques[i].sumarTitulars(places, nEstabliments);
     top10TitularsResults resultat;
     for (size_t t = 0; t < a_titulars.size(); t++)
         resultat.push_back(Top10TitularResult(a_titulars[t].first, a_titulars[t].second, places[t], nEstabliments[t]));
     sort(resultat.begin(), resultat.end(), ordreTitular);
+    // només ens quedem amb els deu primers
     if (resultat.size() > 10) resultat.erase(resultat.begin() + 10, resultat.end());
     return resultat;
 }
 
 map<string, int> Establiments::placesUnitat(int codiComarca) const {
     map<string, int> resultat;
+    // si el codi de comarca no és vàlid, deixem el resultat buit
     if (codiComarca >= 1 and codiComarca < int(a_comarques.size())) {
+          // una posició per unitat: les places que sumem i quants establiments hi ha de cada una
         vector<int> places(a_unitats.size(), 0);
         vector<size_t> nEstabliments(a_unitats.size(), 0);
         a_comarques[codiComarca].sumarUnitats(places, nEstabliments);

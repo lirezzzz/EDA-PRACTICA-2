@@ -58,6 +58,7 @@ list<Establiment> Comarca::establimentsDeMunicipi(const string &codiMunicipi) co
 }
 
 CarrerResult Comarca::comptadorsDeCarrer(const string &codiMunicipi, const string &nomCarrer) const {
+
     map<string, list<Municipi>::iterator>::const_iterator it = a_index.find(codiMunicipi);
     if (it != a_index.end()) return it->second->comptadorsDeCarrer(nomCarrer);
     return CarrerResult(nomCarrer, 0, 0, 0);
@@ -66,12 +67,15 @@ CarrerResult Comarca::comptadorsDeCarrer(const string &codiMunicipi, const strin
 pair<int, int> Comarca::totalsMunicipi(const string &codiMunicipi) const {
     map<string, list<Municipi>::iterator>::const_iterator it = a_index.find(codiMunicipi);
     if (it != a_index.end()) return it->second->totals();
+
     return make_pair(0, 0);
 }
 
 CarrerResult Comarca::carrerMesEstablimentsDelMunicipi(const string &codiMunicipi) const {
     map<string, list<Municipi>::iterator>::const_iterator it = a_index.find(codiMunicipi);
+
     if (it != a_index.end()) return it->second->carrerMesEstabliments();
+
     return CarrerResult("", 0, 0, 0);
 }
 
@@ -81,6 +85,7 @@ void Comarca::sumarUnitats(vector<int> &places, vector<size_t> &nEstabliments) c
 }
 
 void Comarca::sumarTitulars(vector<int> &places, vector<size_t> &nEstabliments) const {
+    
     for (list<Municipi>::const_iterator it = a_municipis.begin(); it != a_municipis.end(); ++it)
         it->sumarTitulars(places, nEstabliments);
 }
@@ -88,9 +93,10 @@ void Comarca::sumarTitulars(vector<int> &places, vector<size_t> &nEstabliments) 
 CarrerMesEstResult Comarca::carrerMesEstabliments() const {
     CarrerResult millor("", 0, 0, 0);
     string nomMunicipi;
+    // mirem el millor carrer de cada municipi, en l'ordre del fitxer, i ens quedem amb el més gran
     for (list<Municipi>::const_iterator it = a_municipis.begin(); it != a_municipis.end(); ++it) {
         CarrerResult r = it->carrerMesEstabliments();
-        if (r.nEstabliments() > millor.nEstabliments()) {       // estricte: en empat es queda el municipi que surt primer al fitxer
+        if (r.nEstabliments() > millor.nEstabliments()) {       // amb > en empat guanya el primer que ha sortit
             millor = r;
             nomMunicipi = it->nom();
         }

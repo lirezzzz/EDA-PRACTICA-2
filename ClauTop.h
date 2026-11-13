@@ -38,7 +38,7 @@ public:
 
     /** @pre cert
         @post diu si aquesta clau va abans que altra al top: més places primer, en cas d'empat més
-             estances i, si tornen a empatar, l'ordre més petit (l'establiment que surt abans al fitxer)
+             estances i si tornen a empatar, l'ordre més petit (l'establiment que surt abans al fitxer)
     */
     bool operator<(const ClauTop &altra) const;
 
