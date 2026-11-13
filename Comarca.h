@@ -78,13 +78,13 @@ public:
     top10EstablimentsResults top10() const;
 
     /** @pre cert
-        @post retorna el total de places i d'estances del municipi codiMunicipi; (0, 0) si la comarca no el té
+        @post retorna el total de places i d'estances del municipi codiMunicipi (0, 0) si la comarca no el té
     */
     pair<int, int> totalsMunicipi(const string &codiMunicipi) const;
 
     /** @pre cert
         @post retorna el carrer amb més establiments del municipi codiMunicipi (en cas d'empat, el primer per ordre
-             alfabètic); carrer buit i tot a 0 si la comarca no té el municipi
+             alfabètic) carrer buit i tot a 0 si la comarca no té el municipi
     */
     CarrerResult carrerMesEstablimentsDelMunicipi(const string &codiMunicipi) const;
 
