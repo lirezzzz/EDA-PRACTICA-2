@@ -10,7 +10,9 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <map>
 #include "Municipi.h"
+#include "MunicipiResult.h"
 #include "Establiment.h"
 #include "CarrerMesEstResult.h"
 #include "ClauTop.h"
@@ -47,19 +49,9 @@ public:
     bool buida() const;
 
     /** @pre cert
-        @post retorna els municipis de la comarca
+        @post retorna els municipis de la comarca amb el seu nombre d'establiments, ordenats pel codi del municipi
     */
-    const vector<Municipi> &municipis() const;
-
-    /** @pre els municipis estan ordenats per codi idescat (ordre de string de menor a major basicament 0<3 en format string)
-        @post retorna la posició de codiMunicipi dins els municipis, o -1 si no hi és
-    */
-    int cercaDicotomica(const string &codiMunicipi) const;
-
-    /** @pre els municipis estan ordenats per codi idescat
-        @post com la cerca d'un parametre, i pos és la posició de codiMunicipi o, si no hi és, on s'hauria d'inserir per mantenir l'ordre
-    */
-    int cercaDicotomica(const string &codiMunicipi, int &pos) const;
+    vector<MunicipiResult> resultatMunicipis() const;
 
     /** @pre el municipi codiMunicipi pertany a aquesta comarca
         @post e s'ha afegit al final dels establiments del municipi codiMunicip. si el municipi no existia, s'ha creat amb el nom nomMunicipi.
@@ -72,6 +64,11 @@ public:
         @post retorna els establiments del municipi codiMunicipi en l'ordre del fitxer; buida si no hi és
     */
     list<Establiment> establimentsDeMunicipi(const string &codiMunicipi) const;
+
+    /** @pre cert
+        @post retorna els comptadors del carrer nomCarrer del municipi codiMunicipi; tot a 0 si el municipi o el carrer no hi són
+    */
+    CarrerResult comptadorsDeCarrer(const string &codiMunicipi, const string &nomCarrer) const;
 
     /** @pre cert
         @post retorna els (com a màxim) deu establiments d'aquesta comarca amb més places (en cas d'empat,
@@ -99,7 +96,7 @@ private:
 
     int a_codi;                  ///< Codi Comarca (IDESCAT)
     string a_nom;                ///< Comarca
-    vector<Municipi> a_municipis;
+    map<string, Municipi> a_municipis; ///< els municipis de la comarca, pel seu codi
     size_t a_nEstabliments;      ///< establiments de la comarca llegits fins ara (dóna l'ordre d'arribada)
     string a_codiMaxim;          ///< codi del municipi amb més establiments
     size_t a_nMaxim;             ///< nombre d'establiments d'aquest municipi

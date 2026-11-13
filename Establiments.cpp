@@ -89,10 +89,7 @@ vector<MunicipiResult> Establiments::municipisPerComarca(int codiComarca) const 
     vector<MunicipiResult> resultat;
     // si el codi no és una posició vàlida del vector (o encara no s'han llegit dades) no hi ha cap municipi
     if (codiComarca >= 1 && codiComarca < int(a_comarques.size())) {
-        const vector<Municipi> &municipis = a_comarques[codiComarca].municipis();
-        for (size_t i = 0; i < municipis.size(); i++) {
-            resultat.push_back(MunicipiResult(municipis[i].nom(), municipis[i].nEstabliments()));
-        }
+        resultat = a_comarques[codiComarca].resultatMunicipis();
         sort(resultat.begin(), resultat.end(), menorPerNom);
     }
     return resultat;
@@ -120,14 +117,9 @@ MaximMunicipiResults Establiments::maximMunicipi() const {
 }
 
 CarrerResult Establiments::comptadorsDeCarrer(const string &codiMunicipi, const string &nomCarrer) const {
-    map<string, int>::const_iterator it= a_indexMunicipis.find(codiMunicipi);
-    if (it!=a_indexMunicipis.end()){
-        const Comarca &comarca = a_comarques[it->second];
-        int pos = comarca.cercaDicotomica(codiMunicipi);
-        if (pos!=-1){
-           return  comarca.municipis()[pos].comptadorsDeCarrer(nomCarrer);
-        }
-    }
+    map<string, int>::const_iterator it = a_indexMunicipis.find(codiMunicipi);
+    if (it != a_indexMunicipis.end())
+        return a_comarques[it->second].comptadorsDeCarrer(codiMunicipi, nomCarrer);
     return CarrerResult(nomCarrer, 0, 0, 0);
 }
 

@@ -22,46 +22,23 @@ bool Comarca::buida() const {
     return a_municipis.empty();
 }
 
-const vector<Municipi> &Comarca::municipis() const {
-    return a_municipis;
-}
-
-int Comarca::cercaDicotomica(const string &codiMunicipi) const {
-    int pos;
-    return cercaDicotomica(codiMunicipi, pos);
-}
-
-int Comarca::cercaDicotomica(const string &codiMunicipi, int &pos) const {
-    int esq = 0;
-    int dre = int(a_municipis.size()) - 1;
-    while (esq <= dre) {
-        int mig = esq + (dre - esq) / 2;
-        const string &codiMig = a_municipis[mig].codi();
-        if (codiMig == codiMunicipi) {
-            pos = mig;
-            return mig;
-        }
-        if (codiMig < codiMunicipi) {
-            esq = mig + 1;
-        } else {
-            dre = mig - 1;
-        }
-    }
-    pos = esq;
-    return -1;
+vector<MunicipiResult> Comarca::resultatMunicipis() const {
+    vector<MunicipiResult> resultat;
+    for (map<string, Municipi>::const_iterator it = a_municipis.begin(); it != a_municipis.end(); ++it)
+        resultat.push_back(MunicipiResult(it->second.nom(), it->second.nEstabliments()));
+    return resultat;
 }
 
 void Comarca::afegirEstabliment(const string &codiMunicipi, const string &nomMunicipi,
                                 const Establiment &e) {
-    int pos;
-    if (cercaDicotomica(codiMunicipi, pos) == -1) { // no existeix: pos és on ha d'anar per mantenir l'ordre
-        a_municipis.insert(a_municipis.begin() + pos, Municipi(codiMunicipi, nomMunicipi));
-    }
-    a_municipis[pos].afegirEstabliment(e);
+    map<string, Municipi>::iterator it = a_municipis.find(codiMunicipi);
+    if (it == a_municipis.end())        // municipi nou: el creem
+        it = a_municipis.insert(make_pair(codiMunicipi, Municipi(codiMunicipi, nomMunicipi))).first;
+    it->second.afegirEstabliment(e);
     actualitzarTop(e);
 
     // actualitzem el màxim: amb > estricte, en cas d'empat es queda el que hi ha arribat primer
-    size_t n = a_municipis[pos].nEstabliments();
+    size_t n = it->second.nEstabliments();
     if (n > a_nMaxim) {
         a_nMaxim = n;
         a_codiMaxim = codiMunicipi;
@@ -69,24 +46,29 @@ void Comarca::afegirEstabliment(const string &codiMunicipi, const string &nomMun
 }
 
 const Municipi &Comarca::municipiMaxim() const {
-    // guardem el codi i no la posició perquè els insert desplacen els municipis dins el vector
-    return a_municipis[cercaDicotomica(a_codiMaxim)];
+    return a_municipis.find(a_codiMaxim)->second;
 }
 
-list<Establiment> Comarca::establimentsDeMunicipi(const string &codiMunicipi) const{
-    int pos = cercaDicotomica(codiMunicipi);
-    if (pos != -1) return a_municipis[pos].establiments();
+list<Establiment> Comarca::establimentsDeMunicipi(const string &codiMunicipi) const {
+    map<string, Municipi>::const_iterator it = a_municipis.find(codiMunicipi);
+    if (it != a_municipis.end()) return it->second.establiments();
     return list<Establiment>();
+}
+
+CarrerResult Comarca::comptadorsDeCarrer(const string &codiMunicipi, const string &nomCarrer) const {
+    map<string, Municipi>::const_iterator it = a_municipis.find(codiMunicipi);
+    if (it != a_municipis.end()) return it->second.comptadorsDeCarrer(nomCarrer);
+    return CarrerResult(nomCarrer, 0, 0, 0);
 }
 
 CarrerMesEstResult Comarca::carrerMesEstabliments() const {
     CarrerResult millor("", 0, 0, 0);
     string nomMunicipi;
-    for (size_t j = 0; j < a_municipis.size(); j++) {
-        CarrerResult r = a_municipis[j].carrerMesEstabliments();
+    for (map<string, Municipi>::const_iterator it = a_municipis.begin(); it != a_municipis.end(); ++it) {
+        CarrerResult r = it->second.carrerMesEstabliments();
         if (r.nEstabliments() > millor.nEstabliments()) {       // estricte: en empat es queda el municipi de codi més petit
             millor = r;
-            nomMunicipi = a_municipis[j].nom();
+            nomMunicipi = it->second.nom();
         }
     }
     return CarrerMesEstResult(a_nom, nomMunicipi, millor.carrer(), millor.nEstabliments());
