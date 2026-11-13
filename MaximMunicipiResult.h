@@ -11,7 +11,7 @@
 
 using namespace std;
 
-/// Un element del resultat de l'opció 04: el municipi amb més establiments d'una comarca.
+/// Un element del resultat de l'opció 05: el municipi amb més establiments d'una comarca.
 class MaximMunicipiResult {
 public:
     /** @pre cert

@@ -11,7 +11,7 @@
 
 using namespace std;
 
-/// Comptadors d'un carrer dins d'un municipi (peça interna, no es mostra directament).
+/// Comptadors d'un carrer dins d'un municipi.
 class Comptadors {
 public:
     /** @pre cert

@@ -108,7 +108,7 @@ MaximMunicipiResults Establiments::maximMunicipi() const {
     for (size_t c = 1; c < a_comarques.size(); c++) {
         const Comarca &comarca = a_comarques[c];
         if (!comarca.buida()) {
-            const Municipi &maxim = comarca.municipiMaxim(); // guardat durant la lectura,no recorrem els municipis per fer millor el temps
+            const Municipi &maxim = comarca.municipiMaxim(); // guardat durant la lectura, no recorrem els municipis per fer millor el temps
             resultat.push_back(MaximMunicipiResult(comarca.nom(), maxim.nom(), maxim.nEstabliments()));
         }
     }
@@ -125,7 +125,7 @@ CarrerResult Establiments::comptadorsDeCarrer(const string &codiMunicipi, const 
 
 /** @pre cert
     @post diu si a va abans que b: més establiments primer; en cas d'empat, carrer ascendent i, si encara
-         empaten, nom de comarca ascendent (ordre total)
+         empaten, nom de comarca ascendent
 */
 static bool ordreCarrerMes(const CarrerMesEstResult &a, const CarrerMesEstResult &b) {
     if (a.nEstabliments() != b.nEstabliments()) return a.nEstabliments() > b.nEstabliments();

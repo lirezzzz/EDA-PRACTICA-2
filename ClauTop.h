@@ -12,8 +12,8 @@
 
 using namespace std;
 
-/// Clau d'un establiment dins el top 10 d'una comarca (peça interna).
-/// Guarda les places, les estances, l'ordre d'arribada i el nom: el top 10 no necessita res més de l'establiment.
+/// Clau d'un establiment dins el top 10 d'una comarca.
+/// Guarda les places, les estances, l'ordre d'arribada i el nom.
 class ClauTop {
 public:
     /** @pre cert
@@ -43,9 +43,7 @@ public:
 
     /** @pre cert
         @post diu si aquesta clau va abans que altra al top: més places primer, en cas d'empat més
-             estances i, si tornen a empatar, l'ordre més petit (l'establiment que surt abans al fitxer).
-             És un ordre total estricte: dues claus diferents no es consideren mai iguals, així el top
-             és sempre el mateix.
+             estances i, si tornen a empatar, l'ordre més petit (l'establiment que surt abans al fitxer)
     */
     bool operator<(const ClauTop &altra) const;
 

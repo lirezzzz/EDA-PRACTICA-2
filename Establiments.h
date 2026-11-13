@@ -20,7 +20,7 @@
 
 using namespace std;
 
-/// Resultat de l'opció 04: per cada comarca, el municipi amb més establiments.
+/// Resultat de l'opció 05: per cada comarca, el municipi amb més establiments.
 typedef vector<MaximMunicipiResult> MaximMunicipiResults;
 
 class Establiments {

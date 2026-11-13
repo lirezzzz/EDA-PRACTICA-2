@@ -54,7 +54,7 @@ public:
     vector<MunicipiResult> resultatMunicipis() const;
 
     /** @pre el municipi codiMunicipi pertany a aquesta comarca
-        @post e s'ha afegit al final dels establiments del municipi codiMunicip. si el municipi no existia, s'ha creat amb el nom nomMunicipi.
+        @post e s'ha afegit al final dels establiments del municipi codiMunicipi. Si el municipi no existia, s'ha creat amb el nom nomMunicipi.
              si ara aquest municipi té estrictament més establiments que el màxim anterior, passa a ser el municipi màxim
     */
     void afegirEstabliment(const string &codiMunicipi, const string &nomMunicipi,
