@@ -100,20 +100,20 @@ CarrerMesEstResult Comarca::carrerMesEstabliments() const {
 
 top10EstablimentsResults Comarca::top10() const {
     top10EstablimentsResults resultat;
-
-    // Recórrer el vector, ja ordenat del millor al pitjor
+    // a_top ja està ordenat del millor al pitjor
     for (size_t i = 0; i < a_top.size(); i++)
         resultat.push_back(Top10EstablimentResult(a_top[i].nom(), a_top[i].places(), a_top[i].estances()));
-
     return resultat;
 }
 
 void Comarca::actualitzarTop(const Establiment &e) {
     ClauTop clau(e.places(), e.estances(), a_nEstabliments, e.nom());
     a_nEstabliments++;
-    if (a_top.size() == 10 && !(clau < a_top.back())) return;   // no millora el pitjor dels deu
+    // si ja en tenim deu i aquest no és millor que l'últim, ni el mirem
+    if (a_top.size() == 10 and !(clau < a_top.back())) return;
+    // busquem on va perquè el vector es quedi ordenat, i si ens passem de deu traiem l'últim
     vector<ClauTop>::iterator it = a_top.begin();
-    while (it != a_top.end() && *it < clau) ++it;                 // posició on va, mantenint l'ordre
+    while (it != a_top.end() and *it < clau) ++it;                 // posició on va, mantenint l'ordre
     a_top.insert(it, clau);
     if (a_top.size() > 10) a_top.pop_back();                      // traiem el pitjor
 }

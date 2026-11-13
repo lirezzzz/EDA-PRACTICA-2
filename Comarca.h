@@ -78,13 +78,13 @@ public:
     top10EstablimentsResults top10() const;
 
     /** @pre cert
-        @post retorna el total de places i d'estances del municipi codiMunicipi (0, 0) si la comarca no el té
+        @post retorna el total de places i d'estances del municipi codiMunicipi, o (0, 0) si la comarca no el té
     */
     pair<int, int> totalsMunicipi(const string &codiMunicipi) const;
 
     /** @pre cert
         @post retorna el carrer amb més establiments del municipi codiMunicipi (en cas d'empat, el primer per ordre
-             alfabètic) carrer buit i tot a 0 si la comarca no té el municipi
+             alfabètic), o carrer buit i tot a 0 si la comarca no té el municipi
     */
     CarrerResult carrerMesEstablimentsDelMunicipi(const string &codiMunicipi) const;
 
@@ -121,7 +121,7 @@ private:
     int a_codi;                  ///< Codi Comarca (IDESCAT)
     string a_nom;                ///< Comarca
     list<Municipi> a_municipis;  ///< els municipis de la comarca, en l'ordre en què surten al fitxer
-    map<string, list<Municipi>::iterator> a_index; ///< codi del municipi -> el seu lloc a la llista
+    map<string, list<Municipi>::iterator> a_index; ///< per cada codi de municipi, on és a la llista
     size_t a_nEstabliments;      ///< establiments de la comarca llegits fins ara (dóna l'ordre d'arribada)
     string a_codiMaxim;          ///< codi del municipi amb més establiments
     size_t a_nMaxim;             ///< nombre d'establiments d'aquest municipi

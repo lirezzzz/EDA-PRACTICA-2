@@ -100,7 +100,9 @@ private:
     vector<Comarca> a_comarques; ///< cada comarca conté els seus municipis
     vector<string> a_unitats;    ///< les unitats d'allotjament, per número de fila
     vector<pair<string, string> > a_titulars; ///< els titulars (CIF i raó social), per número de fila
-    map<string, int> a_indexMunicipis;  ///< codi del municipi i codi de la seva comarca
+    /// per cada codi de municipi, el codi de la seva comarca. Serveix per saber a quina comarca anar a buscar;
+    /// després, dins de la comarca, el seu propi índex troba el municipi
+    map<string, int> a_indexMunicipis;
 };
 
 #endif // ESTABLIMENTS_H

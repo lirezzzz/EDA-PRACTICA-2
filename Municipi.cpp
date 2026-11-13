@@ -8,8 +8,8 @@
 
 Municipi::Municipi(const string &nom) : a_nom(nom), a_nMillorCarrer(0) {}
 
-string Municipi::nom() const { 
-    return a_nom; 
+string Municipi::nom() const {
+    return a_nom;
 }
 
 size_t Municipi::nEstabliments() const {
@@ -20,8 +20,8 @@ void Municipi::afegirEstabliment(const Establiment &e) {
     a_establiments.push_back(e);
     Comptadors &c = a_carrers[e.carrer()];
     c.afegir(e.places(), e.estances());
-    // només pot canviar el millor carrer el que acabem de comptar; en empat, ens quedem el que va primer per ordre alfabètic
-    if (c.nEstabliments() > a_nMillorCarrer || (c.nEstabliments() == a_nMillorCarrer && e.carrer() < a_millorCarrer)) {
+    // només pot canviar el millor carrer el que acabem de comptar. En empat, ens quedem el que va primer per ordre alfabètic
+    if (c.nEstabliments() > a_nMillorCarrer or (c.nEstabliments() == a_nMillorCarrer and e.carrer() < a_millorCarrer)) {
         a_nMillorCarrer = c.nEstabliments();
         a_millorCarrer = e.carrer();
     }
@@ -32,10 +32,9 @@ list<Establiment> Municipi::establiments() const {
 }
 
 CarrerResult Municipi::comptadorsDeCarrer(const string &carrer) const {
-   map<string, Comptadors>::const_iterator it = a_carrers.find(carrer);
-   if (it!= a_carrers.end()){
-    return CarrerResult(it->first,it->second.nEstabliments(),it->second.places(),it->second.estances());
-   }
+    map<string, Comptadors>::const_iterator it = a_carrers.find(carrer);
+    if (it != a_carrers.end())
+        return CarrerResult(it->first, it->second.nEstabliments(), it->second.places(), it->second.estances());
     return CarrerResult(carrer, 0, 0, 0);
 }
 

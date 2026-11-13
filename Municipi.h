@@ -32,7 +32,7 @@ public:
     string nom() const;
 
     /** @pre cert
-        @post retorna el numero d'establiments del municipi
+        @post retorna el número d'establiments del municipi
     */
     size_t nEstabliments() const;
 
@@ -76,11 +76,11 @@ public:
     void sumarTitulars(vector<int> &places, vector<size_t> &nEstabliments) const;
 
 private:
-    string a_nom;                     ///< Municipi
+    string a_nom;                       ///< Municipi
     list<Establiment> a_establiments;   ///< els establiments del municipi, en ordre del fitxer
-    map<string, Comptadors> a_carrers; ///< nom del carrer -> comptadors
-    string a_millorCarrer;            ///< carrer amb més establiments (en empat, el primer per ordre alfabètic)
-    size_t a_nMillorCarrer;           ///< nombre d'establiments d'aquest carrer
+    map<string, Comptadors> a_carrers;  ///< per cada carrer, els seus comptadors
+    string a_millorCarrer;              ///< carrer amb més establiments (en empat, el primer per ordre alfabètic)
+    size_t a_nMillorCarrer;             ///< nombre d'establiments d'aquest carrer
 };
 
 #endif // MUNICIPI_H

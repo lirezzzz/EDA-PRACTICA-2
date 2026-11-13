@@ -25,11 +25,11 @@ void mostrarTitol(const string &titol) {
 */
 void mostrarMenu() {
     cerr << endl;
-    cerr << "01: Llegir dades" << endl;
-    cerr << "02: Codi comarca -> municipis" << endl;
-    cerr << "03: Codi municipi -> establiments" << endl;
+    cerr << "01: Llegir dades" << endl;                  // (a)
+    cerr << "02: Codi comarca -> municipis" << endl;      // (b)
+    cerr << "03: Codi municipi -> establiments" << endl;  // (c)
     cerr << "04: Comptadors de carrer" << endl;              // (d)
-    cerr << "05: Municipi amb mes establiments" << endl;
+    cerr << "05: Municipi amb mes establiments" << endl;    // (e)
     cerr << "06: Carrer amb mes establiments" << endl;       // (f)
     cerr << "07: Top 10 establiments per comarca" << endl;   // (g)
     cerr << "08: Totals del municipi" << endl;                // (h)
@@ -67,7 +67,7 @@ void opcioMunicipisPerComarca(const Establiments &establiments) {
     @post retorna numero; si comença per dígit, s'omple amb zeros a l'esquerra fins a 5 caràcters
 */
 string formatNumero(const string &numero) {
-    if (numero.empty() || numero[0] < '0' || numero[0] > '9' || numero.length() >= 5)
+    if (numero.empty() or numero[0] < '0' or numero[0] > '9' or numero.length() >= 5)
         return numero;
     return string(5 - numero.length(), '0') + numero;
 }

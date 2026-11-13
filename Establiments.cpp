@@ -30,7 +30,7 @@ const int COL_RAO_SOCIAL = 29;
 static int textANumero(const string &s) {
     int n = 0;
     for (size_t i = 0; i < s.length(); i++)
-        if (s[i] >= '0' && s[i] <= '9')
+        if (s[i] >= '0' and s[i] <= '9')
             n = n * 10 + (s[i] - '0');
     return n;
 }
@@ -57,21 +57,23 @@ size_t Establiments::llegirDades(const string &path) {
     a_unitats.clear();
     a_titulars.clear();
     a_comarques.resize(44);         // una posició per cada codi de comarca (1..43)
-    map<string, int> filaUnitat;    // per llegir: unitat -> número de fila (no cal guardar-ho després)
-    map<string, int> filaTitular;   // per llegir: CIF -> número de fila
+    // aquests dos maps només serveixen mentre llegim: ens diuen si una unitat o un CIF ja el tenim a la taula
+    // i, si el tenim, en quina fila. Quan acabem de llegir ja no calen.
+    map<string, int> filaUnitat;    // per cada unitat, la seva fila
+    map<string, int> filaTitular;   // per cada CIF, la seva fila
 
     ifstream f(path);
     if (f.fail()) return 0;
 
     size_t n = 0;
     string linia;
-    getline(f, linia);              
-    getline(f, linia);              
+    getline(f, linia);
+    getline(f, linia);
     while (!f.eof()) {
         vector<string> camps = tokens(linia, ',', true);
         if (camps.size() == 33) {
             int codiComarca = textANumero(camps[COL_CODI_COMARCA]);
-            if (codiComarca >= 1 && codiComarca < int(a_comarques.size())) {
+            if (codiComarca >= 1 and codiComarca < int(a_comarques.size())) {
                 // la unitat i el titular es guarden una sola vegada a una taula; a l'establiment només el seu número de fila
                 map<string, int>::iterator itU = filaUnitat.find(camps[COL_UNITAT]);
                 if (itU == filaUnitat.end()) {
@@ -85,7 +87,7 @@ size_t Establiments::llegirDades(const string &path) {
                 }
                 // si un CIF surt amb diverses raons socials, ens quedem la primera per ordre alfabètic (sense les buides)
                 string &raoSocial = a_titulars[itT->second].second;
-                if (!camps[COL_RAO_SOCIAL].empty() && (raoSocial.empty() || camps[COL_RAO_SOCIAL] < raoSocial))
+                if (!camps[COL_RAO_SOCIAL].empty() and (raoSocial.empty() or camps[COL_RAO_SOCIAL] < raoSocial))
                     raoSocial = camps[COL_RAO_SOCIAL];
                 Establiment e(camps[COL_RETOL],
                               camps[COL_NOM_VIA],
@@ -112,7 +114,7 @@ size_t Establiments::llegirDades(const string &path) {
 vector<MunicipiResult> Establiments::municipisPerComarca(int codiComarca) const {
     vector<MunicipiResult> resultat;
     // si el codi no és una posició vàlida del vector (o encara no s'han llegit dades) no hi ha cap municipi
-    if (codiComarca >= 1 && codiComarca < int(a_comarques.size())) {
+    if (codiComarca >= 1 and codiComarca < int(a_comarques.size())) {
         resultat = a_comarques[codiComarca].resultatMunicipis();
         sort(resultat.begin(), resultat.end(), menorPerNom);
     }
@@ -120,11 +122,10 @@ vector<MunicipiResult> Establiments::municipisPerComarca(int codiComarca) const 
 }
 
 list<Establiment> Establiments::establimentsPerMunicipi(const string &codiMunicipi) const {
-    map<string, int>::const_iterator it= a_indexMunicipis.find(codiMunicipi);
-    if (it!=a_indexMunicipis.end()){
+    map<string, int>::const_iterator it = a_indexMunicipis.find(codiMunicipi);
+    if (it != a_indexMunicipis.end())
         return a_comarques[it->second].establimentsDeMunicipi(codiMunicipi);
-    }
-    return list<Establiment>(); // no existeix cap municipi amb aquest codi
+    return list<Establiment>();     // no existeix cap municipi amb aquest codi
 }
 
 MaximMunicipiResults Establiments::maximMunicipi() const {
@@ -132,7 +133,7 @@ MaximMunicipiResults Establiments::maximMunicipi() const {
     for (size_t c = 1; c < a_comarques.size(); c++) {
         const Comarca &comarca = a_comarques[c];
         if (!comarca.buida()) {
-            const Municipi &maxim = comarca.municipiMaxim(); // guardat durant la lectura, no recorrem els municipis per fer millor el temps
+            const Municipi &maxim = comarca.municipiMaxim(); // ja el tenim guardat de quan s'ha llegit, així no recorrem els municipis
             resultat.push_back(MaximMunicipiResult(comarca.nom(), maxim.nom(), maxim.nEstabliments()));
         }
     }
@@ -168,11 +169,9 @@ CarrerMesEstResults Establiments::carrerMesEstablimentsPerComarca() const {
 }
 
 top10EstablimentsResults Establiments::top10Establiments(int codiComarca) const {
-    // Comprovar rang (igual que municipisPerComarca)
-    if (codiComarca < 1 || codiComarca >= (int)a_comarques.size())
-        return top10EstablimentsResults();   // comarca no existeix → resultat buit
-
-    // Delegar a la comarca
+    // si el codi no és d'una comarca no hi ha cap establiment
+    if (codiComarca < 1 or codiComarca >= (int)a_comarques.size())
+        return top10EstablimentsResults();
     return a_comarques[codiComarca].top10();
 }
 
@@ -212,7 +211,7 @@ top10TitularsResults Establiments::top10Titulars() const {
 
 map<string, int> Establiments::placesUnitat(int codiComarca) const {
     map<string, int> resultat;
-    if (codiComarca >= 1 && codiComarca < int(a_comarques.size())) {
+    if (codiComarca >= 1 and codiComarca < int(a_comarques.size())) {
         vector<int> places(a_unitats.size(), 0);
         vector<size_t> nEstabliments(a_unitats.size(), 0);
         a_comarques[codiComarca].sumarUnitats(places, nEstabliments);
